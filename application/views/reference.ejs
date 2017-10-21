@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="summermvc.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body class="base">
+  <header class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-containter">
+      <div class="navbar-header active">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <ul class="nav navbar-nav top-nav">
+        <li class="<%- topLeftMenus[0].active %>"><a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><%- topLeftMenus[0].displayname %></a></li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse navbar-content">
+      <ul class="nav navbar-nav top-nav">
+        <% for( var i=1; i<topLeftMenus.length; i++ ){ %>
+          <li id="<%- topLeftMenus[i].id %>" name="<%- topLeftMenus[i].name %>" class="<%- topLeftMenus[i].active %>"><a href="<%- topLeftMenus[i].redirectpath %>" ><%- topLeftMenus[i].displayname %></a></li>
+        <% } %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right top-nav">
+        <% for( var i=0; i<topRightMenus.length; i++ ){ %>
+          <li style="padding-right: 15px" id="<%- topRightMenus[i].id %>" name="<%- topRightMenus[i].name %>" class="<%- topRightMenus[i].active %>"><a href="<%- topRightMenus[i].redirectpath %>" ><i class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[i].displayname %></a></li>
+        <% } %>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container-fluid doc" style="margin-top: 80px">
+  </div>
+
+  <footer>
+  </footer>
+
+</body>
+
+</html>
