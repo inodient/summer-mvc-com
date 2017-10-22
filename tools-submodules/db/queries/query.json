@@ -21,10 +21,10 @@
   },
   {
     "id" : "getTopLeftMenus",
-    "queryString" : "select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled, '' as active from TB_MENU where level = 0 and enabled = 'Y' order by sequence;"
+    "queryString" : "select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type, '' as active from TB_MENU where level = 0 and enabled = 'Y' order by sequence;"
   },
   {
     "id" : "getTopRightMenus",
-    "queryString" : "select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled, '' as active from TB_MENU where level = -1 and enabled = 'Y' order by sequence;"
+    "queryString" : "select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type, '' as active from TB_MENU where level = -1 and enabled = 'Y' order by sequence;"
   }
 ]

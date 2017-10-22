@@ -1,0 +1,221 @@
+.base {
+  margin-top: 50px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/img_bg_pattern.png);
+}
+
+.navbar-container, .navbar-collapse {
+  font-size: 16px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.doc {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.doc-nav {
+  padding-top: 50px;
+}
+
+  .doc-description {
+    border-color: #333;
+  }
+
+  .doc-description:hover {
+    cursor: pointer;
+  }
+
+    .doc-description > h4 {
+      margin-top: 0px;
+    }
+
+    .doc-description > p {
+      font-size: 13.5px;
+    }
+
+  .doc-nav-list {
+    list-style-type: none;
+    color: #555;
+    padding-left: 25px;
+    padding-top: 50px;
+  }
+
+    .doc-nav-list li {
+      margin-top: 2px;
+      padding: 10px;
+    }
+
+      .doc-nav-list > li > a {
+        background-color: transparent;
+        color: #555;
+        font-size: 16px;
+        text-decoration: none;
+      }
+
+      .doc-nav-list > li:hover > a:hover {
+        cursor: pointer;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .doc-nav-list > li:hover > a:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        margin-left: 15px;
+        left: 0;
+        width: 4px;
+        height: 18px;
+        background-color: #333;
+      }
+
+      .doc-nav-list > li.active > a {
+        cursor: pointer;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .doc-nav-list > li.active > a:before {
+        content: "";
+        display: block;
+        position: absolute;
+        margin-left: 15px;
+        left: 0;
+        width: 4px;
+        height: 18px;
+        background-color: #333;
+      }
+
+      .doc-nav-list > li.scrolled > a.scrolled {
+        cursor: pointer;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .doc-nav-list > li.scrolled > a.scrolled:before {
+        content: "";
+        display: block;
+        position: absolute;
+        margin-left: 15px;
+        left: 0;
+        width: 4px;
+        height: 18px;
+        background-color: #333;
+      }
+
+
+      .doc-nav-list > li:hover > .doc-nav-sub-list {
+        display: block;
+      }
+
+      .doc-nav-list > li.active > .doc-nav-sub-list {
+        display: block;
+      }
+
+      .doc-nav-list > li.scrolled > .doc-nav-sub-list {
+        display: block;
+      }
+
+      .doc-nav-sub-list {
+        display: none;
+        list-style-type: none;
+        color: #555;
+        padding-left: 10px;
+        padding-top: 0px;
+      }
+
+        .doc-nav-sub-list li {
+          padding-top: 5px;
+          padding-bottom: 0px;
+        }
+
+        .doc-nav-sub-list > li > a {
+          background-color: transparent;
+          color: #555;
+          font-size: 14.5px;
+          text-decoration: none;
+        }
+
+        .doc-nav-sub-list > li:hover > a:hover {
+          cursor: pointer;
+          color: #333;
+          font-weight: bold;
+        }
+
+        .doc-nav-sub-list > li:hover > a:hover:before {
+          content: "";
+          display: block;
+          position: absolute;
+          margin-left: 15px;
+          left: 0;
+          width: 4px;
+          height: 18px;
+          background-color: #333;
+        }
+
+        .doc-nav-sub-list > li.active > a {
+          cursor: pointer;
+          color: #333;
+          font-weight: bold;
+        }
+
+        .doc-nav-sub-list > li.active > a:before {
+          content: "";
+          display: block;
+          position: absolute;
+          margin-left: 15px;
+          left: 0;
+          width: 4px;
+          height: 18px;
+          background-color: #333;
+        }
+
+        .doc-nav-sub-list > li.scrolled > a.scrolled {
+          cursor: pointer;
+          color: #333;
+          font-weight: bold;
+        }
+
+        .doc-nav-sub-list > li.scrolled > a.scrolled:before {
+          content: "";
+          display: block;
+          position: absolute;
+          margin-left: 15px;
+          left: 0;
+          width: 4px;
+          height: 18px;
+          background-color: #333;
+        }
+
+.doc-content {
+  background-color: #FFFFFF;
+  padding-top: 50px;
+}
+
+  .doc-content .doc-h3 {
+    margin-top: -80px;
+    padding-top: 100px;
+    margin-bottom: 30px;
+  }
+
+  .doc-content .doc-h4 {
+    margin-top: -80px;
+    padding-top: 100px;
+    margin-bottom: 30px;
+  }
+
+.after {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  position: absolute;
+  background-color: #FFFFFF;
+  z-index: -1;
+}

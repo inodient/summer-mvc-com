@@ -12,22 +12,115 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  <script>
+    $(document).ready( function(){
+      $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
+
+      if( $(window).scrollTop() > $("blockquote").outerHeight() + parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) ){
+        $(".doc-nav-list").css({top: parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) - parseInt( $(".doc-description").css("padding-top").replace( "px", "" ) ), position:'fixed', width: $(".doc-description").css("width")});
+        $(".doc-nav-list").addClass( "affix" );
+      } else{
+        $(".doc-nav-list").css({top:0, position:'relative'});
+        $(".doc-nav-list").removeClass( "affix" );
+      }
+
+      $(window).scroll( function( event ){
+
+        // 1. Right Half Page css
+        $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
+
+        // 2. doc-nav-list affix
+        if( $(window).scrollTop() > $("blockquote").outerHeight() + parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) ){
+          $(".doc-nav-list").css({top: parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) - parseInt( $(".doc-description").css("padding-top").replace( "px", "" ) ), position:'fixed', width: $(".doc-description").css("width")});
+          $(".doc-nav-list").addClass( "affix" );
+        } else{
+          $(".doc-nav-list").css({top:0, position:'relative'});
+          $(".doc-nav-list").removeClass( "affix" );
+        }
+
+        // 3. content-enables -> doc-nav-list active
+        var offset = 80;
+        var activeElement = "";
+        var specifics = $(".doc-h3, .doc-h4");
+
+        if( specifics == null ){
+          specifics = document.getElementsByClassName( "" );
+        }
+
+        for( var i=0; i<specifics.length; i++ ){
+          var startOffset = 0;
+          var endOffset = 0;
+
+          startOffset = $( "#" + specifics[i].id ).offset().top - offset;
+          if( startOffset > $(window).scrollTop() ){
+            activeElement = "";
+            break;
+          }
+
+          if( i != specifics.length - 1 ){
+            endOffset = $( "#" + specifics[i+1].id ).offset().top - offset;
+          } else{
+            // endOffset = $( "#" + specifics[i].id ).offset().top + $( ".content_specific" ).outerHeight() - offset;
+            endOffset = $( "#" + specifics[i].id ).offset().top + $( "#" + specifics[i].id ).parent().outerHeight( true ) - offset;
+          }
+
+          if( $(window).scrollTop() > startOffset && $(window).scrollTop() < endOffset ){
+            activeElement = specifics[i].id;
+            break;
+          }
+
+          if( $(window).scrollTop() + $(window).height() == $(document).height() ){
+            activeElement = specifics[specifics.length - 1].id;
+            break;
+          }
+
+          if( i == specifics.length ){
+            activeElement = "";
+          }
+        }
+
+        if( activeElement != "" ){
+          $("*").removeClass( "scrolled" );
+          $( "#dnl_" + activeElement ).addClass( "scrolled" );
+          $( "#dnl_" + activeElement ).parent().addClass( "scrolled" );
+
+          if( ( $( "#" + activeElement ).attr( "class" ) ).indexOf( "doc-h4" ) >= 0 ){
+            $( "#dnl_" + activeElement ).parent().parent().parent().addClass( "scrolled" );
+            $( "#dnl_" + activeElement ).parent().parent().siblings("a").addClass( "scrolled" );
+          }
+        } else{
+          $("*").removeClass( "scrolled" );
+          $(".doc-nav-list *, .doc-nav-sub-list *").removeClass( "active" );
+        }
+      } );
+
+      // when doc-nav-list clicked -> active
+      $(".doc-nav-list > li > a").on( "click", function(){
+        $("*").removeClass("active");
+        $(this).parent().addClass( "active" );
+      } );
+
+      $(".doc-nav-sub-list > li > a").on( "click", function(){
+        $("*").removeClass("active");
+        $(this).parent().addClass( "active" );
+        $(this).parent().parent().parent().addClass( "active" );
+      } );
+    } );
+  </script>
 
 </head>
 
 <body class="base">
   <header class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-containter">
-      <div class="navbar-header active">
+    <div class="navbar-container">
+      <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><%- topLeftMenus[0].displayname %></a>
       </div>
-      <ul class="nav navbar-nav top-nav">
-        <li class="<%- topLeftMenus[0].active %>"><a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><%- topLeftMenus[0].displayname %></a></li>
-      </ul>
     </div>
     <div class="collapse navbar-collapse navbar-content">
       <ul class="nav navbar-nav top-nav">
@@ -36,19 +129,90 @@
         <% } %>
       </ul>
       <ul class="nav navbar-nav navbar-right top-nav">
-        <% for( var i=0; i<topRightMenus.length; i++ ){ %>
-          <li style="padding-right: 15px" id="<%- topRightMenus[i].id %>" name="<%- topRightMenus[i].name %>" class="<%- topRightMenus[i].active %>"><a href="<%- topRightMenus[i].redirectpath %>" ><i class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[i].displayname %></a></li>
+        <% for( var i=0; i<topRightMenus.length-1; i++ ){ %>
+          <% if( topRightMenus[i].type === "href" ){ %>
+            <li id="<%- topRightMenus[i].id %>" name="<%- topRightMenus[i].name %>" class="<%- topRightMenus[i].active %>"><a href="<%- topRightMenus[i].redirectpath %>" ><i class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[i].displayname %></a></li>
+          <% } else if( topRightMenus[i].type === "onclick" ){ %>
+            <li id="<%- topRightMenus[i].id %>" name="<%- topRightMenus[i].name %>" class="<%- topRightMenus[i].active %>"><a href="#" onclick="<%- topRightMenus[i].redirectpath %>" ><i class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[i].displayname %></a></li>
+          <% } %>
         <% } %>
+        <li style="padding-right: 15px" id="<%- topRightMenus[topRightMenus.length-1].id %>" name="<%- topRightMenus[topRightMenus.length-1].name %>" class="<%- topRightMenus[topRightMenus.length-1].active %>"><a href="<%- topRightMenus[topRightMenus.length-1].redirectpath %>" ><i class="<%- topRightMenus[topRightMenus.length-1].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[topRightMenus.length-1].displayname %></a></li>
       </ul>
     </div>
   </header>
 
-  <div class="container-fluid doc" style="margin-top: 80px">
+  <div class="container-fluid doc">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3 doc-nav">
+        <blockquote class="doc-description" onclick="location.href=''">
+          <h4>Getting Started</h4>
+          <p>An overview of summernote, how to download and use, basic features and examples, and more.</p>
+        </blockquote>
+        <ul class="doc-nav-list" >
+          <li>
+            <a href="#get_summer_mvc" id="dnl_get_summer-mvc">Get summer-mvc</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#npm" id="dnl_npm">NPM</a></li>
+              <li><a href="#github" id="dnl_github">Github</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#setting_up" id="dnl_setting_up">Setting Up</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#include_in_project" id="dnl_include_in_project">Include in project</a></li>
+              <li><a href="#build_hiererchy" id="dnl_build_hiererchy">Build Hierarchy</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#initializing" id="dnl_initializing">Initializing</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#initializer_json" id="dnl_initializer_json">initializer.json</a></li>
+              <li><a href="#setting_01" id="dnl_setting_01">Setting ...</a></li>
+              <li><a href="#setting_02" id="dnl_setting_02">Setting ...</a></li>
+              <li><a href="#setting_03" id="dnl_setting_03">Setting ...</a></li>
+              <li><a href="#setting_04" id="dnl_setting_04">Setting ...</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#write_codes" id="dnl_write_codes">Write Codes</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#context_dispatcher_json" id="dnl_context_dispatcher_json">context-ispatcher.json</a></li>
+              <li><a href="#controller" id="dnl_controller">Controller</a></li>
+              <li><a href="#view" id="dnl_view">View</a></li>
+              <li><a href="#model" id="dnl_model">Model</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
+
+        <h3 id="get_summer_mvc" class="doc-h3">Get summer-mvc</h3>
+          <h4 id="npm" class="doc-h4">NPM</h4>
+          <h4 id="github" class="doc-h4">Github</h4>
+
+        <h3 id="setting_up" class="doc-h3">Setting Up</h3>
+          <h4 id="include_in_project" class="doc-h4">Include in Project</h4>
+          <h4 id="build_hiererchy" class="doc-h4">Build Hierarchy</h4>
+
+        <h3 id="initializing" class="doc-h3">Initializing</h3>
+          <h4 id="initializer_json" class="doc-h4">initializer.json</h4>
+          <h4 id="setting_01" class="doc-h4">Setting 01</h4>
+          <h4 id="setting_02" class="doc-h4">Setting 02</h4>
+          <h4 id="setting_03" class="doc-h4">Setting 03</h4>
+          <h4 id="setting_04" class="doc-h4">Setting 04</h4>
+
+        <h3 id="write_codes" class="doc-h3">Write Codes</h3>
+          <h4 id="context_dispatcher_json" class="doc-h4">context-dispatcher.json</h4>
+          <h4 id="controller" class="doc-h4">Controller</h4>
+          <h4 id="view" class="doc-h4">View</h4>
+          <h4 id="model" class="doc-h4">Model</h4>
+
+        <% include partials/footer.ejs %>
+      </div>
+    </div>
   </div>
 
-  <footer>
-  </footer>
-
+  <div class="after"></div>
 </body>
 
 </html>

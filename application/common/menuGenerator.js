@@ -33,6 +33,7 @@ function getTopMenus( path, connection ){
           findActive = true;
         }
         if( topRightMenus[i].name == "github" ){
+          logger.debug( "forksCount", forksCount );
           topRightMenus[i].displayname = forksCount;
         }
       }
@@ -50,7 +51,7 @@ function getForkCount(){
     var request = require( "request" );
 
     var options = {
-      url: "https://api.github.com/repos/inodient/summer-mvc",
+      url: "https://api.github.com/repos/inodient/summer-mvc-com",
       headers: {
         'User-Agent': 'node.js'
       }
