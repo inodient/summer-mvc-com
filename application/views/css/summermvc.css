@@ -1,9 +1,13 @@
 .base {
   margin-top: 50px;
-  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   background-image: url(/img_bg_pattern.png);
+}
+
+.navbar-inverse {
+  background-color: black;
+  border-bottom: 1px solid darkgray;
 }
 
 .navbar-container, .navbar-collapse {
@@ -218,4 +222,10 @@
   position: absolute;
   background-color: #FFFFFF;
   z-index: -1;
+}
+
+footer {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
