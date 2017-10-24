@@ -12,10 +12,10 @@ exports.control = function( req, res, connection ){
     Promise.all( promises )
     .then( function(){
       var argv = arguments[0];
-
-      logger.debug( argv );
-
-      resolve( argv[0] );
+      var results = {};
+      
+      results = Object.assign( argv[0], argv[1] );
+      resolve( results );
     } )
     .catch( function(err){
       reject( err );
@@ -48,7 +48,7 @@ function getNPMCount(){
     promises.push( new Promise( function(resolve, reject){
       request( request_prefix + "last-week" + request_postfix, function(err, response, body){
         if( err ) reject( err );
-        resolve( {"last-week" : ( JSON.parse(body) ).downloads} );
+        resolve( ( JSON.parse(body) ).downloads );
       } );
     } ) );
 
@@ -56,7 +56,7 @@ function getNPMCount(){
     promises.push( new Promise( function(resolve, reject){
       request( request_prefix + "last-month" + request_postfix, function(err, response, body){
         if( err ) reject( err );
-        resolve( {"last-month" : ( JSON.parse(body) ).downloads} );
+        resolve( ( JSON.parse(body) ).downloads );
       } );
     } ) );
 
@@ -64,14 +64,21 @@ function getNPMCount(){
     promises.push( new Promise( function(resolve, reject){
       request( request_prefix + "1900-01-01:" + today + request_postfix, function(err, response, body){
         if( err ) reject( err );
-        resolve( {"total" : ( JSON.parse(body) ).downloads} );
+        resolve( ( JSON.parse(body) ).downloads );
       } );
     } ) );
 
     Promise.all( promises )
     .then( function(){
       var argv = arguments[0];
-      _resolve( argv );
+      
+      var results = {};
+      
+      results.last_week = argv[0];
+      results.last_month = argv[1];
+      results.total = argv[2];
+      
+      _resolve( results );
     } )
     .catch( function(err){
       _reject( err );

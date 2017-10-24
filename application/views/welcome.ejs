@@ -64,36 +64,57 @@
   </div>
   <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.03);">
     <div class="row" style="max-width: 1200px; margin-left: auto; margin-right:auto;">
-      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
+      <div class="col-lg-5 col-md-5 col-sm-5" style="padding-top:50px; padding-bottom: 50px;">
         <h4 style="color:#454545;">NPM Status</h4>
         <p style="color:#646464">summer-mvc can be downloaded at <a>npmjs.com</a>.<br>
-          The latest version is v2.0.0 and is going to be upgraded.
+          The latest version is <b>v2.0.0</b> and is going to be upgraded.
         </p>
+    	<table class="table table-condensed table-hover" style="max-width: 300px; margin-top: 50px">
+    		<tbody>
+    			<tr>
+    				<td style="color: #646464">Last Week</td>
+    				<td style="color: #454545"><%- last_week %></td>
+    			</tr>
+    			<tr>
+    				<td style="color: #646464">Last Month</td>
+    				<td style="color: #454545"><%- last_month %></td>
+    			</tr>
+    			<tr style="border-bottom: 1px solid lightgray">
+    				<td style="color: #646464">Total</td>
+    				<td style="color: #454545"><%- total %></td>
+    			</tr>
+    		</tbody>
+    	</table>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
+      <div class="col-lg-7 col-md-7 col-sm-7" style="padding-top:50px; padding-bottom: 50px;">
         <h4 style="color:#454545;">Comments</h4>
         <div class="media">
-					<div class="media-body">
+        			<div class="media-left">
+        				<img src="/favicon.ico" />
+        			</div>
+        			<div class="media-body" style="padding-left: 15px">
 						<p style="color:#646464">I think this is very awesome framework.<br> Useful, convenient and fast.</p>
             <h5 class="media-heading" style="color:#454545; font-style:italic">- Mark</h5>
 					</div>
 				</div>
         <div class="media">
-					<div class="media-body">
+        			<div class="media-left">
+        				<img src="/favicon.ico" />
+        			</div>
+					<div class="media-body" style="padding-left: 15px">
 						<p style="color:#646464">Wonderful framework! Hierarchical approach for developing is possible when you use this.<br>Amazing development speed!</p>
             <h5 class="media-heading" style="color:#454545; font-style:italic">- Jobs</h5>
 					</div>
 				</div>
         <div class="media">
-					<div class="media-body">
+        			<div class="media-left">
+        				<img src="/favicon.ico" />
+        			</div>
+					<div class="media-body" style="padding-left: 15px">
 						<p style="color:#646464">I can say that if Nodejs gives us an environment, summer-mvc gives us tools.<br>Be careful. Breath deep. It's powerful.</p>
             <h5 class="media-heading" style="color:#454545; font-style:italic">- Changho Kang</h5>
 					</div>
 				</div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
-        <h4 style="color:#454545;">SNS Status</h4>
-        <p></p>
       </div>
     </div>
   </div>
