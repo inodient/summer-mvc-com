@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="summermvc.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
 <body class="base">
@@ -44,7 +46,11 @@
     </div>
   </header>
 
-  <div class="jumbotron" style="height:40vh; min-height:400px; background-color: black">
+  <div class="jumbotron vertical-center" style="height:40vh; min-height:400px; background-color: black">
+    <div class="container text-center">
+      <img src="/main_logo.png" />
+      <img class="btn_download" style="margin-left: 25px; max-width:150px;" src="/download_icon.gif" />
+    </div>
   </div>
   <div class="container-fluid">
     <div class="row" style="max-width: 1200px; margin-left: auto; margin-right:auto;">
@@ -62,9 +68,9 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.03);">
+  <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.04);">
     <div class="row" style="max-width: 1200px; margin-left: auto; margin-right:auto;">
-      <div class="col-lg-5 col-md-5 col-sm-5" style="padding-top:50px; padding-bottom: 50px;">
+      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
         <h4 style="color:#454545;">NPM Status</h4>
         <p style="color:#646464">summer-mvc can be downloaded at <a>npmjs.com</a>.<br>
           The latest version is <b>v2.0.0</b> and is going to be upgraded.
@@ -86,7 +92,29 @@
     		</tbody>
     	</table>
       </div>
-      <div class="col-lg-7 col-md-7 col-sm-7" style="padding-top:50px; padding-bottom: 50px;">
+      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
+        <h4 style="color:#454545;">NPM Status</h4>
+        <p style="color:#646464">summer-mvc can be downloaded at <a>npmjs.com</a>.<br>
+          The latest version is <b>v2.0.0</b> and is going to be upgraded.
+        </p>
+    	<table class="table table-condensed table-hover" style="max-width: 300px; margin-top: 50px">
+    		<tbody>
+    			<tr>
+    				<td style="color: #646464">Last Week</td>
+    				<td style="color: #454545"><%- last_week %></td>
+    			</tr>
+    			<tr>
+    				<td style="color: #646464">Last Month</td>
+    				<td style="color: #454545"><%- last_month %></td>
+    			</tr>
+    			<tr style="border-bottom: 1px solid lightgray">
+    				<td style="color: #646464">Total</td>
+    				<td style="color: #454545"><%- total %></td>
+    			</tr>
+    		</tbody>
+    	</table>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
         <h4 style="color:#454545;">Comments</h4>
         <div class="media">
         			<div class="media-left">
