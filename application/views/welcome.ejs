@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+
   <link rel="stylesheet" href="summermvc.css">
 
-  
+
   <script>
   	$(document).ready( function(){
   		$("#btn_download").on( "click", function(){
@@ -31,7 +31,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><%- topLeftMenus[0].displayname %></a> -->
+        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="summer-mvc-logo.ico" style="display:inline-block; max-width: 35px" /></a> -->
         <a href="/" class="navbar-brand mobile-navbar-brand mobile-show">summer-mvc</a>
         <!-- <img id="download" src="/download_icon.gif" class="mobile-show"/> -->
         <a id="download" class="mobile-show" href="/"><i class="fa fa-facebook fa-lg logo"></i></a>
@@ -58,8 +58,9 @@
 
   <div class="jumbotron vertical-center" style="height:40vh; min-height:400px; background-color: black">
     <div class="container text-center mobile-hidden">
+      <img src="summer-mvc-logo.png" style="width: 150px"/>
       <img src="/main_logo.png" />
-	  <img id="btn_download" style="margin-left: 25px; max-width:150px; display: inline-block;" src="/download_icon.gif" />
+	  <!-- <img id="btn_download" style="margin-left: 25px; max-width:150px; display: inline-block;" src="/download_icon.png" /> -->
 	  <form id="file_download_form" action="/download" method="get"></form>
     </div>
     <div class="container text-center mobile-show">
@@ -68,26 +69,59 @@
     </div>
   </div>
   <div class="container-fluid">
-    <div class="row" style="max-width: 1200px; margin-left: auto; margin-right:auto;">
+    <div class="row" style="padding-top: 50px; padding-bottom: 50px; max-width: 1200px; margin-left: auto; margin-right:auto;">
       <div class="col-lg-3 col-md-3 col-sm-3">
-        test
+        <center>
+          <i class="fa fa-cogs" style="font-size:7.5em; padding-bottom: 30px;"></i>
+          <h4 style="color:#303030; padding-bottom:12px;">Easy to Install</h4>
+          <p>
+            Nodejs Package Moduler (NPM) and Github. Both you can use to install <b>summer-mvc</b>.
+            And some easy commands help you to settup.
+            As easy and fast install time, you'll be able to focus your own development.
+          </p>
+        </center>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3">
-        test
+        <center>
+          <i class="fa fa-fighter-jet" style="font-size:7.5em; padding-bottom: 30px;"></i>
+          <h4 style="color:#303030; padding-bottom:12px;">Fast Development Speed</h4>
+          <p>
+            Model, View and Controller - MVC. <b>summer-mvc</b> follows this basic concept.
+            And it controls this elements behind of your codes.
+            So you have to design and implement these elements only.
+          </p>
+        </center>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3">
-        test
+        <center>
+          <i class="fa fa-sitemap" style="font-size:7.5em; padding-bottom: 30px;"></i>
+          <h4 style="color:#303030; padding-bottom:12px;">Hierarchical</h4>
+          <p>
+            When first executing with <b>summer-mvc</b>, hierarchical folder architecture will be created.
+            - Automatical Building Machinsm
+            These folders contains basic files and you can add, erase and update these files.
+            It's very easy to understand.
+          </p>
+        </center>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3">
-        test
+        <center>
+          <i class="fa fa-wrench" style="font-size:7.5em; padding-bottom: 30px;"></i>
+          <h4 style="color:#303030; padding-bottom:12px;">Tools</h4>
+          <p>
+            Controlling database, uploading/downloading file and managing session/cookies are important functions of web applications.
+            <b>summer-mvc</b> provides these tools for your easy development.
+            You can determine whether to use these tools or not.
+          </p>
+        </center>
       </div>
     </div>
   </div>
-  <div class="container-fluid" >
+  <div class="container-fluid" style="background-color: rgba(0,0,0,0.1);">
     <div class="row" style="max-width: 1200px; margin-left: auto; margin-right:auto;">
       <div class="col-lg-4 col-md-4" style="padding-top:50px; padding-bottom: 50px;">
-        <h4 style="color:#454545;">Release Info.</h4>
-       	<p style="color:#646464">
+        <h4 style="color:#303030;">Release Info.</h4>
+       	<p style="color:#454545">
        		The latest version is <b>v2.0.0</b> and is going to be upgraded.
        	</p>
        	<table class="table table-condensed table-hover" style="margin-top: 30px">
@@ -117,8 +151,8 @@
     	</table>
       </div>
       <div class="col-lg-4 col-md-4" style="padding-top:50px; padding-bottom: 50px;">
-        <h4 style="color:#454545;">NPM Status</h4>
-        <p style="color:#646464">summer-mvc can be downloaded at <a href="https://www.npmjs.com/package/summer-mvc">npmjs.com</a>.
+        <h4 style="color:#303030;">NPM Status</h4>
+        <p style="color:#454545">summer-mvc can be downloaded at <a href="https://www.npmjs.com/package/summer-mvc">npmjs.com</a>.
         </p>
         <table class="table table-condensed table-hover" style="margin-top: 30px">
         	<caption style="color:#646464"><b>Downloading Count</b></caption>
@@ -133,46 +167,46 @@
     			</tr>
     		</tbody>
     	</table>
-    	   	
+
     	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	    <script type="text/javascript">
 	      google.charts.load('current', {'packages':['corechart']});
 	      google.charts.setOnLoadCallback(drawChart);
-	
+
 	      function drawChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['Weeks', 'Download Count'],
 	          ['-4 week',  <%- weeks_ago_4 %>],
 	          ['-3 week',  <%- weeks_ago_3 %>],
 	          ['-2 week',  <%- weeks_ago_2 %>],
-	          ['-1 week',  <%- last_week %>]
+	          ['last week',  <%- last_week %>]
 	        ]);
-	
+
 	        var options = {
 	          curveType: 'function',
 	          legend: { position: 'bottom' },
 	          backgroundColor: { fill:'transparent' },
 	          colors: ['#454545']
 	        };
-	
+
 	        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-	
+
 	        chart.draw(data, options);
 	      }
 	    </script>
-    	
+
     	<div id="curve_chart"></div>
-    	
-    	
+
+
       </div>
       <div class="col-lg-4 col-md-4" style="padding-top:50px; padding-bottom: 50px;">
-        <h4 style="color:#454545;">Comments</h4>
+        <h4 style="color:#303030;">Comments</h4>
         <div class="media">
         			<div class="media-left">
         				<img src="/favicon.ico" />
         			</div>
         			<div class="media-body" style="padding-left: 15px">
-						<p style="color:#646464">I think this is very awesome framework.<br> Useful, convenient and fast.</p>
+						<p style="color:#454545">I think this is very awesome framework.<br> Useful, convenient and fast.</p>
             <h5 class="media-heading" style="color:#454545; font-style:italic">- Mark</h5>
 					</div>
 				</div>
