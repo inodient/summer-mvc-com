@@ -22,11 +22,13 @@ exports.control_download = function( req, res ){
 
   return new Promise( function(resolve, reject){
 
-    let downloadFileName = req.query.downloadFileName;
-    let savedPath = "upload";
-    let savedFileName = 'test_image.png';
+    let downloadFileName = "summer-mvc-1.1.1.tgz";
+    let savedPath = "static";
+    let savedFileName = 'summer-mvc-1.1.1.tgz';
+    
+    logger.debug( downloadFileName, savedPath, savedFileName );
 
-    fileHandler.downloadFile( res, savedPath, savedFileName, downloadFileName + ".png" )
+    fileHandler.downloadFile( res, savedPath, savedFileName, downloadFileName )
     .then( function(results){
       var message = "** Downloaded File(s) **\n" + JSON.stringify( results, null, 4 );
       logger.debug( message );

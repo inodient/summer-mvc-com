@@ -46,7 +46,7 @@
             "controllerJS": "controller_file.js",
             "controlFunction": "control_download",
             "viewPath": "",
-            "view": "index.ejs"
+            "view": "welcome.ejs"
         },
         {
             "id": "template",

@@ -8,28 +8,38 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <link rel="stylesheet" href="summermvc.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  <script>
+  	$(document).ready( function(){
+  		$("#btn_download").on( "click", function(){
+  			$("#file_download_form").submit();
+  		} );
+  	} );
+  </script>
 </head>
 
 <body class="base">
   <header class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+        <button type="button" style="margin-left: 10px" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#top_menu">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><%- topLeftMenus[0].displayname %></a>
+        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><%- topLeftMenus[0].displayname %></a> -->
+        <a href="/" class="navbar-brand mobile-navbar-brand mobile-show">summer-mvc</a>
+        <!-- <img id="download" src="/download_icon.gif" class="mobile-show"/> -->
+        <a id="download" class="mobile-show" href="/"><i class="fa fa-facebook fa-lg logo"></i></a>
       </div>
     </div>
-    <div class="collapse navbar-collapse navbar-content">
+    <div class="collapse navbar-collapse navbar-content" id="top_menu">
       <ul class="nav navbar-nav top-nav">
-        <% for( var i=1; i<topLeftMenus.length; i++ ){ %>
+        <% for( var i=0; i<topLeftMenus.length; i++ ){ %>
           <li id="<%- topLeftMenus[i].id %>" name="<%- topLeftMenus[i].name %>" class="<%- topLeftMenus[i].active %>"><a href="<%- topLeftMenus[i].redirectpath %>" ><%- topLeftMenus[i].displayname %></a></li>
         <% } %>
       </ul>
@@ -47,9 +57,14 @@
   </header>
 
   <div class="jumbotron vertical-center" style="height:40vh; min-height:400px; background-color: black">
-    <div class="container text-center">
+    <div class="container text-center mobile-hidden">
       <img src="/main_logo.png" />
-      <img class="btn_download" style="margin-left: 25px; max-width:150px;" src="/download_icon.gif" />
+	  <img id="btn_download" style="margin-left: 25px; max-width:150px; display: inline-block;" src="/download_icon.gif" />
+	  <form id="file_download_form" action="/download" method="get"></form>
+    </div>
+    <div class="container text-center mobile-show">
+      <h1 style="color: #ffffff; font-family: aclonica; text-align: center">summer-mvc</h1>
+	  <p style="color: #9d9d9d">Very Light Web Application <b>Framework & SDK</b> for Nodejs</p>
     </div>
   </div>
   <div class="container-fluid">
@@ -68,53 +83,89 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.04);">
+  <div class="container-fluid" >
     <div class="row" style="max-width: 1200px; margin-left: auto; margin-right:auto;">
-      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
-        <h4 style="color:#454545;">NPM Status</h4>
-        <p style="color:#646464">summer-mvc can be downloaded at <a>npmjs.com</a>.<br>
-          The latest version is <b>v2.0.0</b> and is going to be upgraded.
-        </p>
-    	<table class="table table-condensed table-hover" style="max-width: 300px; margin-top: 50px">
+      <div class="col-lg-4 col-md-4" style="padding-top:50px; padding-bottom: 50px;">
+        <h4 style="color:#454545;">Release Info.</h4>
+       	<p style="color:#646464">
+       		The latest version is <b>v2.0.0</b> and is going to be upgraded.
+       	</p>
+       	<table class="table table-condensed table-hover" style="margin-top: 30px">
+    		<caption style="color:#646464"><b>History</b></caption>
     		<tbody>
     			<tr>
-    				<td style="color: #646464">Last Week</td>
-    				<td style="color: #454545"><%- last_week %></td>
+    				<td style="color: #646464">v1.0.0</td>
+    				<td style="color: #454545">Initial Version</td>
     			</tr>
     			<tr>
-    				<td style="color: #646464">Last Month</td>
-    				<td style="color: #454545"><%- last_month %></td>
+    				<td style="color: #646464">v1.0.1</td>
+    				<td style="color: #454545">Bug Fixed</td>
+    			</tr>
+    			<tr>
+    				<td style="color: #646464">v1.0.2</td>
+    				<td style="color: #454545">Bug Fixed</td>
+    			</tr>
+    			<tr>
+    				<td style="color: #646464">v1.1.0</td>
+    				<td style="color: #454545">Framework Architecture Fixed</td>
     			</tr>
     			<tr style="border-bottom: 1px solid lightgray">
-    				<td style="color: #646464">Total</td>
-    				<td style="color: #454545"><%- total %></td>
+    				<td style="color: #646464">v2.0.0</td>
+    				<td style="color: #454545"><b>Add Tools, Redesign Architecture</b></td>
     			</tr>
     		</tbody>
     	</table>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
+      <div class="col-lg-4 col-md-4" style="padding-top:50px; padding-bottom: 50px;">
         <h4 style="color:#454545;">NPM Status</h4>
-        <p style="color:#646464">summer-mvc can be downloaded at <a>npmjs.com</a>.<br>
-          The latest version is <b>v2.0.0</b> and is going to be upgraded.
+        <p style="color:#646464">summer-mvc can be downloaded at <a href="https://www.npmjs.com/package/summer-mvc">npmjs.com</a>.
         </p>
-    	<table class="table table-condensed table-hover" style="max-width: 300px; margin-top: 50px">
+        <table class="table table-condensed table-hover" style="margin-top: 30px">
+        	<caption style="color:#646464"><b>Downloading Count</b></caption>
     		<tbody>
-    			<tr>
-    				<td style="color: #646464">Last Week</td>
-    				<td style="color: #454545"><%- last_week %></td>
-    			</tr>
-    			<tr>
-    				<td style="color: #646464">Last Month</td>
-    				<td style="color: #454545"><%- last_month %></td>
-    			</tr>
     			<tr style="border-bottom: 1px solid lightgray">
     				<td style="color: #646464">Total</td>
     				<td style="color: #454545"><%- total %></td>
     			</tr>
+    			<tr style="border-bottom: 1px solid lightgray">
+    				<td style="color: #646464">Last Week</td>
+    				<td style="color: #454545"><%- last_week %></td>
+    			</tr>
     		</tbody>
     	</table>
+    	   	
+    	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	    <script type="text/javascript">
+	      google.charts.load('current', {'packages':['corechart']});
+	      google.charts.setOnLoadCallback(drawChart);
+	
+	      function drawChart() {
+	        var data = google.visualization.arrayToDataTable([
+	          ['Weeks', 'Download Count'],
+	          ['-4 week',  <%- weeks_ago_4 %>],
+	          ['-3 week',  <%- weeks_ago_3 %>],
+	          ['-2 week',  <%- weeks_ago_2 %>],
+	          ['-1 week',  <%- last_week %>]
+	        ]);
+	
+	        var options = {
+	          curveType: 'function',
+	          legend: { position: 'bottom' },
+	          backgroundColor: { fill:'transparent' },
+	          colors: ['#454545']
+	        };
+	
+	        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+	
+	        chart.draw(data, options);
+	      }
+	    </script>
+    	
+    	<div id="curve_chart"></div>
+    	
+    	
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:50px; padding-bottom: 50px;">
+      <div class="col-lg-4 col-md-4" style="padding-top:50px; padding-bottom: 50px;">
         <h4 style="color:#454545;">Comments</h4>
         <div class="media">
         			<div class="media-left">
