@@ -5,6 +5,8 @@ exports.control = function( req, res, connection ){
   return new Promise( function(resolve, reject){
     getTopMenus( req.path, connection )
     .then( function(){
+      logger.debug( arguments[0] );	
+    	
       resolve( arguments[0] );
     } );
   } );
