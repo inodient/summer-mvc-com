@@ -31,6 +31,28 @@ body {
   cursor: pointer;
 }
 
+.btn_important {
+    display: inline-block;
+    margin: 18px 0 41px;
+    padding: 10px 20px;
+    
+    background: #333;
+    border: 1px solid #333;
+    color: #ffffff;
+    
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 1px;
+}
+
+.btn_important:hover {
+    background: #525252;
+    border: 1px solid #525252;
+    color: #ffffff;
+}
+
+
+
 /* Menu Bar start */
 @media (max-width: 1000px) {
 	.navbar-header {
@@ -143,7 +165,6 @@ body {
 }
 
 .navbar-inverse {
-  background-color: black;
   border-bottom: 1px solid darkgray;
 }
 
@@ -361,8 +382,10 @@ body {
   z-index: -1;
 }
 
+/*
 footer {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
+*.

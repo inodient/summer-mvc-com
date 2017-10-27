@@ -31,7 +31,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="summer-mvc-logo.ico" style="display:inline-block; max-width: 35px" /></a> -->
+        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="nav_logo.ico" style="display:inline-block; max-width: 35px" /></a> -->
         <a href="/" class="navbar-brand mobile-navbar-brand mobile-show">summer-mvc</a>
         <!-- <img id="download" src="/download_icon.gif" class="mobile-show"/> -->
         <a id="download" class="mobile-show" href="/"><i class="fa fa-facebook fa-lg logo"></i></a>
@@ -56,7 +56,7 @@
     </div>
   </header>
 
-  <div class="jumbotron vertical-center" style="height:40vh; min-height:400px; background-color: black">
+  <div class="jumbotron vertical-center" style="height:40vh; min-height:400px; background-color: #222">
     <div class="container text-center mobile-hidden">
       <img src="summer_mvc_logo.png" style="width: 250px"/>
       <img src="/main_logo.png" />
@@ -120,88 +120,109 @@
 
   <div class="container-fluid" style="background-color: #f4f4f4">
     <div class="row" style="margin-top: 50px; margin-bottom: 50px; max-width: 1200px; margin-left: auto; margin-right:auto;">
-      <center><h2 style="font-weight:200; margin-bottom:35px;">Creating Your Own Web Site with <b>summer-mvc</b></h2></center>
+      <center><h2 style="font-weight:200; margin-bottom:20px;">Creating Your Own Web Site with <b>summer-mvc</b></h2></center>
+      
+      <hr style="border-top: 1px solid #ccc; margin-bottom: 35px;">
+      
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <center><img style="width:80%" src="/install.png" /></center>
+          <div class="col-lo-1 col-md-1 col-sm-1"></div>
+          <div class="col-lg-5 col-md-5 col-sm-5">
+            <center><img style="width:60%; margin-top: 20px;" src="/install.png" /></center>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h4 style="font-weight:200">1. Prepare Nodejs Project and Install summer-mvc</h4>
+          <div class="col-lg-5 col-md-5 col-sm-5">
+            <h3 style="font-weight:200; margin-bottom:20px;">1. Prepare Project and Install</h3>
+            <h4 style="font-weight:400; color:#454545; margin-bottom:30px;">WE HAVE 2 WAYS TO PREPARE AND INSTALL.</h4>
+            <p style="color: #454545;">
+            	summer-mvc can be run on any Nodejs projects.
+            	Create project and Initialize project.
+            	And install summer-mvc using <a href="https://www.npmjs.com/package/summer-mvc">NPM</a> (Nodejs Package Moduler).
+            	If you want to install using binary, please download binary files and exracte it under {user-project}/node_modules/summer-mvc.
+            </p>
+            <button class="btn_important" onclick="javascript:location.href = '/getting-started#get_summer_mvc'">Get summer-mvc</button>
           </div>
+          <div class="col-lo-1 col-md-1 col-sm-1"></div>
         </div>
+        
         <center><img style="margin-top:20px; margin-bottom:20px;" src="/arrow_dn_left.png"></center>
+        
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h4 style="font-weight:200">2. Write only 1 line of Code and Execute Your App</h4>
-            <p><code>const mvc = require( "summer-mvc" );</code></p>
+          <div class="col-lo-1 col-md-1 col-sm-1"></div>
+          <div class="col-lg-5 col-md-5 col-sm-5">
+            <h3 style="font-weight:200; margin-bottom:20px;">2. Write 1 line and Execute</h3>
+            <h4 style="font-weight:400; color:#454545; margin-bottom:30px; color: #454545">DURING INITIAL RUNNING TIME,<br> BUILD & CREATE APPLICATION ARCHITECTURE.</h4>
+            <p style="color: #454545;">
+            	<code style="font-size: 1.2em">const mvc = require( "summer-mvc" );</code> <br>
+            	This only one line of code is required for executing summer-mvc.
+            	As controlling HTTP req/res is event-driven, you just add that code and wait until client send a signal.
+            	If your project is under first executed with summer-mvc, your project will be transformed as summer-mvc architecture. 
+            </p>
+            <button class="btn_important" onclick="javascript:location.href='/getting-started#initializing'">Initializing</button>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <center><img style="width:80%" src="/execution.png" /></center>
+          <div class="col-lg-5 col-md-5 col-sm-5">
+            <center><img style="width:60%; margin-top:20px;" src="/execution.png" /></center>
           </div>
+          <div class="col-lo-1 col-md-1 col-sm-1"></div>
         </div>
+        
         <center><img style="margin-top:20px; margin-bottom:20px;" src="/arrow_dn_right.png"></center>
+        
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <center><img style="width:80%" src="/write_code.png" /></center>
+          <div class="col-lo-1 col-md-1 col-sm-1"></div>
+          <div class="col-lg-5 col-md-5 col-sm-5">
+            <center><img style="width:80%; margin-top: 20px;" src="/write_code.png" /></center>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h4 style="font-weight:200">3. Implement Your Business Logic</h4>
+          <div class="col-lg-5 col-md-5 col-sm-5">
+            <h3 style="font-weight:200; margin-bottom: 20px;">3. Implement Your Business Logic</h3>
+            <h4 style="font-weight:400; color:#454545; margin-bottom: 30px; color: #454545">FOCUS YOUR TAKS. IMPLEMENT BUSINESS REQUIRE.</h4>
+            <p style="color: #454545;">
+            	Now, your job is that write your business codes.
+            	Just implement controllers, models and views.
+       			As summer-mvc control all other things, you can only focus your requirements.
+       			Fast developement speed comes from that. 
+            </p>
+            <button class="btn_important" onclick="javascript:location.href='/getting-started#write_codes'">Write Code</button>
           </div>
+          <div class="col-lo-1 col-md-1 col-sm-1"></div>
         </div>
     </div>
   </div>
 
   <div class="container-fluid">
-    <div class="row" style="max-width: 1200px; margin-left: auto; margin-right:auto;">
-      <center><h2 style="font-weight:200">Information</h2></center>
-      <div class="col-lg-4 col-md-4 col-sm-6" style="padding-top:50px; padding-bottom: 50px;">
-        <h4 style="color:#303030;">Release Info.</h4>
-       	<p style="color:#454545">
-       		The latest version is <b>v2.0.0</b> and is going to be upgraded.
-       	</p>
-       	<table class="table table-condensed table-hover" style="margin-top: 30px">
-    		<caption style="color:#646464"><b>History</b></caption>
-    		<tbody>
-    			<tr>
-    				<td style="color: #646464">v1.0.0</td>
-    				<td style="color: #454545">Initial Version</td>
-    			</tr>
-    			<tr>
-    				<td style="color: #646464">v1.0.1</td>
-    				<td style="color: #454545">Bug Fixed</td>
-    			</tr>
-    			<tr>
-    				<td style="color: #646464">v1.0.2</td>
-    				<td style="color: #454545">Bug Fixed</td>
-    			</tr>
-    			<tr>
-    				<td style="color: #646464">v1.1.0</td>
-    				<td style="color: #454545">Framework Architecture Fixed</td>
-    			</tr>
-    			<tr style="border-bottom: 1px solid lightgray">
-    				<td style="color: #646464">v2.0.0</td>
-    				<td style="color: #454545"><b>Add Tools, Redesign Architecture</b></td>
-    			</tr>
-    		</tbody>
-    	</table>
+    <div class="row" style="margin-top: 50px; margin-bottom: 50px; max-width: 1200px; margin-left: auto; margin-right:auto;">
+      <center><h2 style="font-weight:200; margin-bottom:20px;">Information</h2></center>
+      
+      <hr style="border-top: 1px solid #ccc; margin-bottom: 35px;">
+      
+      <div class="col-lg-6 col-md-6 col-sm-6">
+      	<h3 style="font-weight:200; margin-bottom: 20px">Distribution & Dependency</h3>
+      	<h4 style="font-weight:400; color:#454545; margin-bottom: 30px">summer-mvc can be running on Nodejs v4.0 or above.</h4>
+      	<p style="color: #454545;">
+      		<ul style="color: #454545;">
+      			<li>Distributed under <b>MIT</b> License</li>
+      			<li>Runs on <b>Nodejs</b> environment v4.0 or above</li>
+      			<li>Runs with <b>Express</b> middleware as backend platform</li>
+      			<li>Runs with <b>ejs</b> middleware as viewer</li>
+      			
+      		</ul>
+      		
+      		<ul>
+      			<li>Use middleware <b>cookie-parser</b> v1.4.3</li>
+      			<li>Use middleware <b>express-session</b> v1.15.2</li>
+      			<li>Use middleware <b>body-parser</b> v1.17.1</li>
+      			<li>Use middleware <b>body-parser</b> v2.13.0</li>
+      			<li>Use middleware <b>mysql</b> v2.13.0</li>
+      			<li>Use middleware <b>bluebird</b> v3.5.0</li>
+  			</ul>
+      	</p>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-6" style="padding-top:50px; padding-bottom: 50px;">
-        <h4 style="color:#303030;">NPM Status</h4>
-        <p style="color:#454545">summer-mvc can be downloaded at <a href="https://www.npmjs.com/package/summer-mvc">npmjs.com</a>.
-        </p>
-        <table class="table table-condensed table-hover" style="margin-top: 30px">
-        	<caption style="color:#646464"><b>Downloading Count</b></caption>
-    		<tbody>
-    			<tr style="border-bottom: 1px solid lightgray">
-    				<td style="color: #646464">Total</td>
-    				<td style="color: #454545"><%- total %></td>
-    			</tr>
-    			<tr style="border-bottom: 1px solid lightgray">
-    				<td style="color: #646464">Last Week</td>
-    				<td style="color: #454545"><%- last_week %></td>
-    			</tr>
-    		</tbody>
-    	</table>
+      
+      <div class="col-lg-6 col-md-6 col-sm-6">
+      	<h3 style="font-weight:200; margin-bottom: 20px">NPM Status</h3>
+      	<h4 style="font-weight:400; color:#454545; margin-bottom: 30px">summer-mvc can be downloaded at <a href="https://www.npmjs.com/package/summer-mvc">npmjs.com</a>.</h4>
+
+		<p style="margin-top: 30px">
+    		Total <span style="font-weight: bold"><b><%- total %></b></span> summer-mvc were downloaded.
+    	</p>
 
     	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	    <script type="text/javascript">
@@ -224,83 +245,21 @@
 	          colors: ['#454545']
 	        };
 
-	        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+	        var chart = new google.visualization.LineChart(document.getElementById('npm_download_chart'));
 
 	        chart.draw(data, options);
 	      }
 	    </script>
 
-    	<div id="curve_chart"></div>
+    	<div id="npm_download_chart"></div>
+    	
 
-
-      </div>
-      <div class="col-lg-4 col-md-4" style="padding-top:50px; padding-bottom: 50px;">
-        <h4 style="color:#303030;">Comments</h4>
-        <div class="media">
-        			<div class="media-left">
-        				<img style="max-width:50px" src="/favicon.ico" />
-        			</div>
-        			<div class="media-body" style="padding-left: 15px">
-						<p style="color:#454545">I think this is very awesome framework.<br> Useful, convenient and fast.</p>
-            <h5 class="media-heading" style="color:#454545; font-style:italic">- Mark</h5>
-					</div>
-				</div>
-        <div class="media">
-        			<div class="media-left">
-        				<img style="max-width:50px" src="/favicon.ico" />
-        			</div>
-					<div class="media-body" style="padding-left: 15px">
-						<p style="color:#646464">Wonderful framework! Hierarchical approach for developing is possible when you use this.<br>Amazing development speed!</p>
-            <h5 class="media-heading" style="color:#454545; font-style:italic">- Jobs</h5>
-					</div>
-				</div>
-        <div class="media">
-        			<div class="media-left">
-        				<img style="max-width:50px" src="/favicon.ico" />
-        			</div>
-					<div class="media-body" style="padding-left: 15px">
-						<p style="color:#646464">I can say that if Nodejs gives us an environment, summer-mvc gives us tools.<br>Be careful. Breath deep. It's powerful.</p>
-            <h5 class="media-heading" style="color:#454545; font-style:italic">- Changho Kang</h5>
-					</div>
-				</div>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid" style="background-color: #f4f4f4">
-    <div class="row" style="margin-top: 50px; margin-bottom: 50px; max-width: 1200px; margin-left: auto; margin-right:auto;">
-      <center><h2 style="font-weight:200; margin-bottom:35px;">Usage Status</h2></center>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <center><img style="width:80%" src="/install.png" /></center>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h4 style="font-weight:200">1. Prepare Nodejs Project and Install summer-mvc</h4>
-          </div>
-        </div>
-        <center><img style="margin-top:20px; margin-bottom:20px;" src="/arrow_dn_left.png"></center>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h4 style="font-weight:200">2. Write only 1 line of Code and Execute Your App</h4>
-            <p><code>const mvc = require( "summer-mvc" );</code></p>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <center><img style="width:80%" src="/execution.png" /></center>
-          </div>
-        </div>
-        <center><img style="margin-top:20px; margin-bottom:20px;" src="/arrow_dn_right.png"></center>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <center><img style="width:80%" src="/write_code.png" /></center>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h4 style="font-weight:200">3. Implement Your Business Logic</h4>
-          </div>
-        </div>
-    </div>
-  </div>
 
-  <% include partials/footer.ejs %>
+  <% include partials/footer_inverse.ejs %>
 </body>
 
 </html>
