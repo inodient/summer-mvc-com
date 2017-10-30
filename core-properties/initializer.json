@@ -44,7 +44,7 @@
 	  			"files" : [ "logger.json" ]
   			},
         {
-	  			"folder" : "/__logs",
+	  			"folder" : "/__Logs",
 	  			"files" : []
   			}
   		]

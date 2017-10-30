@@ -5,14 +5,34 @@
 }
 
 @font-face {
-	font-family: "palanquin";
-	src: url( "fonts/palanquin-regular.ttf" ) format( "truetype" );
+	font-family: "Montserrat-Regular";
+	src: url( "/Montserrat-Regular.ttf" ) format( "truetype" );
+}
+
+@font-face {
+	font-family: "Montserrat-Bold";
+	src: url( "/Montserrat-Bold.ttf" ) format( "truetype" );
+}
+
+b {
+	font-family: "Montserrat-Bold, sans-serif";
+}
+
+p {
+	font-size: 16px;
 }
 
 body {
- 		font-family : palanquin;
+ 		font-family : "Montserrat-Regular, sans-serif";
+		font-weight: 200;
  	}
 */
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+}
+
 
 @font-face {
 	font-family: "aclonica";
@@ -35,18 +55,18 @@ body {
     display: inline-block;
     margin: 18px 0 41px;
     padding: 10px 20px;
-    
+
     background: #333;
     border: 1px solid #333;
     color: #ffffff;
-    
+
     font-size: 18px;
-    font-weight: bold;
     border-radius: 1px;
 }
 
 .btn_important:hover {
-    background: #525252;
+    /*background: #525252;*/
+		background: black;
     border: 1px solid #525252;
     color: #ffffff;
 }
@@ -162,10 +182,12 @@ body {
   margin-left: auto;
   margin-right: auto;
   background-image: url(/img_bg_pattern.png);
+	background-color: #fafbfd;
 }
 
 .navbar-inverse {
   border-bottom: 1px solid darkgray;
+	background-image: url(/jumbotron_bg.png); background-size: 100% auto;
 }
 
 .navbar-container, .navbar-collapse {
@@ -186,7 +208,8 @@ body {
 }
 
   .doc-description {
-    border-color: #333;
+		border: 0;
+		padding-top: 0;
   }
 
   .doc-description:hover {
@@ -198,7 +221,7 @@ body {
     }
 
     .doc-description > p {
-      font-size: 13.5px;
+      font-size: 16px;
     }
 
   .doc-nav-list {
@@ -358,19 +381,29 @@ body {
 .doc-content {
   background-color: #FFFFFF;
   padding-top: 50px;
+	padding-left: 50px;
 }
 
   .doc-content .doc-h3 {
     margin-top: -80px;
     padding-top: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .doc-content .doc-h4 {
     margin-top: -80px;
     padding-top: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
+
+	.doc-content .doc-well {
+		background-color: #fafbfd;
+		margin-bottom: 30px;
+	}
+
+	.doc-content .p-end {
+		margin-bottom: 60px;
+	}
 
 .after {
   top: 0;

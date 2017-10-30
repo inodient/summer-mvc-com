@@ -10,6 +10,11 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:italic' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:bold' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:bolditalic' rel='stylesheet'>
+
   <link rel="stylesheet" href="summermvc.css">
 
 
@@ -31,7 +36,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="nav_logo.ico" style="display:inline-block; max-width: 35px" /></a> -->
+        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="summer_mvc_logo.png" style="display:inline-block; max-width: 35px" /></a> -->
         <a href="/" class="navbar-brand mobile-navbar-brand mobile-show">summer-mvc</a>
         <!-- <img id="download" src="/download_icon.gif" class="mobile-show"/> -->
         <a id="download" class="mobile-show" href="/"><i class="fa fa-facebook fa-lg logo"></i></a>
@@ -56,16 +61,29 @@
     </div>
   </header>
 
-  <div class="jumbotron vertical-center" style="height:40vh; min-height:400px; background-color: #222">
-    <div class="container text-center mobile-hidden">
-      <img src="summer_mvc_logo.png" style="width: 250px"/>
-      <img src="/main_logo.png" />
+  <div class="jumbotron vertical-center" style="height:40vh; min-height:400px; background-image: url(/jumbotron_bg.png); background-size: 100% auto; border-bottom: 1px solid #333">
+    <div class="container">
+      <!-- <img src="summer_mvc_logo.png" style="width: 250px"/>
+      <img src="/main_logo.png" /> -->
 	  <!-- <img id="btn_download" style="margin-left: 25px; max-width:150px; display: inline-block;" src="/download_icon.png" /> -->
-	  <form id="file_download_form" action="/download" method="get"></form>
-    </div>
-    <div class="container text-center mobile-show">
-      <h1 style="color: #ffffff; font-family: aclonica; text-align: center">summer-mvc</h1>
-	  <p style="color: #9d9d9d">Very Light Web Application <b>Framework & SDK</b> for Nodejs</p>
+
+      <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <h1 style="color: #ddd;">summer-mvc</h1>
+          <p style="color: #ddd">Very Light Web Application <b>Framework & SDK</b> for Nodejs</p>
+          <button class="btn_important" onclick="javascript:download();">DOWNLOAD</button>
+          <form id="file_download_form" action="/download" method="get"></form>
+
+          <script>
+              function download(){
+                $("#file_download_form").submit();
+              }
+          </script>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5">
+          <img src="execution.png" style="margin: auto; width: 100%;"/>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container-fluid">
@@ -121,9 +139,9 @@
   <div class="container-fluid" style="background-color: #f4f4f4">
     <div class="row" style="margin-top: 50px; margin-bottom: 50px; max-width: 1200px; margin-left: auto; margin-right:auto;">
       <center><h2 style="font-weight:200; margin-bottom:20px;">Creating Your Own Web Site with <b>summer-mvc</b></h2></center>
-      
+
       <hr style="border-top: 1px solid #ccc; margin-bottom: 35px;">
-      
+
         <div class="row">
           <div class="col-lo-1 col-md-1 col-sm-1"></div>
           <div class="col-lg-5 col-md-5 col-sm-5">
@@ -142,9 +160,9 @@
           </div>
           <div class="col-lo-1 col-md-1 col-sm-1"></div>
         </div>
-        
+
         <center><img style="margin-top:20px; margin-bottom:20px;" src="/arrow_dn_left.png"></center>
-        
+
         <div class="row">
           <div class="col-lo-1 col-md-1 col-sm-1"></div>
           <div class="col-lg-5 col-md-5 col-sm-5">
@@ -154,7 +172,7 @@
             	<code style="font-size: 1.2em">const mvc = require( "summer-mvc" );</code> <br>
             	This only one line of code is required for executing summer-mvc.
             	As controlling HTTP req/res is event-driven, you just add that code and wait until client send a signal.
-            	If your project is under first executed with summer-mvc, your project will be transformed as summer-mvc architecture. 
+            	If your project is under first executed with summer-mvc, your project will be transformed as summer-mvc architecture.
             </p>
             <button class="btn_important" onclick="javascript:location.href='/getting-started#initializing'">Initializing</button>
           </div>
@@ -163,9 +181,9 @@
           </div>
           <div class="col-lo-1 col-md-1 col-sm-1"></div>
         </div>
-        
+
         <center><img style="margin-top:20px; margin-bottom:20px;" src="/arrow_dn_right.png"></center>
-        
+
         <div class="row">
           <div class="col-lo-1 col-md-1 col-sm-1"></div>
           <div class="col-lg-5 col-md-5 col-sm-5">
@@ -178,7 +196,7 @@
             	Now, your job is that write your business codes.
             	Just implement controllers, models and views.
        			As summer-mvc control all other things, you can only focus your requirements.
-       			Fast developement speed comes from that. 
+       			Fast developement speed comes from that.
             </p>
             <button class="btn_important" onclick="javascript:location.href='/getting-started#write_codes'">Write Code</button>
           </div>
@@ -190,9 +208,9 @@
   <div class="container-fluid">
     <div class="row" style="margin-top: 50px; margin-bottom: 50px; max-width: 1200px; margin-left: auto; margin-right:auto;">
       <center><h2 style="font-weight:200; margin-bottom:20px;">Information</h2></center>
-      
+
       <hr style="border-top: 1px solid #ccc; margin-bottom: 35px;">
-      
+
       <div class="col-lg-6 col-md-6 col-sm-6">
       	<h3 style="font-weight:200; margin-bottom: 20px">Distribution & Dependency</h3>
       	<h4 style="font-weight:400; color:#454545; margin-bottom: 30px">summer-mvc can be running on Nodejs v4.0 or above.</h4>
@@ -202,9 +220,9 @@
       			<li>Runs on <b>Nodejs</b> environment v4.0 or above</li>
       			<li>Runs with <b>Express</b> middleware as backend platform</li>
       			<li>Runs with <b>ejs</b> middleware as viewer</li>
-      			
+
       		</ul>
-      		
+
       		<ul>
       			<li>Use middleware <b>cookie-parser</b> v1.4.3</li>
       			<li>Use middleware <b>express-session</b> v1.15.2</li>
@@ -215,13 +233,13 @@
   			</ul>
       	</p>
       </div>
-      
+
       <div class="col-lg-6 col-md-6 col-sm-6">
       	<h3 style="font-weight:200; margin-bottom: 20px">NPM Status</h3>
       	<h4 style="font-weight:400; color:#454545; margin-bottom: 30px">summer-mvc can be downloaded at <a href="https://www.npmjs.com/package/summer-mvc">npmjs.com</a>.</h4>
 
 		<p style="margin-top: 30px">
-    		Total <span style="font-weight: bold"><b><%- total %></b></span> summer-mvc were downloaded.
+    		Total <span style="font-family: Montserrat-Bold"><b><%- total %></b></span> summer-mvc were downloaded.
     	</p>
 
     	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -252,7 +270,7 @@
 	    </script>
 
     	<div id="npm_download_chart"></div>
-    	
+
 
       </div>
     </div>

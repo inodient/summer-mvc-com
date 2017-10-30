@@ -10,6 +10,11 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:italic' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:bold' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:bolditalic' rel='stylesheet'>
+
   <link rel="stylesheet" href="summermvc.css">
 
   <script>
@@ -108,6 +113,31 @@
     } );
   </script>
 
+  <style>
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+    }
+
+    .doc-content p {
+      margin-bottom: 30px;
+      line-height: 1.8em;
+      color: #646464;
+    }
+
+    .doc-content hr {
+      margin-top: 0px;
+    }
+
+    .doc-content table {
+      color: #454545;
+    }
+
+    .doc-content .doc-notice {
+      border-left: 5px solid #a94442;
+    }
+
+  </style>
+
 </head>
 
 <body class="base">
@@ -150,8 +180,8 @@
         <blockquote class="doc-description" onclick="location.href=''">
         	<% for( var i=0; i<topLeftMenus.length; i++ ){ %>
 	          <% if( topLeftMenus[i].active == "active" ){ %>
-	      		<h4><%- topLeftMenus[i].displayname %></h4>
-	      		<p><%- topLeftMenus[i].description %></p>    	
+	      		<!-- <h4><%- topLeftMenus[i].displayname %></h4> -->
+	      		<p><%- topLeftMenus[i].description %></p>
 	          <% } %>
 	        <% } %>
         </blockquote>
@@ -160,7 +190,7 @@
             <a href="#get_summer_mvc" id="dnl_get_summer-mvc">Get summer-mvc</a>
             <ul class="doc-nav-sub-list">
               <li><a href="#npm" id="dnl_npm">NPM</a></li>
-              <li><a href="#github" id="dnl_github">Github</a></li>
+              <li><a href="#binary" id="dnl_binary">Binary</a></li>
             </ul>
           </li>
           <li>
@@ -174,10 +204,12 @@
             <a href="#initializing" id="dnl_initializing">Initializing</a>
             <ul class="doc-nav-sub-list">
               <li><a href="#initializer_json" id="dnl_initializer_json">initializer.json</a></li>
-              <li><a href="#setting_01" id="dnl_setting_01">Setting ...</a></li>
-              <li><a href="#setting_02" id="dnl_setting_02">Setting ...</a></li>
-              <li><a href="#setting_03" id="dnl_setting_03">Setting ...</a></li>
-              <li><a href="#setting_04" id="dnl_setting_04">Setting ...</a></li>
+              <li><a href="#setting_port" id="dnl_setting_port">Port</a></li>
+              <li><a href="#setting_context_architecture" id="dnl_setting_context_architecture">Context Architecture</a></li>
+              <li><a href="#setting_views" id="dnl_setting_views">Views</a></li>
+              <li><a href="#setting_tools" id="dnl_setting_tools">Tools</a></li>
+              <li><a href="#setting_options" id="dnl_setting_optinos">Options</a></li>
+              <li><a href="#setting_static_folders" id="dnl_setting_static_folders">Static Folders</a></li>
             </ul>
           </li>
           <li>
@@ -193,31 +225,354 @@
       </div>
       <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
 
-        <h3 id="get_summer_mvc" class="doc-h3">Get summer-mvc</h3>
-          <h4 id="npm" class="doc-h4">NPM</h4>
-          <h4 id="github" class="doc-h4">Github</h4>
+      <div class="well doc-well p-end" style="color: #ddd; background-image:url(/jumbotron_bg.png); background-size: 100% auto; font-weight:200; line-height: 1.8em;">
+        Installing, Initializing and Development are very easy with summer-mvc. <br>
+        summer-mvc can be installed both NPM and binaries. <br>
+        And when first executing time, your project will be shaped as typical web application hirerchy. <br>
+        It looks like JAVA's spring framework. <br>
+        The final job is to write your own business codes such as controllers and views.
+      </div>
 
-        <h3 id="setting_up" class="doc-h3">Setting Up</h3>
-          <h4 id="include_in_project" class="doc-h4">Include in Project</h4>
-          <h4 id="build_hiererchy" class="doc-h4">Build Hierarchy</h4>
+      <h3 id="get_summer_mvc" class="doc-h3">Get summer-mvc</h3>
+      <hr style="border-top: 1px solid #ccc;">
 
-        <h3 id="initializing" class="doc-h3">Initializing</h3>
-          <h4 id="initializer_json" class="doc-h4">initializer.json</h4>
-          <h4 id="setting_01" class="doc-h4">Setting 01</h4>
-          <h4 id="setting_02" class="doc-h4">Setting 02</h4>
-          <h4 id="setting_03" class="doc-h4">Setting 03</h4>
-          <h4 id="setting_04" class="doc-h4">Setting 04</h4>
+      <h4 id="npm" class="doc-h4">NPM</h4>
+      <p>
+        First, prepare your Nodejs project. And, type below command.
+        When completed to install, please check your <kbd>package.json</kbd> file and be sure to contain summer-mvc.
+      </p>
+      <div class="well doc-well">
+        $ npm install summer-mvc
+      </div>
+      <p>
+        <img src="install.png" />
+      </p>
+      <blockquote class="doc-notice">
+        Notice! Be sure that command location is your Nodejs project folder.
+      </blockquote>
 
-        <h3 id="write_codes" class="doc-h3">Write Codes</h3>
-          <h4 id="context_dispatcher_json" class="doc-h4">context-dispatcher.json</h4>
-          <h4 id="controller" class="doc-h4">Controller</h4>
-          <h4 id="view" class="doc-h4">View</h4>
-          <h4 id="model" class="doc-h4">Model</h4>
+      <h4 id="binary" class="doc-h4">Binary</h4>
+      <p>
+        If you already have your environment, so you don't want to use NPD, binary installation is alternative way.
+        Please download binary zip file and extract it under <kbd>{user-project}/node_modules</kbd><br>
+        <button class="btn_important" onclick="javascript:download()">DOWNLOAD_BINARY</button>
+        <form id="file_download_form" action="/download" method="get"></form>
+      </p>
 
-        <% include partials/footer.ejs %>
+      <script>
+        function download(){
+          $("#file_download_form").submit();
+        }
+      </script>
+
+
+      <h3 id="setting_up" class="doc-h3">Setting Up</h3>
+      <hr style="border-top: 1px solid #ccc;">
+
+      <p>
+        As controlling http req/res is event-driven, node must be run continuously. It means that summer-mvc also be run until it gets process end signal. Ironically, that why summer-mvc's setting is easy. Just require/import summ-mvc module. That's all. summer-mvc core module will create / make some folders and files. And your project will be shaped as typical web application project.
+      </p>
+
+      <h4 id="include_in_project" class="doc-h4">Include in Project</h4>
+      <p>
+        The summer-mvc is package moduler. So "require" is the only way to include summer-mvc to your project.
+        As controlling http req/res must be waited until a signal comes, that way to "require the summer-mvc" is unique method to use.
+        Create your project's entry js file such as <kbd>app.js</kbd>.
+        And write code as follow.
+      </p>
+
+      <div class="well doc-well p-end">
+        const mvc = require( "summer-mvc" );
+      </div>
+
+      <h4 id="build_hiererchy" class="doc-h4">Build Hierarchy</h4>
+      <p>
+        After require including, you can execute your project under <b>summer-mvc</b>.
+        When first executing, you meet <code>Automatic Building Machinsm</code>.
+        Most of web applications have this machnism.
+        If you import Spring Framework in Java Platform, Spring Framework automatically create your project folder hierarchy and create property files.
+        The summer-mvc do same thing for you.
+        <kbd>context-dispatcher.json</kbd>, <kbd>initializer.json</kbd>, some <kbd>tool-properties</kbd>, etc will be located specific folders.
+        You can control this process in <kbd>initializer.json</kdb>.
+      </p>
+      <img class="p-end" src="/execution.png" style="width:100%" />
+
+      <h3 id="initializing" class="doc-h3">Initializing</h3>
+      <hr style="border-top: 1px solid #ccc;">
+
+      <h4 id="initializer_json" class="doc-h4">initializer.json</h4>
+      <p class="p-end">
+        Whole initializing information can be setted in <kbd>initializer.json</kbd>.
+        The summer-mvc core will interprete this file and build project's architecture.
+        As convenient using of summer-mvc, sample initialzing information have contained in default <kdb>initializer.json</kdb>.
+      </p>
+
+      <h4 id="setting_port" class="doc-h4">Port</h4>
+      <div class="well doc-well">
+        "port" : 3000
+      </div>
+      <p class="p-end">
+        As summer-mvc uses <code>Express</code> as foundation module, default port number is 3000.
+        It can be changed if you want to use other ports. It's type is number.
+      </p>
+
+      <h4 id="setting_context_architecture" class="doc-h4">Context Architecture</h4>
+      <p class="p-end">
+        The context-architecture property is array of <kbd>folder hierarchy objects</kbd>.
+        The folder hierarchy objects contain <kbd>folder</kbd> and <kbd>file objects</kbd>.
+        It is possible to contain your own architecture in initializer.
+        If want to do that, please follow rules of JSON.
+        These folders automatically create under your project root folder,
+        these files will be copied and moved in folders.
+      </p>
+      <table class="table table-hover p-end">
+        <thead>
+          <tr>
+            <th>Folder</th>
+            <th>Files</th>
+            <th>Infomation</th>
+          </tr>
+        </thaed>
+        <tbody>
+          <tr>
+            <td>/core-properties</td>
+            <td>context_dispatcher.json<br>
+              initializer.json</td>
+            <td>
+              core properties of summer-mvc<br>
+              Located under {user-project}/core-properties <br>
+              Enable to correct, But don't delete.
+            </td>
+          </tr>
+          <tr>
+            <td>/application/controllers</td>
+            <td>controller_basic.js<br>
+              controller_post.js<br>
+              controller_ajax.js<br>
+              controller_cookie_session.js<br>
+              controller_db.js<br>
+              controller_file.js</td>
+            <td>
+              basic controllers of summer-mvc<br>
+              Located under {user-project}/application/controllers<br>
+              Reference controllers these can give example.
+            </td>
+          </tr>
+          <tr>
+            <td>/application/views</td>
+            <td>index.ejs<br>
+              upload.ejs<br>
+              error.html</td>
+            <td>
+              basic views of summer-mvc<br>
+              Located under {user-project}/application/views<br>
+              Reference views these can give example.
+            </td>
+          </tr>
+          <tr>
+            <td>/static/upload</td>
+            <td>-</td>
+            <td>The summer-mvc use this folder as default file upload location.</td>
+          </tr>
+          <tr>
+            <td>/static</td>
+            <td>favicon.ico</td>
+            <td>Default favicon<br>
+              If you want to delete this file, please write below codes in your view (ejs or html) files.
+              <code>`<link rel="icon" href="data:;base64,iVBORw0KGgo=">`</code>
+            </td>
+          </tr>
+          <tr>
+            <td>/__Logs</td>
+            <td>-</td>
+            <td>Default Log location<br>
+              It can be changed in <kbd>/tool-properties/logger.json</kbd>. But not recommended.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 id="setting_views" class="doc-h4">Views</h4>
+      <p>
+        The ejs is basic view engine of the summer-mvc.
+        Adoptation of other view engines are in progress now.
+        Now (v2.0.0), this property is a default value. Please don't change.
+      </p>
+      <div class="well doc-well">
+        "engine" : "ejs"
+      </div>
+      <blockquote class="doc-notice p-end">
+        More information can be founded in <a href="https://www.npmjs.com/package/ejs">ejs manual site</a>.
+      </blockquote>
+
+      <h4 id="setting_tools" class="doc-h4">Tools</h4>
+      <p>
+        Some tools are introduced in v2.0.0 such as logger, errorHandler, connectionHandler, fildHandler and mysqlHandler.
+        (exitHandler is a mandatory tools.)
+        These tools will run with properties and submodules.
+        During initial time, the summer-mvc core create / copy these files to your project.
+        That you only to do is that set <kbd>enable</kbd> property whether to use these tools or not.
+        Tools use 2 specific folders to execute, <kbd>/tools-properties</kbd> and <kbd>tools-submodules</kbd>.
+        <kbd>/tools-properties</kbd> contains property files and <kbd>tools-submodules</kbd> contains js files help tool.
+      </p>
+      <div class="well doc-well">
+        "enable" : true | false
+      </div>
+      <table class="table table-hover p-end">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Folder</th>
+            <th>Files</th>
+            <th>Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>logger</td>
+            <td>
+              /tools-properties<br>
+              /__Logs
+            </td>
+            <td>logger.json</td>
+            <td>Default logger folder and file<br>
+              Logger give you console and log file usage.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>errorHandler</td>
+            <td>/tools-submodules</td>
+            <td>clientErrorHandler.js</td>
+            <td>Default errorHandler folder and file<br>
+              All error will be thrown to summer-mvc's default error handler.
+              For inserting code into clientErrorHandler.js, you can control error as custom.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>connectionHandler</td>
+            <td>/tools-properties</td>
+            <td>connection.json</td>
+            <td>Default connectionHandler folder and file<br>
+              cookie & session can be controlled with this tools.
+              Property file contains specific settings when you control cookie & session.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>connectionHandler</td>
+            <td>/tools-submodules</td>
+            <td>connectionHandlerSubmodules.js</td>
+            <td>Default connectionHandler folder and file<br>
+              ConnectionHandler give external information for executing.
+              For help connectionHandler, you can customize this submodules.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>fileHandler</td>
+            <td>/tools-properties</td>
+            <td>file.json</td>
+            <td>Default fileHandler folder and file<br>
+              For uploadig files, some configurations are needed.
+              This file contains information for file handling.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>fileHandler</td>
+            <td>/tools-submodules</td>
+            <td>fileSubmodules.js</td>
+            <td>Default fileHandler folder and file<br>
+              As server and client both have other environment.
+              Uploading and downloading files have to be managed adapter.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>mysqlHandler</td>
+            <td>/tools-properties</td>
+            <td>mysql.json</td>
+            <td>Default mysqlHandler folder and file<br>
+              Now (v2.0.0), mysql is unique DBMS for summer-mvc.
+              A DBMS connection information is contains in this file.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>mysqlHandler</td>
+            <td>/tools-submodules/db/queries</td>
+            <td>query.json</td>
+            <td>Default mysqlHandler folder and file<br>
+              Predefined queries can improve development speed.
+              Other query files can be generated when needed.
+              But, this file is default so that to correct this file is convenient.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>exitHandler</td>
+            <td>/tools-submodules</td>
+            <td>clientExitHandler.js</td>
+            <td>Default clientExitHandler folder and file<br>
+              Controlling exit process is a mandatory function.
+              So, you cannot control. But, If you want to design your process, please correct this file.
+              More information will be found in <a href="">here</a>.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 id="setting_options" class="doc-h4">Options</h4>
+      <p>
+        Some developers want to build their own project hierarchy and implement their own way.
+        Of course, it is possible.
+        For correcting options propertis, you can control summer-mvc's automatical building machnism.
+      </p>
+      <div class="well doc-well">
+        "remove_and_rebuild" : "false"
+      </div>
+      <p>
+        When set true, summer-mvc will remove and copy all files that included in initializer.json files during all initial time.
+        If you rebuild your project, please set true.
+      </p>
+      <blockquote class="doc-notice p-end">
+        When set true, your source code may delete.
+      </blockquote>
+
+      <div class="well doc-well">
+        "auto_structure_creation" : "true"
+      </div>
+      <p clas="p-end">
+        When true, summer-mvc will build your project automatically.
+        But, when false, summer-mvc will not do that.
+      </p>
+
+      <h4 id="setting_static_folders" class="doc-h4">Static Folders</h4>
+      <p>
+        It is very simple property.
+        The summer-mvc has its own static path for accessing resources directly.
+        You can add any folders in your project.
+      </p>
+      <div class="well doc-well p-end">
+        "static_folders" : [ "/static", "/static/upload" ]
+      </div>
+
+
+      <h3 id="write_codes" class="doc-h3">Write Codes</h3>
+      <hr style="border-top: 1px solid #ccc;">
+
+      <h4 id="context_dispatcher_json" class="doc-h4">context-dispatcher.json</h4>
+      <h4 id="controller" class="doc-h4">Controller</h4>
+      <h4 id="view" class="doc-h4">View</h4>
+      <h4 id="model" class="doc-h4">Model</h4>
+
       </div>
     </div>
   </div>
+
+  <% include partials/footer_inverse.ejs %>
 
   <div class="after"></div>
 </body>
