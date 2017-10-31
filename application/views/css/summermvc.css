@@ -29,7 +29,7 @@ body {
 */
 
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Hind Guntur', sans-serif;
 	font-size: 16px;
 }
 
@@ -208,8 +208,9 @@ body {
 }
 
   .doc-description {
-		border: 0;
-		padding-top: 0;
+  	vertical-align: middle;
+ 	border-color: black;	
+	padding-top: 0;
   }
 
   .doc-description:hover {
@@ -253,7 +254,7 @@ body {
         content: "";
         display: block;
         position: absolute;
-        margin-left: 15px;
+        margin-left: 0px;
         left: 0;
         width: 4px;
         height: 18px;
@@ -403,6 +404,10 @@ body {
 
 	.doc-content .p-end {
 		margin-bottom: 60px;
+	}
+	
+	.doc-content .doc-end {
+		margin-bottom: 160px;
 	}
 
 .after {

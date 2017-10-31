@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -180,7 +180,7 @@
         <blockquote class="doc-description" onclick="location.href=''">
         	<% for( var i=0; i<topLeftMenus.length; i++ ){ %>
 	          <% if( topLeftMenus[i].active == "active" ){ %>
-	      		<!-- <h4><%- topLeftMenus[i].displayname %></h4> -->
+	      		<h4><%- topLeftMenus[i].displayname %></h4>
 	      		<p><%- topLeftMenus[i].description %></p>
 	          <% } %>
 	        <% } %>
@@ -208,7 +208,7 @@
               <li><a href="#setting_context_architecture" id="dnl_setting_context_architecture">Context Architecture</a></li>
               <li><a href="#setting_views" id="dnl_setting_views">Views</a></li>
               <li><a href="#setting_tools" id="dnl_setting_tools">Tools</a></li>
-              <li><a href="#setting_options" id="dnl_setting_optinos">Options</a></li>
+              <li><a href="#setting_options" id="dnl_setting_options">Options</a></li>
               <li><a href="#setting_static_folders" id="dnl_setting_static_folders">Static Folders</a></li>
             </ul>
           </li>
@@ -379,7 +379,7 @@
             <td>favicon.ico</td>
             <td>Default favicon<br>
               If you want to delete this file, please write below codes in your view (ejs or html) files.
-              <code>`<link rel="icon" href="data:;base64,iVBORw0KGgo=">`</code>
+              <code>&#60;link rel="icon" href="data:;base64,iVBORw0KGgo="&#62;</code>
             </td>
           </tr>
           <tr>
@@ -562,11 +562,151 @@
 
       <h3 id="write_codes" class="doc-h3">Write Codes</h3>
       <hr style="border-top: 1px solid #ccc;">
+      <p>
+      	  Now, preparation completed.
+	      Remaining job is to implement your business codes.
+	      As all Nodejs codes are executed under asynchronous non-blocking I/O environment, be care when you write code.
+	      Basically all executions are wraped with Promise pattern.
+	      But db accessing, file accessing will be executing asynchronous.
+	  </p>
+	  <p class="p-end">	
+	      The summer-mvc follows MVC concepts and has a adapter for doing that.
+	      <kbd>context-dispatcher.json</kbd> contains dispatching information of project.
+	      All http request and response have their own controller logic.
+	      After controller logic executing, summer-mvc assign result models to ejs view files.
+	      For correcting <kbd>context-dispatcher.json</kbd>, you can control your own project navigator like spring framework's <kbd>web.xml</kbd>.
+	  </p>
 
       <h4 id="context_dispatcher_json" class="doc-h4">context-dispatcher.json</h4>
+      <p>
+      	<kbd>context-dispatcher.json</kbd> is a JSON file. 
+      	It consists of 2 main parts such as "GET" and "POST".
+      	It is same as http methods.
+      	Every internal objects have id, path, controllerJS, controlFunction, viewPath and view.
+      </p>
+      <table class="table table-responsive table-hover">
+      	<thead>
+      		<tr>
+      			<th>Property Name</th>
+      			<th>Usage</th>
+      		</tr>
+      	</thead>
+      	<tbody>
+      		<tr>
+      			<td>id</td>
+      			<td>An identifier of dispatching information</td>
+      		</tr>
+      		<tr>
+      			<td>path</td>
+      			<td>Client's request path under web application root</td>
+      		</tr>
+      		<tr>
+      			<td>controllerJS</td>
+      			<td>JS file that contains business Logic</td>
+      		</tr>
+      		<tr>
+      			<td>controlFunction</td>
+      			<td>As 1 controllerJS has multiple control functions, controller must be declared.</td>
+      		</tr>
+      		<tr>
+      			<td>viewPath</td>
+      			<td>ejs view file's path under default ejs paths.
+					( Default View File Path is /application/views )
+      			</td>
+      		</tr>
+      		<tr>
+      			<td>view</td>
+      			<td>ejs file name</td>
+      		</tr>
+      	</tbody>
+      </table>
+      <p class="p-end">
+      	When the summer-mvc receive a http request, summer-mvc will extract <kbd>path</kbd> and will find matched disptching info.
+      	If founded, execute controller and make model object (JSON).
+      	Finally, summer-mvc throw ejs file information with model object to ejs module.
+      	<code>Express</code> and <code>ejs</code> cooperate to render response to client.  
+      </p>
+      
       <h4 id="controller" class="doc-h4">Controller</h4>
+      <div class="well doc-well">
+      	exports.{<b>controller-name</b>} = function(res, res){ <br>
+      		&nbsp;&nbsp;&nbsp;&nbsp;return new Promise( function(resolve, reject){ &nbsp;&nbsp;&nbsp;&nbsp;<br>
+      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolve( {<b>model</b>} ); <br>
+      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reject( ... ); <br>
+      		&nbsp;&nbsp;&nbsp;&nbsp;} ); <br>
+      	} <br>
+      </div>
+      <table class="table table-responsive table-hover">
+      	<caption>Parameter</caption>
+      	<tbody>
+      		<tr>
+      			<td>req</td>
+      			<td>http request object</td>
+      		</tr>
+      		<tr>
+      			<td>res</td>
+      			<td>http response object</td>
+      		</tr>
+      	</tbody>
+      </table>
+      <table class="table table-responsive table-hover">
+      	<caption>return</caption>
+      	<tbody>
+      		<tr>
+      			<td>Promise Object</td>
+      			<td>summer-mvc execute returned promise object automatically <br>
+      				This promise must be resolve JSON Object named model.
+      			</td>
+      		</tr>
+      	</tbody>
+      </table>
+      <p>
+      	The summer-mvc's controller must have upper syntax. 
+      	The summer-mvc core interpret this function when http request thrown in and execute it.
+      	As Nodejs run under asynchronous environment, we recommend that you will use this syntax pattern even if basic call return type is possible.
+      </p>
+      <blockquote class="doc-notice">
+      	All controllers must be located under /application/controllers folder.
+      </blockquote>
+      <button class="btn_important p-end" onclick="openControllerExample()">Example</button>
+      <script>
+      	function openControllerExample(){
+      		alert( "controllerExample()" );
+      	}
+      </script>
+
+      
       <h4 id="view" class="doc-h4">View</h4>
+      <p>
+      	Now (v2.0.0), summer-mvc's default view engine is <a href="https://www.npmjs.com/packages/ejs">ejs</a>.
+      	All model that generated by controller can be assign as <code>&#60;&#37; &#37;&#62;</code> pattern and default model object type is JSON.
+      	By default, the summer-mvc core translates all model to JSON object, you don't need to translate object to JSON.
+      	More information can be found in <a href="https://www.npmjs.com/packages/ejs">ejs homepage</a>.
+      </p>
+      <blockquote class="doc-notice">
+      	All controllers must be located under /application/views folder.
+      </blockquote>
+      <button class="btn_important p-end" onclick="openViewExample()">Example</button>
+      <script>
+      	function openViewExample(){
+      		alert( "viewExample()" );
+      	}
+      </script>
+      
       <h4 id="model" class="doc-h4">Model</h4>
+      <p>
+      	Repeatedly said, summer-mvc's components communcate using JSON object.
+      	Even if request and response will be translated to JSON object,
+      	it is common way to send object shaped as JSON for preventing unexpected event.
+      	Such as object nesting, numeric exceptions.
+      </p>
+	  <button class="btn_important doc-end" onclick="openModelExample()">Example</button>
+	  <script>
+      	function openModelExample(){
+      		alert( "modelExample()" );
+      	}
+      </script>
 
       </div>
     </div>

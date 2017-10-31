@@ -62,6 +62,6 @@ function getForkCount(){
     //   resolve( JSON.parse(body).forks_count );
     // } );
 
-    resolve( 1,792 );
+    resolve( "1,792" );
   } );
 }

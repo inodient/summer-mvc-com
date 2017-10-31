@@ -46,7 +46,7 @@ function getNPMCount(){
     weekAgo3 = weekAgo3.toISOString().substring( 0, 10 );
     weekAgo4 = weekAgo4.toISOString().substring( 0, 10 );
 
-    logger.debug( today, weekAgo1, weekAgo2, weekAgo3, weekAgo4 );
+//    logger.debug( today, weekAgo1, weekAgo2, weekAgo3, weekAgo4 );
 
     const request = require( "request" );
 
@@ -111,7 +111,7 @@ function getNPMCount(){
       results.weeks_ago_3 = 32000;
       results.weeks_ago_2 = 9870;
       results.last_week = 12290;
-      results.total = 3200000;
+      results.total = 32002425;
 
       _resolve( results );
     } )
