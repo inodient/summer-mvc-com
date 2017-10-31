@@ -136,6 +136,41 @@
       border-left: 5px solid #a94442;
     }
 
+    .doc-content .doc-file {
+      /*background-color: #254d61;
+      border-color: #254d61;*/
+      color: #2b4d6b;
+      background-color: white;
+      border: 1px solid #2b4d6b;
+      box-shadow: none;
+      font-weight: 600;
+    }
+
+    .doc-content .doc-emphasis {
+      /*background-color: #a94442;
+      border-color: #a94442;*/
+      color: #a94442;
+      background-color: white;
+      border: 1px solid #a94442;
+      box-shadow: none;
+      font-weight: 600;
+    }
+
+    .doc-content .doc-middleware {
+      font-weight: 800;
+    }
+
+    .doc-content code {
+      font-weight: 800;
+    }
+
+    .doc-content a {
+      font-weight: 800;
+      color: #444;
+    }
+
+
+
   </style>
 
 </head>
@@ -239,7 +274,8 @@
       <h4 id="npm" class="doc-h4">NPM</h4>
       <p>
         First, prepare your Nodejs project. And, type below command.
-        When completed to install, please check your <kbd>package.json</kbd> file and be sure to contain summer-mvc.
+        When completed to install, please check your <kbd class="doc-file">package.json</kbd> file and be sure to contain summer-mvc.
+        More information can be found at <a href="https://www.npmjs.com/packages/summer-mvc">here</a>
       </p>
       <div class="well doc-well">
         $ npm install summer-mvc
@@ -254,7 +290,7 @@
       <h4 id="binary" class="doc-h4">Binary</h4>
       <p>
         If you already have your environment, so you don't want to use NPD, binary installation is alternative way.
-        Please download binary zip file and extract it under <kbd>{user-project}/node_modules</kbd><br>
+        Please download binary zip file and extract it under <kbd class="doc-file">{user-project}/node_modules</kbd><br>
         <button class="btn_important" onclick="javascript:download()">DOWNLOAD_BINARY</button>
         <form id="file_download_form" action="/download" method="get"></form>
       </p>
@@ -277,7 +313,7 @@
       <p>
         The summer-mvc is package moduler. So "require" is the only way to include summer-mvc to your project.
         As controlling http req/res must be waited until a signal comes, that way to "require the summer-mvc" is unique method to use.
-        Create your project's entry js file such as <kbd>app.js</kbd>.
+        Create your project's entry js file such as <kbd class="doc-file">app.js</kbd>.
         And write code as follow.
       </p>
 
@@ -292,8 +328,8 @@
         Most of web applications have this machnism.
         If you import Spring Framework in Java Platform, Spring Framework automatically create your project folder hierarchy and create property files.
         The summer-mvc do same thing for you.
-        <kbd>context-dispatcher.json</kbd>, <kbd>initializer.json</kbd>, some <kbd>tool-properties</kbd>, etc will be located specific folders.
-        You can control this process in <kbd>initializer.json</kdb>.
+        <kbd class="doc-file">context-dispatcher.json</kbd>, <kbd class="doc-file">initializer.json</kbd>, some <kbd class="doc-emphasis">tool-properties</kbd>, etc will be located specific folders.
+        You can control this process in <kbd class="doc-file">initializer.json</kdb>.
       </p>
       <img class="p-end" src="/execution.png" style="width:100%" />
 
@@ -302,7 +338,7 @@
 
       <h4 id="initializer_json" class="doc-h4">initializer.json</h4>
       <p class="p-end">
-        Whole initializing information can be setted in <kbd>initializer.json</kbd>.
+        Whole initializing information can be setted in <kbd class="doc-file">initializer.json</kbd>.
         The summer-mvc core will interprete this file and build project's architecture.
         As convenient using of summer-mvc, sample initialzing information have contained in default <kdb>initializer.json</kdb>.
       </p>
@@ -312,14 +348,14 @@
         "port" : 3000
       </div>
       <p class="p-end">
-        As summer-mvc uses <code>Express</code> as foundation module, default port number is 3000.
+        As summer-mvc uses <code class="doc-middleware">Express</code> as foundation module, default port number is 3000.
         It can be changed if you want to use other ports. It's type is number.
       </p>
 
       <h4 id="setting_context_architecture" class="doc-h4">Context Architecture</h4>
       <p class="p-end">
-        The context-architecture property is array of <kbd>folder hierarchy objects</kbd>.
-        The folder hierarchy objects contain <kbd>folder</kbd> and <kbd>file objects</kbd>.
+        The context-architecture property is array of <kbd class="doc-emphasis">folder hierarchy objects</kbd>.
+        The folder hierarchy objects contain <kbd class="doc-emphasis">folder</kbd> and <kbd class="doc-emphasis">file objects</kbd>.
         It is possible to contain your own architecture in initializer.
         If want to do that, please follow rules of JSON.
         These folders automatically create under your project root folder,
@@ -386,7 +422,7 @@
             <td>/__Logs</td>
             <td>-</td>
             <td>Default Log location<br>
-              It can be changed in <kbd>/tool-properties/logger.json</kbd>. But not recommended.
+              It can be changed in <kbd class="doc-file">/tool-properties/logger.json</kbd>. But not recommended.
             </td>
           </tr>
         </tbody>
@@ -411,9 +447,9 @@
         (exitHandler is a mandatory tools.)
         These tools will run with properties and submodules.
         During initial time, the summer-mvc core create / copy these files to your project.
-        That you only to do is that set <kbd>enable</kbd> property whether to use these tools or not.
-        Tools use 2 specific folders to execute, <kbd>/tools-properties</kbd> and <kbd>tools-submodules</kbd>.
-        <kbd>/tools-properties</kbd> contains property files and <kbd>tools-submodules</kbd> contains js files help tool.
+        That you only to do is that set <kbd class="doc-emphasis">enable</kbd> property whether to use these tools or not.
+        Tools use 2 specific folders to execute, <kbd class="doc-file">/tools-properties</kbd> and <kbd class="doc-emphasis">tools-submodules</kbd>.
+        <kbd class="doc-file">/tools-properties</kbd> contains property files and <kbd class="doc-file">/tools-submodules</kbd> contains js files help tool.
       </p>
       <div class="well doc-well">
         "enable" : true | false
@@ -569,17 +605,17 @@
 	      Basically all executions are wraped with Promise pattern.
 	      But db accessing, file accessing will be executing asynchronous.
 	  </p>
-	  <p class="p-end">	
+	  <p class="p-end">
 	      The summer-mvc follows MVC concepts and has a adapter for doing that.
-	      <kbd>context-dispatcher.json</kbd> contains dispatching information of project.
+	      <kbd class="doc-file">context-dispatcher.json</kbd> contains dispatching information of project.
 	      All http request and response have their own controller logic.
 	      After controller logic executing, summer-mvc assign result models to ejs view files.
-	      For correcting <kbd>context-dispatcher.json</kbd>, you can control your own project navigator like spring framework's <kbd>web.xml</kbd>.
+	      For correcting <kbd class="doc-file">context-dispatcher.json</kbd>, you can control your own project navigator like spring framework's <kbd class="doc-file">web.xml</kbd>.
 	  </p>
 
       <h4 id="context_dispatcher_json" class="doc-h4">context-dispatcher.json</h4>
       <p>
-      	<kbd>context-dispatcher.json</kbd> is a JSON file. 
+      	<kbd class="doc-file">context-dispatcher.json</kbd> is a JSON file.
       	It consists of 2 main parts such as "GET" and "POST".
       	It is same as http methods.
       	Every internal objects have id, path, controllerJS, controlFunction, viewPath and view.
@@ -621,12 +657,12 @@
       	</tbody>
       </table>
       <p class="p-end">
-      	When the summer-mvc receive a http request, summer-mvc will extract <kbd>path</kbd> and will find matched disptching info.
+      	When the summer-mvc receive a http request, summer-mvc will extract <kbd class="doc-emphasis">path</kbd> and will find matched disptching info.
       	If founded, execute controller and make model object (JSON).
       	Finally, summer-mvc throw ejs file information with model object to ejs module.
-      	<code>Express</code> and <code>ejs</code> cooperate to render response to client.  
+      	<code class="doc-middleware">Express</code> and <code class="doc-middleware">ejs</code> cooperate to render response to client.
       </p>
-      
+
       <h4 id="controller" class="doc-h4">Controller</h4>
       <div class="well doc-well">
       	exports.{<b>controller-name</b>} = function(res, res){ <br>
@@ -662,7 +698,7 @@
       	</tbody>
       </table>
       <p>
-      	The summer-mvc's controller must have upper syntax. 
+      	The summer-mvc's controller must have upper syntax.
       	The summer-mvc core interpret this function when http request thrown in and execute it.
       	As Nodejs run under asynchronous environment, we recommend that you will use this syntax pattern even if basic call return type is possible.
       </p>
@@ -676,7 +712,7 @@
       	}
       </script>
 
-      
+
       <h4 id="view" class="doc-h4">View</h4>
       <p>
       	Now (v2.0.0), summer-mvc's default view engine is <a href="https://www.npmjs.com/packages/ejs">ejs</a>.
@@ -693,7 +729,7 @@
       		alert( "viewExample()" );
       	}
       </script>
-      
+
       <h4 id="model" class="doc-h4">Model</h4>
       <p>
       	Repeatedly said, summer-mvc's components communcate using JSON object.
