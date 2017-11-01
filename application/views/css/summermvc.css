@@ -1,3 +1,10 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+
+
+
+
+
 /* Menu Bar start */
 @media (max-width: 1000px) {
 	.navbar-header {
@@ -223,7 +230,7 @@ body {
 
   .doc-description {
   	vertical-align: middle;
- 	border-color: black;	
+ 	border-color: black;
 	padding-top: 0;
   }
 
@@ -404,7 +411,7 @@ body {
     padding-top: 100px;
     margin-bottom: 10px;
   }
-  
+
   .doc-content .doc-divider {
   	border-top: 1px solid #ccc;
   }
@@ -427,7 +434,7 @@ body {
 	.doc-content .section-end {
 		margin-bottom: 120px;
 	}
-	
+
 	.doc-content .doc-end {
 		margin-bottom: 240px;
 	}

@@ -119,6 +119,14 @@
             "controlFunction": "control",
             "viewPath": "",
             "view": "facebook.ejs"
+        },
+        {
+            "id": "proposal",
+            "path": "/proposal",
+            "controllerJS": "controller_proposal.js",
+            "controlFunction": "control",
+            "viewPath": "",
+            "view": "proposal.ejs"
         }
     ],
     "POST": [
