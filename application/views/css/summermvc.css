@@ -1,78 +1,3 @@
-/*
-@font-face {
-	font-family: "bebas";
-	src: url( "fonts/BebasNeue.otf" ) format( "opentype" );
-}
-
-@font-face {
-	font-family: "Montserrat-Regular";
-	src: url( "/Montserrat-Regular.ttf" ) format( "truetype" );
-}
-
-@font-face {
-	font-family: "Montserrat-Bold";
-	src: url( "/Montserrat-Bold.ttf" ) format( "truetype" );
-}
-
-b {
-	font-family: "Montserrat-Bold, sans-serif";
-}
-
-p {
-	font-size: 16px;
-}
-
-body {
- 		font-family : "Montserrat-Regular, sans-serif";
-		font-weight: 200;
- 	}
-*/
-
-body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-}
-
-
-@font-face {
-	font-family: "aclonica";
-	src: url( "/Aclonica.ttf" ) format( "truetype" );
-}
-
-.vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-
-  display: flex;
-  align-items: center;
-}
-
-#btn_download:hover {
-  cursor: pointer;
-}
-
-.btn_important {
-    display: inline-block;
-    margin: 18px 0 41px;
-    padding: 10px 20px;
-
-    background: #333;
-    border: 1px solid #333;
-    color: #ffffff;
-
-    font-size: 18px;
-    border-radius: 1px;
-}
-
-.btn_important:hover {
-    /*background: #525252;*/
-		background: black;
-    border: 1px solid #525252;
-    color: #ffffff;
-}
-
-
-
 /* Menu Bar start */
 @media (max-width: 1000px) {
 	.navbar-header {
@@ -139,21 +64,17 @@ body {
     .logo:hover {
     	color: white;
     }
+}
+/* Menu Bar End */
 
-    /*
-    .navbar-header {
-	    float: left;
-	    text-align: center;
-	    width: 100%;
-	}
-	.navbar-brand {float:none;}
 
-	.navbar-brand a {
-		color: #9d9d9d;
-		text-decoration: none;
-	}
-    */
 
+
+
+
+
+/* Responsive - Start */
+@media (max-width: 1000px) {
     .mobile-show {
     	display: block;
     }
@@ -161,7 +82,6 @@ body {
     .mobile-hidden {
     	display: none;
     }
-
 }
 
 @media (min-width: 1001px) {
@@ -173,16 +93,110 @@ body {
 		display: block;
 	}
 }
+/* Responsive - End */
 
-/* Menu Bar End */
 
+
+
+/* Alignment - Start */
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* Alignment - End */
+
+
+
+
+/* Elements - Start */
+.btn_important {
+    display: inline-block;
+    margin: 18px 0 41px;
+    padding: 10px 20px;
+
+    background: #333;
+    border: 1px solid #333;
+    color: #ffffff;
+
+    font-size: 18px;
+    border-radius: 1px;
+}
+
+.btn_important:hover {
+    /*background: #525252;*/
+	background: black;
+    border: 1px solid #525252;
+    color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+}
+
+.doc-content p {
+  margin-bottom: 30px;
+  line-height: 1.8em;
+  color: #646464;
+}
+
+.doc-content hr {
+  margin-top: 0px;
+}
+
+.doc-content table {
+  color: #454545;
+}
+
+.doc-content .doc-notice {
+  border-left: 5px solid #a94442;
+}
+
+
+.doc-content .doc-file {
+  color: #2b4d6b;
+  background-color: #ebf2f8;
+  font-weight: 600;
+}
+
+.doc-content .doc-emphasis {
+  font-weight: 600;
+}
+
+.doc-content .doc-middleware {
+  font-weight: 800;
+}
+
+.doc-content code {
+  font-weight: 800;
+}
+
+.doc-content a {
+  font-weight: 800;
+  color: #444;
+}
+/* Elements - End */
+
+
+
+
+
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+}
 
 .base {
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   background-image: url(/img_bg_pattern.png);
-	background-color: #fafbfd;
+  background-color: #fafbfd;
 }
 
 .navbar-inverse {
@@ -271,7 +285,7 @@ body {
         content: "";
         display: block;
         position: absolute;
-        margin-left: 15px;
+        margin-left: 0px;
         left: 0;
         width: 4px;
         height: 18px;
@@ -288,7 +302,7 @@ body {
         content: "";
         display: block;
         position: absolute;
-        margin-left: 15px;
+        margin-left: 0px;
         left: 0;
         width: 4px;
         height: 18px;
@@ -297,7 +311,7 @@ body {
 
 
       .doc-nav-list > li:hover > .doc-nav-sub-list {
-        display: block;
+        /* display: block; */
       }
 
       .doc-nav-list > li.active > .doc-nav-sub-list {
@@ -390,6 +404,10 @@ body {
     padding-top: 100px;
     margin-bottom: 10px;
   }
+  
+  .doc-content .doc-divider {
+  	border-top: 1px solid #ccc;
+  }
 
   .doc-content .doc-h4 {
     margin-top: -80px;
@@ -405,9 +423,13 @@ body {
 	.doc-content .p-end {
 		margin-bottom: 60px;
 	}
+
+	.doc-content .section-end {
+		margin-bottom: 120px;
+	}
 	
 	.doc-content .doc-end {
-		margin-bottom: 160px;
+		margin-bottom: 240px;
 	}
 
 .after {
@@ -426,4 +448,4 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
-*.
+*/

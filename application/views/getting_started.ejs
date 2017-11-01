@@ -15,6 +15,12 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat:bold' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:bolditalic' rel='stylesheet'>
 
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:italic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:bold" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:bolditalic" rel="stylesheet">
+
+
   <link rel="stylesheet" href="summermvc.css">
 
   <script>
@@ -112,67 +118,6 @@
       } );
     } );
   </script>
-
-  <style>
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: bold;
-    }
-
-    .doc-content p {
-      margin-bottom: 30px;
-      line-height: 1.8em;
-      color: #646464;
-    }
-
-    .doc-content hr {
-      margin-top: 0px;
-    }
-
-    .doc-content table {
-      color: #454545;
-    }
-
-    .doc-content .doc-notice {
-      border-left: 5px solid #a94442;
-    }
-
-    .doc-content .doc-file {
-      /*background-color: #254d61;
-      border-color: #254d61;*/
-      color: #2b4d6b;
-      background-color: white;
-      border: 1px solid #2b4d6b;
-      box-shadow: none;
-      font-weight: 600;
-    }
-
-    .doc-content .doc-emphasis {
-      /*background-color: #a94442;
-      border-color: #a94442;*/
-      color: #a94442;
-      background-color: white;
-      border: 1px solid #a94442;
-      box-shadow: none;
-      font-weight: 600;
-    }
-
-    .doc-content .doc-middleware {
-      font-weight: 800;
-    }
-
-    .doc-content code {
-      font-weight: 800;
-    }
-
-    .doc-content a {
-      font-weight: 800;
-      color: #444;
-    }
-
-
-
-  </style>
-
 </head>
 
 <body class="base">
@@ -269,12 +214,12 @@
       </div>
 
       <h3 id="get_summer_mvc" class="doc-h3">Get summer-mvc</h3>
-      <hr style="border-top: 1px solid #ccc;">
+      <hr class="doc-divider">
 
       <h4 id="npm" class="doc-h4">NPM</h4>
       <p>
         First, prepare your Nodejs project. And, type below command.
-        When completed to install, please check your <kbd class="doc-file">package.json</kbd> file and be sure to contain summer-mvc.
+        When completed to install, please check your <code class="doc-file">package.json</code> file and be sure to contain summer-mvc.
         More information can be found at <a href="https://www.npmjs.com/packages/summer-mvc">here</a>
       </p>
       <div class="well doc-well">
@@ -288,9 +233,9 @@
       </blockquote>
 
       <h4 id="binary" class="doc-h4">Binary</h4>
-      <p>
+      <p class="section-end">
         If you already have your environment, so you don't want to use NPD, binary installation is alternative way.
-        Please download binary zip file and extract it under <kbd class="doc-file">{user-project}/node_modules</kbd><br>
+        Please download binary zip file and extract it under <code class="doc-file">{user-project}/node_modules</code><br>
         <button class="btn_important" onclick="javascript:download()">DOWNLOAD_BINARY</button>
         <form id="file_download_form" action="/download" method="get"></form>
       </p>
@@ -313,7 +258,7 @@
       <p>
         The summer-mvc is package moduler. So "require" is the only way to include summer-mvc to your project.
         As controlling http req/res must be waited until a signal comes, that way to "require the summer-mvc" is unique method to use.
-        Create your project's entry js file such as <kbd class="doc-file">app.js</kbd>.
+        Create your project's entry js file such as <code class="doc-file">app.js</code>.
         And write code as follow.
       </p>
 
@@ -324,21 +269,21 @@
       <h4 id="build_hiererchy" class="doc-h4">Build Hierarchy</h4>
       <p>
         After require including, you can execute your project under <b>summer-mvc</b>.
-        When first executing, you meet <code>Automatic Building Machinsm</code>.
+        When first executing, you meet <code class="doc-emphasis">Automatic Building Machinsm</code>.
         Most of web applications have this machnism.
         If you import Spring Framework in Java Platform, Spring Framework automatically create your project folder hierarchy and create property files.
         The summer-mvc do same thing for you.
-        <kbd class="doc-file">context-dispatcher.json</kbd>, <kbd class="doc-file">initializer.json</kbd>, some <kbd class="doc-emphasis">tool-properties</kbd>, etc will be located specific folders.
-        You can control this process in <kbd class="doc-file">initializer.json</kdb>.
+        <code class="doc-file">context-dispatcher.json</code>, <code class="doc-file">initializer.json</code>, some <code class="doc-file">tools-properties</code>, etc will be located specific folders.
+        You can control this process in <code class="doc-file">initializer.json</code>.
       </p>
-      <img class="p-end" src="/execution.png" style="width:100%" />
+      <img class="section-end" src="/execution.png" style="width:100%" />
 
       <h3 id="initializing" class="doc-h3">Initializing</h3>
       <hr style="border-top: 1px solid #ccc;">
 
       <h4 id="initializer_json" class="doc-h4">initializer.json</h4>
       <p class="p-end">
-        Whole initializing information can be setted in <kbd class="doc-file">initializer.json</kbd>.
+        Whole initializing information can be setted in <code class="doc-file">initializer.json</code>.
         The summer-mvc core will interprete this file and build project's architecture.
         As convenient using of summer-mvc, sample initialzing information have contained in default <kdb>initializer.json</kdb>.
       </p>
@@ -354,8 +299,8 @@
 
       <h4 id="setting_context_architecture" class="doc-h4">Context Architecture</h4>
       <p class="p-end">
-        The context-architecture property is array of <kbd class="doc-emphasis">folder hierarchy objects</kbd>.
-        The folder hierarchy objects contain <kbd class="doc-emphasis">folder</kbd> and <kbd class="doc-emphasis">file objects</kbd>.
+        The context-architecture property is array of <code class="doc-emphasis">folder hierarchy objects</code>.
+        The folder hierarchy objects contain <code class="doc-emphasis">folder</code> and <code class="doc-emphasis">file objects</code>.
         It is possible to contain your own architecture in initializer.
         If want to do that, please follow rules of JSON.
         These folders automatically create under your project root folder,
@@ -422,7 +367,7 @@
             <td>/__Logs</td>
             <td>-</td>
             <td>Default Log location<br>
-              It can be changed in <kbd class="doc-file">/tool-properties/logger.json</kbd>. But not recommended.
+              It can be changed in <code class="doc-file">/tool-properties/logger.json</code>. But not recommended.
             </td>
           </tr>
         </tbody>
@@ -447,9 +392,9 @@
         (exitHandler is a mandatory tools.)
         These tools will run with properties and submodules.
         During initial time, the summer-mvc core create / copy these files to your project.
-        That you only to do is that set <kbd class="doc-emphasis">enable</kbd> property whether to use these tools or not.
-        Tools use 2 specific folders to execute, <kbd class="doc-file">/tools-properties</kbd> and <kbd class="doc-emphasis">tools-submodules</kbd>.
-        <kbd class="doc-file">/tools-properties</kbd> contains property files and <kbd class="doc-file">/tools-submodules</kbd> contains js files help tool.
+        That you only to do is that set <code class="doc-emphasis">enable</code> property whether to use these tools or not.
+        Tools use 2 specific folders to execute, <code class="doc-file">/tools-properties</code> and <code class="doc-file">tools-submodules</code>.
+        <code class="doc-file">/tools-properties</code> contains property files and <code class="doc-file">/tools-submodules</code> contains js files help tool.
       </p>
       <div class="well doc-well">
         "enable" : true | false
@@ -591,7 +536,7 @@
         The summer-mvc has its own static path for accessing resources directly.
         You can add any folders in your project.
       </p>
-      <div class="well doc-well p-end">
+      <div class="well doc-well section-end">
         "static_folders" : [ "/static", "/static/upload" ]
       </div>
 
@@ -607,15 +552,15 @@
 	  </p>
 	  <p class="p-end">
 	      The summer-mvc follows MVC concepts and has a adapter for doing that.
-	      <kbd class="doc-file">context-dispatcher.json</kbd> contains dispatching information of project.
+	      <code class="doc-file">context-dispatcher.json</code> contains dispatching information of project.
 	      All http request and response have their own controller logic.
 	      After controller logic executing, summer-mvc assign result models to ejs view files.
-	      For correcting <kbd class="doc-file">context-dispatcher.json</kbd>, you can control your own project navigator like spring framework's <kbd class="doc-file">web.xml</kbd>.
+	      For correcting <code class="doc-file">context-dispatcher.json</code>, you can control your own project navigator like spring framework's <code class="doc-file">web.xml</code>.
 	  </p>
 
       <h4 id="context_dispatcher_json" class="doc-h4">context-dispatcher.json</h4>
       <p>
-      	<kbd class="doc-file">context-dispatcher.json</kbd> is a JSON file.
+      	<code class="doc-file">context-dispatcher.json</code> is a JSON file.
       	It consists of 2 main parts such as "GET" and "POST".
       	It is same as http methods.
       	Every internal objects have id, path, controllerJS, controlFunction, viewPath and view.
@@ -657,7 +602,7 @@
       	</tbody>
       </table>
       <p class="p-end">
-      	When the summer-mvc receive a http request, summer-mvc will extract <kbd class="doc-emphasis">path</kbd> and will find matched disptching info.
+      	When the summer-mvc receive a http request, summer-mvc will extract <code class="doc-emphasis">path</code> and will find matched disptching info.
       	If founded, execute controller and make model object (JSON).
       	Finally, summer-mvc throw ejs file information with model object to ejs module.
       	<code class="doc-middleware">Express</code> and <code class="doc-middleware">ejs</code> cooperate to render response to client.
@@ -744,11 +689,12 @@
       	}
       </script>
 
+
+	  <% include partials/footer.ejs %>
+
       </div>
     </div>
   </div>
-
-  <% include partials/footer_inverse.ejs %>
 
   <div class="after"></div>
 </body>

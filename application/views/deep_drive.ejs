@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -8,26 +8,136 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:italic' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:bold' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:bolditalic' rel='stylesheet'>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:italic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:bold" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:bolditalic" rel="stylesheet">
+
+
   <link rel="stylesheet" href="summermvc.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+    $(document).ready( function(){
+      $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
+
+      if( $(window).scrollTop() > $("blockquote").outerHeight() + parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) ){
+        $(".doc-nav-list").css({top: parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) - parseInt( $(".doc-description").css("padding-top").replace( "px", "" ) ), position:'fixed', width: $(".doc-description").css("width")});
+        $(".doc-nav-list").addClass( "affix" );
+      } else{
+        $(".doc-nav-list").css({top:0, position:'relative'});
+        $(".doc-nav-list").removeClass( "affix" );
+      }
+
+      $(window).scroll( function( event ){
+
+        // 1. Right Half Page css
+        $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
+
+        // 2. doc-nav-list affix
+        if( $(window).scrollTop() > $("blockquote").outerHeight() + parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) ){
+          $(".doc-nav-list").css({top: parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) - parseInt( $(".doc-description").css("padding-top").replace( "px", "" ) ), position:'fixed', width: $(".doc-description").css("width")});
+          $(".doc-nav-list").addClass( "affix" );
+        } else{
+          $(".doc-nav-list").css({top:0, position:'relative'});
+          $(".doc-nav-list").removeClass( "affix" );
+        }
+
+        // 3. content-enables -> doc-nav-list active
+        var offset = 80;
+        var activeElement = "";
+        var specifics = $(".doc-h3, .doc-h4");
+
+        if( specifics == null ){
+          specifics = document.getElementsByClassName( "" );
+        }
+
+        for( var i=0; i<specifics.length; i++ ){
+          var startOffset = 0;
+          var endOffset = 0;
+
+          startOffset = $( "#" + specifics[i].id ).offset().top - offset;
+          if( startOffset > $(window).scrollTop() ){
+            activeElement = "";
+            break;
+          }
+
+          if( i != specifics.length - 1 ){
+            endOffset = $( "#" + specifics[i+1].id ).offset().top - offset;
+          } else{
+            // endOffset = $( "#" + specifics[i].id ).offset().top + $( ".content_specific" ).outerHeight() - offset;
+            endOffset = $( "#" + specifics[i].id ).offset().top + $( "#" + specifics[i].id ).parent().outerHeight( true ) - offset;
+          }
+
+          if( $(window).scrollTop() > startOffset && $(window).scrollTop() < endOffset ){
+            activeElement = specifics[i].id;
+            break;
+          }
+
+          if( $(window).scrollTop() + $(window).height() == $(document).height() ){
+            activeElement = specifics[specifics.length - 1].id;
+            break;
+          }
+
+          if( i == specifics.length ){
+            activeElement = "";
+          }
+        }
+
+        if( activeElement != "" ){
+          $("*").removeClass( "scrolled" );
+          $( "#dnl_" + activeElement ).addClass( "scrolled" );
+          $( "#dnl_" + activeElement ).parent().addClass( "scrolled" );
+
+          if( ( $( "#" + activeElement ).attr( "class" ) ).indexOf( "doc-h4" ) >= 0 ){
+            $( "#dnl_" + activeElement ).parent().parent().parent().addClass( "scrolled" );
+            $( "#dnl_" + activeElement ).parent().parent().siblings("a").addClass( "scrolled" );
+          }
+        } else{
+          $("*").removeClass( "scrolled" );
+          $(".doc-nav-list *, .doc-nav-sub-list *").removeClass( "active" );
+        }
+      } );
+
+      // when doc-nav-list clicked -> active
+      $(".doc-nav-list > li > a").on( "click", function(){
+        $("*").removeClass("active");
+        $(this).parent().addClass( "active" );
+      } );
+
+      $(".doc-nav-sub-list > li > a").on( "click", function(){
+        $("*").removeClass("active");
+        $(this).parent().addClass( "active" );
+        $(this).parent().parent().parent().addClass( "active" );
+      } );
+    } );
+  </script>
 </head>
 
 <body class="base">
   <header class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+        <button type="button" style="margin-left: 10px" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#top_menu">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><%- topLeftMenus[0].displayname %></a>
+        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="summer-mvc-logo.ico" style="display:inline-block; max-width: 35px" /></a> -->
+        <a href="/" class="navbar-brand mobile-navbar-brand mobile-show">summer-mvc</a>
+        <!-- <img id="download" src="/download_icon.gif" class="mobile-show"/> -->
+        <a id="download" class="mobile-show" href="/"><i class="fa fa-facebook fa-lg logo"></i></a>
       </div>
     </div>
-    <div class="collapse navbar-collapse navbar-content">
+    <div class="collapse navbar-collapse navbar-content" id="top_menu">
       <ul class="nav navbar-nav top-nav">
-        <% for( var i=1; i<topLeftMenus.length; i++ ){ %>
+        <% for( var i=0; i<topLeftMenus.length; i++ ){ %>
           <li id="<%- topLeftMenus[i].id %>" name="<%- topLeftMenus[i].name %>" class="<%- topLeftMenus[i].active %>"><a href="<%- topLeftMenus[i].redirectpath %>" ><%- topLeftMenus[i].displayname %></a></li>
         <% } %>
       </ul>
@@ -44,9 +154,170 @@
     </div>
   </header>
 
-  <div class="doc">
-    <% include partials/footer.ejs %>
+  <div class="container-fluid doc">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3 doc-nav">
+        <blockquote class="doc-description" onclick="location.href=''">
+        	<% for( var i=0; i<topLeftMenus.length; i++ ){ %>
+	          <% if( topLeftMenus[i].active == "active" ){ %>
+	      		<h4><%- topLeftMenus[i].displayname %></h4>
+	      		<p><%- topLeftMenus[i].description %></p>
+	          <% } %>
+	        <% } %>
+        </blockquote>
+        <ul class="doc-nav-list" >
+          <li>
+            <a href="#execution_process" id="dnl_execution_process">Execution Process</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#initializing" id="dnl_initializing">Initializing</a></li>
+              <li><a href="#execution" id="dnl_execution">Execution</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#design_logic" id="dnl_design_logic">Design Logic</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#process" id="dnl_process">Process</a></li>
+              <li><a href="#write_code" id="dnl_write_code">Write Code</a></li>
+              <li><a href="#exceptions" id="dnl_exceptions">Exceptions</a></li>
+              <li><a href="#cautions" id="dnl_cautions">Cautions</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#connection" id="dnl_connection">Connection</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#connection_handling" id="dnl_connection_handling">Connection Handling</a></li>
+              <li><a href="#connection_properties" id="dnl_connection_properties">Properties</a></li>
+              <li><a href="#connection_api" id="dnl_connection_api">API</a></li>
+              <li><a href="#connection_example" id="dnl_connection_example">Example</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#db" id="dnl_db">DB</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#mysql_handling" id="dnl_mysql_handling">Mysql Handling</a></li>
+              <li><a href="#mysql_properties" id="dnl_mysql_properties">Properties</a></li>
+              <li><a href="#mysql_api" id="dnl_mysql_api">API</a></li>
+              <li><a href="#mysql_example" id="dnl_mysql_example">Example</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#error" id="dnl_error">Error</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#error_handling" id="dnl_error_handling">Error Handling</a></li>
+              <li><a href="#error_properties" id="dnl_error_properties">Properties</a></li>
+              <li><a href="#error_api" id="dnl_error_api">API</a></li>
+              <li><a href="#error_example" id="dnl_error_example">Example</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#exit" id="dnl_exit">Exit</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#exit_handling" id="dnl_exit_handler">Exit Handling</a></li>
+              <li><a href="#exit_properties" id="dnl_controller">Properties</a></li>
+              <li><a href="#exit_api" id="dnl_view">API</a></li>
+              <li><a href="#exit_example" id="dnl_model">Example</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#file" id="dnl_file">File</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#file_handling" id="dnl_file_handler">File Handling</a></li>
+              <li><a href="#file_properties" id="dnl_file_properties">Properties</a></li>
+              <li><a href="#file_api" id="dnl_view">API</a></li>
+              <li><a href="#file_example" id="dnl_model">Example</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#log" id="dnl_log">Log</a>
+            <ul class="doc-nav-sub-list">
+              <li><a href="#log_handling" id="dnl_log_handler">Log Handling</a></li>
+              <li><a href="#log_properties" id="dnl_controller">Properties</a></li>
+              <li><a href="#log_api" id="dnl_view">API</a></li>
+              <li><a href="#log_example" id="dnl_model">Example</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
+
+        <h3 id="execution_process" class="doc-h3">Execution Process</h3>
+        <hr class="doc-divider">
+        
+          <h4 id="initializing" class="doc-h4">Initializing</h4>
+          <h4 id="execution" class="doc-h4">Execution</h4>
+          <p class="section-end"></p>
+
+        <h3 id="design_logic" class="doc-h3">Design Logic</h3>
+        <hr class="doc-divider">
+        
+          <h4 id="process" class="doc-h4">Process</h4>
+          <h4 id="write_code" class="doc-h4">Write Code</h4>
+          <h4 id="exceptions" class="doc-h4">Exceptions</h4>
+          <h4 id="cautions" class="doc-h4">Cautions</h4>
+          <p class="section-end"></p>
+
+        <h3 id="connection" class="doc-h3">Connection</h3>
+        <hr class="doc-divider">
+        
+          <h4 id="connection_handling" class="doc-h4">Connection Handling</h4>
+          <h4 id="connection_properties" class="doc-h4">Properties</h4>
+          <h4 id="connection_api" class="doc-h4">API</h4>
+          <h4 id="connection_example" class="doc-h4">Example</h4>
+          <p class="section-end"></p>
+
+        <h3 id="db" class="doc-h3">DB</h3>
+        <hr class="doc-divider">
+        
+          <h4 id="mysql_handling" class="doc-h4">Mysql Handling</h4>
+          <h4 id="mysql_properties" class="doc-h4">Properties</h4>
+          <h4 id="mysql_api" class="doc-h4">API</h4>
+          <h4 id="mysql_example" class="doc-h4">Example</h4>
+          <p class="section-end"></p>
+          
+        <h3 id="error" class="doc-h3">Error</h3>
+        <hr class="doc-divider">
+        
+          <h4 id="error_handling" class="doc-h4">Error Handling</h4>
+          <h4 id="error_properties" class="doc-h4">Properties</h4>
+          <h4 id="error_api" class="doc-h4">API</h4>
+          <h4 id="error_example" class="doc-h4">Example</h4>
+          <p class="section-end"></p>
+          
+        <h3 id="exit" class="doc-h3">Exit</h3>
+        <hr class="doc-divider">
+        
+          <h4 id="exit_handling" class="doc-h4">Exit Handling</h4>
+          <h4 id="exit_properties" class="doc-h4">Properties</h4>
+          <h4 id="exit_api" class="doc-h4">API</h4>
+          <h4 id="exit_example" class="doc-h4">Example</h4>
+          <p class="section-end"></p>
+          
+        <h3 id="file" class="doc-h3">File</h3>
+        <hr class="doc-divider">
+        
+          <h4 id="file_handling" class="doc-h4">File Handling</h4>
+          <h4 id="file_properties" class="doc-h4">Properties</h4>
+          <h4 id="file_api" class="doc-h4">API</h4>
+          <h4 id="file_example" class="doc-h4">Example</h4>
+          <p class="section-end"></p>
+          
+        <h3 id="log" class="doc-h3">Log</h3>
+        <hr class="doc-divider">
+        
+          <h4 id="log_handling" class="doc-h4">Log Handling</h4>
+          <h4 id="log_properties" class="doc-h4">Properties</h4>
+          <h4 id="log_api" class="doc-h4">API</h4>
+          <h4 id="log_example" class="doc-h4">Example</h4>
+          <p class="section-end"></p>
+          
+
+  	  <% include partials/footer.ejs %>
+          
+      </div>
+    </div>
   </div>
+
+  <div class="after"></div>
 </body>
 
 </html>
