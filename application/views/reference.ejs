@@ -128,6 +128,12 @@
     } );
   </script>
 
+  <style>
+    table caption {
+      color: #444;
+    }
+  </style>
+
 </head>
 
 <body class="base">
@@ -212,11 +218,14 @@
 	        all APIs come from these middlewares.
       	</p>
       	<div class="well doc-well p-end">
-			var connHandler = new connectionHandler( req, res );<br>
-			connHandler.setCookie( "key", "value", callback );
-	    </div>
+    			var connHandler = new connectionHandler( req, res );<br>
+    			connHandler.setCookie( "key", "value", callback );
+  	    </div>
 	    <p>
-	    	<h5>getCookie( [ key, callback ] )</h5>
+	    	<h4 class="doc-api">getCookie( [ key, callback ] )</h4>
+        <p>
+          Get Cookie values. It is possible to get specific cookie values via key or whole cookies.
+        </p>
 	    	<table class="table table-responsive table-hover">
 	    		<caption>Function Parameters</caption>
 	    		<tbody>
@@ -238,7 +247,7 @@
 	    			</tr>
 	    		</tbody>
 	    	</table>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback</caption>
 	    		<tbody>
 	    			<tr>
@@ -257,7 +266,10 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>setCookie( key, value[, callback ] )</h5>
+	    	<h4 class="doc-api">setCookie( key, value[, callback ] )</h4>
+        <p>
+          Set Cookie values. It is possible to set specific cookie values via key or whole cookies.
+        </p>
 	    	<table class="table table-responsive table-hover">
 	    		<caption>Parameters</caption>
 	    		<tbody>
@@ -283,7 +295,7 @@
 	    			</tr>
 	    		</tbody>
 	    	</table>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback</caption>
 	    		<tbody>
 	    			<tr>
@@ -302,7 +314,10 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>clearCookie( key[, callback ] )</h5>
+	    	<h4 class="doc-api">clearCookie( key[, callback ] )</h4>
+        <p>
+          Delete Specific Cookie.
+        </p>
 	    	<table class="table table-responsive table-hover">
 	    		<caption>Parameters</caption>
 	    		<tbody>
@@ -320,7 +335,7 @@
 	    			</tr>
 	    		</tbody>
 	    	</table>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback</caption>
 	    		<tbody>
 	    			<tr>
@@ -333,7 +348,10 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>getSession( key, callback )</h5>
+	    	<h4 class="doc-api">getSession( key, callback )</h4>
+        <p>
+          Get specific session value.
+        </p>
 	    	<table class="table table-responsive table-hover">
 	    		<caption>Parameters</caption>
 	    		<tbody>
@@ -352,7 +370,7 @@
 	    			</tr>
 	    		</tbody>
 	    	</table>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback</caption>
 	    		<tbody>
 	    			<tr>
@@ -365,7 +383,10 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>setSession( key, value[, callback] )</h5>
+	    	<h4 class="doc-api">setSession( key, value[, callback] )</h4>
+        <p>
+          Set Session values. It is possible to set specific session values via key or whole session.
+        </p>
 	    	<table class="table table-responsive table-hover">
 	    		<caption>Parameters</caption>
 	    		<tbody>
@@ -391,7 +412,7 @@
 	    			</tr>
 	    		</tbody>
 	    	</table>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback</caption>
 	    		<tbody>
 	    			<tr>
@@ -404,8 +425,11 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>destroySession( [ callback ] )</h5>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<h4 class="doc-api">destroySession( [ callback ] )</h4>
+        <p>
+          Delete Session.
+        </p>
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback (Optional)</caption>
 	    		<tbody>
 	    			<tr>
@@ -418,8 +442,11 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>regenerateSession( [ callback ] )</h5>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<h4 class="doc-api">regenerateSession( [ callback ] )</h4>
+        <p>
+          Regenerate session of current connection.
+        </p>
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback (Optional)</caption>
 	    		<tbody>
 	    			<tr>
@@ -432,8 +459,11 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>reloadSession( [ callback ] )</h5>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<h4 class="doc-api">saveSession( [ callback ] )</h4>
+        <p>
+          save changed session values via current connection. This function will be executed when <code>resave </code>property setted as true.
+        </p>
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback (Optional)</caption>
 	    		<tbody>
 	    			<tr>
@@ -446,8 +476,11 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>saveSession( [ callback ] )</h5>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<h4 class="doc-api">touchSession( [ callback ] )</h4>
+        <p>
+          Reset session expired timeout as current time.
+        </p>
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback (Optional)</caption>
 	    		<tbody>
 	    			<tr>
@@ -460,21 +493,10 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>touchSession( [ callback ] )</h5>
-	    	<table class="table table-responsive table-hover p-end">
-	    		<caption>Callback (Optional)</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h5>setSessionTimeout( maxAge[, callback ] )</h5>
+	    	<h4 class="doc-api">setSessionTimeout( maxAge[, callback ] )</h4>
+        <p>
+          Set duration maintain session.
+        </p>
 	    	<table class="table table-responsive table-hover">
 	    		<caption>Parameters</caption>
 	    		<tbody>
@@ -492,7 +514,7 @@
 	    			</tr>
 	    		</tbody>
 	    	</table>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback</caption>
 	    		<tbody>
 	    			<tr>
@@ -505,7 +527,10 @@
 	    	</table>
 	    </p>
 	    <p>
-	    	<h5>setSessionExpire( expireDate[, callback ] )</h5>
+	    	<h4 class="doc-api">setSessionExpire( expireDate[, callback ] )</h4>
+        <p>
+          Reset session expire date.
+        </p>
 	    	<table class="table table-responsive table-hover">
 	    		<caption>Parameters</caption>
 	    		<tbody>
@@ -523,7 +548,7 @@
 	    			</tr>
 	    		</tbody>
 	    	</table>
-	    	<table class="table table-responsive table-hover p-end">
+	    	<table class="table table-responsive table-hover section-end">
 	    		<caption>Callback</caption>
 	    		<tbody>
 	    			<tr>
@@ -535,7 +560,8 @@
 	    		</tbody>
 	    	</table>
 	    </p>
-      	
+      <p class="section-end"></p>
+
 		<h4 id="db" class="doc-h4">DB</h4>
 		<h4 id="error" class="doc-h4">Error</h4>
 		<h4 id="exit" class="doc-h4">Exit</h4>
@@ -573,7 +599,7 @@
         			<td>Path of project root folder</td>
         			<td><code class="doc-file">{user-project}</code></td>
         		</tr>
-        	
+
         		<tr>
         			<td>Application Path</td>
         			<td>__controllerPath</td>
@@ -592,7 +618,7 @@
         			<td>Path of core property folder</td>
         			<td><code class="doc-file">{user-project}/core-properties</code><br>This folder contains <code class="doc-file">context-dispatcher.json</code>, <code class="doc-file">initializer.json</code>.</td>
         		</tr>
-        		
+
         		<tr>
         			<td>Properties</td>
         			<td>__staticFolders</td>
@@ -605,7 +631,7 @@
         			<td>Current Port number</td>
         			<td><code class="doc-file">initializer.json</code> shows this value.</td>
         		</tr>
-        		
+
         		<tr>
         			<td>Properties Path</td>
         			<td>__toolsPropertiesPath</td>
@@ -618,8 +644,8 @@
         			<td>Path of tools submodule folder</td>
         			<td><code class="doc-file">{user-project}/tools-submodule</code></td>
         		</tr>
-        		
-        		
+
+
         		<tr>
         			<td>Properties</td>
         			<td>__initInfo</td>
@@ -642,7 +668,7 @@
         	The summer-mvc adopted some special gifts name NPM Middlewares such as <code class="doc-middleware">Express</code> and <code class="doc-middleware">ejs</code>.
 			If these middlewares are hidden, the summer-mvc couldn't be presented the world.
 			Thanks to below middleware developers.
-			And We promise that we will go to a way to follow.        	
+			And We promise that we will go to a way to follow.
         </p>
         <table class="table table-responsive table-hover section-end">
           <thead>
@@ -665,10 +691,10 @@
           </tbody>
         </table>
 
-        <h3 id="write_codes" class="doc-h3">History</h3>
+        <h3 id="history" class="doc-h3">History</h3>
         <hr class="doc-divider">
         <p class="p-end">
-        	2 Major versions were released. And the summer-mvc will be upgraded during our users want to use continuously. 
+        	2 Major versions were released. And the summer-mvc will be upgraded during our users want to use continuously.
         </p>
         <table class="table table-responsive table-hover">
           <thead>

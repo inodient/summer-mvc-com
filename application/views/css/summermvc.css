@@ -413,6 +413,7 @@ body {
     margin-top: -80px;
     padding-top: 100px;
     margin-bottom: 10px;
+		/*font-weight: 400;*/
   }
 
   .doc-content .doc-divider {
@@ -423,6 +424,7 @@ body {
     margin-top: -80px;
     padding-top: 100px;
     margin-bottom: 10px;
+		/*font-weight: 400;*/
   }
 
 	.doc-content .doc-well {
