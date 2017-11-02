@@ -250,7 +250,7 @@
       <h3 id="setting_up" class="doc-h3">Setting Up</h3>
       <hr style="border-top: 1px solid #ccc;">
 
-      <p>
+      <p class="p-end">
         As controlling http req/res is event-driven, node must be run continuously. It means that summer-mvc also be run until it gets process end signal. Ironically, that why summer-mvc's setting is easy. Just require/import summ-mvc module. That's all. summer-mvc core module will create / make some folders and files. And your project will be shaped as typical web application project.
       </p>
 
@@ -289,13 +289,13 @@
       </p>
 
       <h4 id="setting_port" class="doc-h4">Port</h4>
-      <div class="well doc-well">
-        "port" : 3000
-      </div>
-      <p class="p-end">
+      <p>
         As summer-mvc uses <code class="doc-middleware">Express</code> as foundation module, default port number is 3000.
         It can be changed if you want to use other ports. It's type is number.
       </p>
+      <div class="well doc-well p-end">
+        "port" : 3000
+      </div>
 
       <h4 id="setting_context_architecture" class="doc-h4">Context Architecture</h4>
       <p class="p-end">
@@ -396,7 +396,7 @@
         Tools use 2 specific folders to execute, <code class="doc-file">/tools-properties</code> and <code class="doc-file">tools-submodules</code>.
         <code class="doc-file">/tools-properties</code> contains property files and <code class="doc-file">/tools-submodules</code> contains js files help tool.
       </p>
-      <div class="well doc-well">
+      <div class="well doc-well p-end">
         "enable" : true | false
       </div>
       <table class="table table-hover p-end">
@@ -509,7 +509,7 @@
       <p>
         Some developers want to build their own project hierarchy and implement their own way.
         Of course, it is possible.
-        For correcting options propertis, you can control summer-mvc's automatical building machnism.
+        For correcting options propertis, you can control summer-mvc's <code class="doc-emphasis">automatical building machnism</code>.
       </p>
       <div class="well doc-well">
         "remove_and_rebuild" : "false"

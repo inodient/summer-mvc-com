@@ -16,7 +16,6 @@ exports.control = function( req, res, connection ){
       var results = {};
 
       results = Object.assign( argv[0], argv[1], argv[2] );
-      logger.debug( results );
       resolve( results );
     } )
     .catch( function(err){
@@ -35,8 +34,6 @@ function getDependency( connection ){
       var results = {};
       results.dependency = queryResults.results
 
-      logger.debug( results );
-
       resolve( results );
     } )
     .catch( function(err){
@@ -51,8 +48,6 @@ function getHistory( connection ){
     .then( function( queryResults ){
       var results = {};
       results.history = queryResults.results;
-
-      logger.debug( results );
 
       resolve( results );
     } )
