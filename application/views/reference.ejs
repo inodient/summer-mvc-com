@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:italic' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:bold' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:bolditalic' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat'
+	rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:italic'
+	rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:bold'
+	rel='stylesheet'>
+<link
+	href='https://fonts.googleapis.com/css?family=Montserrat:bolditalic'
+	rel='stylesheet'>
 
-  <!-- <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Exo+2:italic" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Exo+2:bold" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Exo+2:bolditalic" rel="stylesheet">
@@ -25,14 +35,18 @@
   <link href="https://fonts.googleapis.com/css?family=Hind+Guntur:bold" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Hind+Guntur:bolditalic" rel="stylesheet"> -->
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:italic" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:bold" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:bolditalic" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:italic"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:bold"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:bolditalic"
+	rel="stylesheet">
 
-  <link rel="stylesheet" href="summermvc.css">
+<link rel="stylesheet" href="summermvc.css">
 
-  <script>
+<script>
     $(document).ready( function(){
       $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
 
@@ -128,602 +142,991 @@
     } );
   </script>
 
-  <style>
-    table caption {
-      color: #444;
-    }
-  </style>
+<style>
+.doc-api {
+	font-style: italic;
+	font-size: 16.5px;
+}
+table caption {
+	color: #444;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+</style>
 
 </head>
 
 <body class="base">
-  <header class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-container">
-      <div class="navbar-header">
-        <button type="button" style="margin-left: 10px" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#top_menu">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="summer-mvc-logo.ico" style="display:inline-block; max-width: 35px" /></a> -->
-        <a href="/" class="navbar-brand mobile-navbar-brand mobile-show">summer-mvc</a>
-        <!-- <img id="download" src="/download_icon.gif" class="mobile-show"/> -->
-        <a id="download" class="mobile-show" href="/"><i class="fa fa-facebook fa-lg logo"></i></a>
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-content" id="top_menu">
-      <ul class="nav navbar-nav top-nav">
-        <% for( var i=0; i<topLeftMenus.length; i++ ){ %>
-          <li id="<%- topLeftMenus[i].id %>" name="<%- topLeftMenus[i].name %>" class="<%- topLeftMenus[i].active %>"><a href="<%- topLeftMenus[i].redirectpath %>" ><%- topLeftMenus[i].displayname %></a></li>
-        <% } %>
-      </ul>
-      <ul class="nav navbar-nav navbar-right top-nav">
-        <% for( var i=0; i<topRightMenus.length-1; i++ ){ %>
-          <% if( topRightMenus[i].type === "href" ){ %>
-            <li id="<%- topRightMenus[i].id %>" name="<%- topRightMenus[i].name %>" class="<%- topRightMenus[i].active %>"><a href="<%- topRightMenus[i].redirectpath %>" ><i class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[i].displayname %></a></li>
-          <% } else if( topRightMenus[i].type === "onclick" ){ %>
-            <li id="<%- topRightMenus[i].id %>" name="<%- topRightMenus[i].name %>" class="<%- topRightMenus[i].active %>"><a href="#" onclick="<%- topRightMenus[i].redirectpath %>" ><i class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[i].displayname %></a></li>
-          <% } %>
-        <% } %>
-        <li style="padding-right: 15px" id="<%- topRightMenus[topRightMenus.length-1].id %>" name="<%- topRightMenus[topRightMenus.length-1].name %>" class="<%- topRightMenus[topRightMenus.length-1].active %>"><a href="<%- topRightMenus[topRightMenus.length-1].redirectpath %>" ><i class="<%- topRightMenus[topRightMenus.length-1].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[topRightMenus.length-1].displayname %></a></li>
-      </ul>
-    </div>
-  </header>
+	<header class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-container">
+			<div class="navbar-header">
+				<button type="button" style="margin-left: 10px"
+					class="pull-left navbar-toggle" data-toggle="collapse"
+					data-target="#top_menu">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="summer-mvc-logo.ico" style="display:inline-block; max-width: 35px" /></a> -->
+				<a href="/" class="navbar-brand mobile-navbar-brand mobile-show">summer-mvc</a>
+				<!-- <img id="download" src="/download_icon.gif" class="mobile-show"/> -->
+				<a id="download" class="mobile-show" href="/"><i
+					class="fa fa-facebook fa-lg logo"></i></a>
+			</div>
+		</div>
+		<div class="collapse navbar-collapse navbar-content" id="top_menu">
+			<ul class="nav navbar-nav top-nav">
+				<% for( var i=0; i
+				<topLeftMenus.length; i++ ){ %>
+				<li id="<%- topLeftMenus[i].id %>"
+					name="<%- topLeftMenus[i].name %>"
+					class="<%- topLeftMenus[i].active %>"><a
+					href="<%- topLeftMenus[i].redirectpath %>"><%-
+						topLeftMenus[i].displayname %></a></li>
+				<% } %> 
+			</ul>
+			<ul class="nav navbar-nav navbar-right top-nav">
+				<% for( var i=0; i
+				<topRightMenus.length-1; i++ ){ %> <% if(
+				topRightMenus[i].type === "href" ){ %>
+				<li id="<%- topRightMenus[i].id %>"
+					name="<%- topRightMenus[i].name %>"
+					class="<%- topRightMenus[i].active %>"><a
+					href="<%- topRightMenus[i].redirectpath %>"><i
+						class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%-
+						topRightMenus[i].displayname %></a></li>
+				<% } else if( topRightMenus[i].type === "onclick" ){ %>
+				<li id="<%- topRightMenus[i].id %>"
+					name="<%- topRightMenus[i].name %>"
+					class="<%- topRightMenus[i].active %>"><a href="#"
+					onclick="<%- topRightMenus[i].redirectpath %>"><i
+						class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%-
+						topRightMenus[i].displayname %></a></li>
+				<% } %> <% } %>
+				<li style="padding-right: 15px"
+					id="<%- topRightMenus[topRightMenus.length-1].id %>"
+					name="<%- topRightMenus[topRightMenus.length-1].name %>"
+					class="<%- topRightMenus[topRightMenus.length-1].active %>"><a
+					href="<%- topRightMenus[topRightMenus.length-1].redirectpath %>"><i
+						class="<%- topRightMenus[topRightMenus.length-1].icon %>"></i>&nbsp;&nbsp;<%-
+						topRightMenus[topRightMenus.length-1].displayname %></a></li>
+			</ul>
+		</div>
+	</header>
 
-  <div class="container-fluid doc">
-    <div class="row">
-      <div class="col-lg-3 col-md-3 col-sm-3 doc-nav">
-        <blockquote class="doc-description" onclick="location.href=''">
-        	<% for( var i=0; i<topLeftMenus.length; i++ ){ %>
-	          <% if( topLeftMenus[i].active == "active" ){ %>
-	      		<h4><%- topLeftMenus[i].displayname %></h4>
-	      		<p><%- topLeftMenus[i].description %></p>
-	          <% } %>
-	        <% } %>
-        </blockquote>
-        <ul class="doc-nav-list" >
-          <li>
-            <a href="#apis" id="dnl_apis">APIs</a>
-            <ul class="doc-nav-sub-list">
-              <li><a href="#connection" id="dnl_connection">Connection</a></li>
-              <li><a href="#db" id="dnl_db">DB</a></li>
-              <li><a href="#error" id="dnl_error">Error</a></li>
-              <li><a href="#exit" id="dnl_exit">Exit</a></li>
-              <li><a href="#file" id="dnl_file">File</a></li>
-              <li><a href="#log" id="dnl_log">Log</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#pre_defined" id="dnl_pre_defined">Pre-defined</a>
-          </li>
-		  <li>
-            <a href="#dependency" id="dnl_dependency">Dependency</a>
-          </li>
-          <li>
-            <a href="#history" id="dnl_history">History</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
+	<div class="container-fluid doc">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-3 doc-nav">
+				<blockquote class="doc-description" onclick="location.href=''">
+					<% for( var i=0; i
+					<topLeftMenus.length; i++ ){ %> <% if(
+					topLeftMenus[i].active == "active" ){ %>
+					<h4><%- topLeftMenus[i].displayname %></h4>
+					<p><%- topLeftMenus[i].description %></p>
+					<% } %> <% } %> 
+				</blockquote>
+				<ul class="doc-nav-list">
+					<li><a href="#apis" id="dnl_apis">APIs</a>
+						<ul class="doc-nav-sub-list">
+							<li><a href="#connection" id="dnl_connection">Connection</a></li>
+							<li><a href="#db" id="dnl_db">DB</a></li>
+							<li><a href="#file" id="dnl_file">File</a></li>
+							<li><a href="#log" id="dnl_log">Log</a></li>
+						</ul></li>
+					<li><a href="#pre_defined" id="dnl_pre_defined">Pre-defined</a>
+					</li>
+					<li><a href="#dependency" id="dnl_dependency">Dependency</a></li>
+					<li><a href="#history" id="dnl_history">History</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-9 doc-content">
 
-        <h3 id="apis" class="doc-h3">APIs</h3>
-        <hr class="doc-divider">
-      	<h4 id="connection" class="doc-h4">Connection</h4>
-      	<p>
-	      	connectionHandler is default module so there are no need to import or require.
-	        But you must create instance of connectionHandler using <code>new</code> keyword.
-	        And then, just call connectionHandler's API functions as follow.
-	        <br>
-	        As connectionHandler adopt <code class="doc-middleware">cookie-parser</code>, <code class="doc-middleware">express-session</code>,
-	        all APIs come from these middlewares.
-      	</p>
-      	<div class="well doc-well p-end">
-    			var connHandler = new connectionHandler( req, res );<br>
-    			connHandler.setCookie( "key", "value", callback );
-  	    </div>
-	    <p>
-	    	<h4 class="doc-api">getCookie( [ key, callback ] )</h4>
-        <p>
-          Get Cookie values. It is possible to get specific cookie values via key or whole cookies.
-        </p>
-	    	<table class="table table-responsive table-hover">
-	    		<caption>Function Parameters</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">key</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Optional</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">When exists, return cookie value matched with "key". <br>
-	    					When not exists, return object of whole cookies.
-	    				</td>
-	    			</tr>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">callback</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;function&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Optional</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">When exists, cookie key & value pairs will be returned as callback function's parameter.<br>
-	    					When not exits, it will be returned as plain javascript function return.
-	    				</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">results</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">Array or string of set as cookie</td>
-	    			</tr>
-	    			<tr>
-	    				<td>error</td>
-	    				<td>&#60;object&#62;</td>
-	    				<td>Mandatory</td>
-	    				<td>error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">setCookie( key, value[, callback ] )</h4>
-        <p>
-          Set Cookie values. It is possible to set specific cookie values via key or whole cookies.
-        </p>
-	    	<table class="table table-responsive table-hover">
-	    		<caption>Parameters</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">key</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">string that is wanted to insert as cookie key.</td>
-	    			</tr>
-	    			<tr>
-	    				<td>Value</td>
-	    				<td>&#60;string&#62;</td>
-	    				<td>Mandatory</td>
-	    				<td>string that is wanted to insert as cookie value.</td>
-	    			</tr>
-	    			<tr>
-	    				<td>callback</td>
-	    				<td>&#60;function&#62;</td>
-	    				<td>Optional</td>
-	    				<td>When exists, cookie values will be returned as callback function's parameter.<br>
-	    					When not exits, it will be returned as plain javascript function return.
-	    				</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">results</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">Array or string of set as cookie</td>
-	    			</tr>
-	    			<tr>
-	    				<td>error</td>
-	    				<td>&#60;object&#62;</td>
-	    				<td>Mandatory</td>
-	    				<td>error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">clearCookie( key[, callback ] )</h4>
-        <p>
-          Delete Specific Cookie.
-        </p>
-	    	<table class="table table-responsive table-hover">
-	    		<caption>Parameters</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">key</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">string value that is wanted to delete</td>
-	    			</tr>
-	    			<tr>
-	    				<td>callback</td>
-	    				<td>&#60;function&#62;</td>
-	    				<td>Optional</td>
-	    				<td>When error occurs, it can be returned as callback function's parameter</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">getSession( key, callback )</h4>
-        <p>
-          Get specific session value.
-        </p>
-	    	<table class="table table-responsive table-hover">
-	    		<caption>Parameters</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">key</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">string value that is wanted to get from session</td>
-	    			</tr>
-	    			<tr>
-	    				<td>callback</td>
-	    				<td>&#60;function&#62;</td>
-	    				<td>Mandatory</td>
-	    				<td>session values will be returned as callback function's parameter.
-	    				</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">setSession( key, value[, callback] )</h4>
-        <p>
-          Set Session values. It is possible to set specific session values via key or whole session.
-        </p>
-	    	<table class="table table-responsive table-hover">
-	    		<caption>Parameters</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">key</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">string that is wanted to insert as session key.</td>
-	    			</tr>
-	    			<tr>
-	    				<td>Value</td>
-	    				<td>&#60;string&#62;</td>
-	    				<td>Mandatory</td>
-	    				<td>string that is wanted to insert as session value.</td>
-	    			</tr>
-	    			<tr>
-	    				<td>callback</td>
-	    				<td>&#60;function&#62;</td>
-	    				<td>Optional</td>
-	    				<td>When exists, session values will be returned as callback function's parameter.<br>
-	    					When not exits, it will be returned as plain javascript function return.
-	    				</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">destroySession( [ callback ] )</h4>
-        <p>
-          Delete Session.
-        </p>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback (Optional)</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">regenerateSession( [ callback ] )</h4>
-        <p>
-          Regenerate session of current connection.
-        </p>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback (Optional)</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">saveSession( [ callback ] )</h4>
-        <p>
-          save changed session values via current connection. This function will be executed when <code>resave </code>property setted as true.
-        </p>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback (Optional)</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">touchSession( [ callback ] )</h4>
-        <p>
-          Reset session expired timeout as current time.
-        </p>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback (Optional)</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">setSessionTimeout( maxAge[, callback ] )</h4>
-        <p>
-          Set duration maintain session.
-        </p>
-	    	<table class="table table-responsive table-hover">
-	    		<caption>Parameters</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">maxAge</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;number&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">number value that is wanted to set as session timeout</td>
-	    			</tr>
-	    			<tr>
-	    				<td>callback</td>
-	    				<td>&#60;function&#62;</td>
-	    				<td>Mandatory</td>
-	    				<td>When error occurs, it can be returned as callback function's parameter</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-	    <p>
-	    	<h4 class="doc-api">setSessionExpire( expireDate[, callback ] )</h4>
-        <p>
-          Reset session expire date.
-        </p>
-	    	<table class="table table-responsive table-hover">
-	    		<caption>Parameters</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">expireDate</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">string value that is wanted to set as session expireDate</td>
-	    			</tr>
-	    			<tr>
-	    				<td>callback</td>
-	    				<td>&#60;function&#62;</td>
-	    				<td>Mandatory</td>
-	    				<td>When error occurs, it can be returned as callback function's parameter</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    	<table class="table table-responsive table-hover section-end">
-	    		<caption>Callback</caption>
-	    		<tbody>
-	    			<tr>
-	    				<td class="col-lg-2 col-md-2 col-sm-2">error</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
-	    				<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
-	    				<td class="col-lg-8 col-md-8 col-sm-8">error object if error occurs</td>
-	    			</tr>
-	    		</tbody>
-	    	</table>
-	    </p>
-      <p class="section-end"></p>
+				<h3 id="apis" class="doc-h3">APIs</h3>
+				<hr class="doc-divider">
+				<h4 id="connection" class="doc-h4">Connection</h4>
+				<p>
+					connectionHandler is default module so there are no need to import
+					or require. But you must create instance of connectionHandler using
+					<code>new</code>
+					keyword. And then, just call connectionHandler's API functions as
+					follow. <br> As connectionHandler adopt
+					<code class="doc-middleware">cookie-parser</code>
+					,
+					<code class="doc-middleware">express-session</code>
+					, all APIs come from these middlewares.
+				</p>
+				<div class="well doc-well p-end">
+					var connHandler = new connectionHandler( req, res );<br>
+					connHandler.setCookie( "key", "value", callback );
+				</div>
+				<p>
+				<h4 class="doc-api">getCookie( [ key, callback ] )</h4>
+				<p>Get Cookie values. It is possible to get specific cookie
+					values via key or whole cookies.</p>
+				<table class="table table-responsive table-hover">
+					<caption>Function Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">key</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Optional</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">When exists, return
+								cookie value matched with "key". <br> When not exists,
+								return object of whole cookies.
+							</td>
+						</tr>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">callback</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;function&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Optional</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">When exists, cookie
+								key & value pairs will be returned as callback function's
+								parameter.<br> When not exits, it will be returned as plain
+								javascript function return.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">results</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Array or string of
+								set as cookie</td>
+						</tr>
+						<tr>
+							<td>error</td>
+							<td>&#60;object&#62;</td>
+							<td>Mandatory</td>
+							<td>error object if error occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">setCookie( key, value[, callback ] )</h4>
+				<p>Set Cookie values. It is possible to set specific cookie
+					values via key or whole cookies.</p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">key</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">string that is wanted
+								to insert as cookie key.</td>
+						</tr>
+						<tr>
+							<td>Value</td>
+							<td>&#60;string&#62;</td>
+							<td>Mandatory</td>
+							<td>string that is wanted to insert as cookie value.</td>
+						</tr>
+						<tr>
+							<td>callback</td>
+							<td>&#60;function&#62;</td>
+							<td>Optional</td>
+							<td>When exists, cookie values will be returned as callback
+								function's parameter.<br> When not exits, it will be
+								returned as plain javascript function return.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">results</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Array or string of
+								set as cookie</td>
+						</tr>
+						<tr>
+							<td>error</td>
+							<td>&#60;object&#62;</td>
+							<td>Mandatory</td>
+							<td>error object if error occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">clearCookie( key[, callback ] )</h4>
+				<p>Delete Specific Cookie.</p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">key</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">string value that is
+								wanted to delete</td>
+						</tr>
+						<tr>
+							<td>callback</td>
+							<td>&#60;function&#62;</td>
+							<td>Optional</td>
+							<td>When error occurs, it can be returned as callback
+								function's parameter</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">getSession( key, callback )</h4>
+				<p>Get specific session value.</p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">key</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">string value that is
+								wanted to get from session</td>
+						</tr>
+						<tr>
+							<td>callback</td>
+							<td>&#60;function&#62;</td>
+							<td>Mandatory</td>
+							<td>session values will be returned as callback function's
+								parameter.</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">setSession( key, value[, callback] )</h4>
+				<p>Set Session values. It is possible to set specific session
+					values via key or whole session.</p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">key</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">string that is wanted
+								to insert as session key.</td>
+						</tr>
+						<tr>
+							<td>Value</td>
+							<td>&#60;string&#62;</td>
+							<td>Mandatory</td>
+							<td>string that is wanted to insert as session value.</td>
+						</tr>
+						<tr>
+							<td>callback</td>
+							<td>&#60;function&#62;</td>
+							<td>Optional</td>
+							<td>When exists, session values will be returned as callback
+								function's parameter.<br> When not exits, it will be
+								returned as plain javascript function return.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">destroySession( [ callback ] )</h4>
+				<p>Delete Session.</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback (Optional)</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">regenerateSession( [ callback ] )</h4>
+				<p>Regenerate session of current connection.</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback (Optional)</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">saveSession( [ callback ] )</h4>
+				<p>
+					save changed session values via current connection. This function
+					will be executed when
+					<code>resave </code>
+					property setted as true.
+				</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback (Optional)</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">touchSession( [ callback ] )</h4>
+				<p>Reset session expired timeout as current time.</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback (Optional)</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">setSessionTimeout( maxAge[, callback ] )</h4>
+				<p>Set duration maintain session.</p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">maxAge</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;number&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">number value that is
+								wanted to set as session timeout</td>
+						</tr>
+						<tr>
+							<td>callback</td>
+							<td>&#60;function&#62;</td>
+							<td>Mandatory</td>
+							<td>When error occurs, it can be returned as callback
+								function's parameter</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p>
+				<h4 class="doc-api">setSessionExpire( expireDate[, callback ] )</h4>
+				<p>Reset session expire date.</p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">expireDate</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">string value that is
+								wanted to set as session expireDate</td>
+						</tr>
+						<tr>
+							<td>callback</td>
+							<td>&#60;function&#62;</td>
+							<td>Mandatory</td>
+							<td>When error occurs, it can be returned as callback
+								function's parameter</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Callback</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				<p class="section-end"></p>
 
-		<h4 id="db" class="doc-h4">DB</h4>
-		<h4 id="error" class="doc-h4">Error</h4>
-		<h4 id="exit" class="doc-h4">Exit</h4>
-		<h4 id="file" class="doc-h4">File</h4>
-		<h4 id="log" class="doc-h4">Log</h4>
-        <p class="section-end"></p>
-
-		<h3 id="pre_defined" class="doc-h3">Pre-defined</h3>
-        <hr class="doc-divider">
-        <p class="p-end">
-        	You can use some predefined values for improving development efficiency.
-        	<code class="doc-file">{user-project}/node_modules/summer-mvc/tools/common/defined.js</code> shows all predefined values.
-        	During initialzing time, this file will be imported your Node environment.
-        	So that you can use these values just type into your code.
-        </p>
-    	<b>Example</b>
-        <div class="well doc-well p-end">
-        	logger.debug( __runningPath );
-        	<br>
-      		var path = require( __contextDispatchingInfo );
-        </div>
-	    <table class="table table-responsive table-hover section-end">
-        	<thead>
-        		<tr>
-        			<th>Type</th>
-        			<th>Name</th>
-        			<th>Description</th>
-        			<th>Values</th>
-        		</tr>
-        	</thead>
-        	<tbody>
-        		<tr>
-        			<td>Application Path</td>
-        			<td>__runningPath</td>
-        			<td>Path of project root folder</td>
-        			<td><code class="doc-file">{user-project}</code></td>
-        		</tr>
-
-        		<tr>
-        			<td>Application Path</td>
-        			<td>__controllerPath</td>
-        			<td>Path of controller folder</td>
-        			<td><code class="doc-file">{user-project}/application/controllers</code></td>
-        		</tr>
-        		<tr>
-        			<td>Application Path</td>
-        			<td>__viewsPath</td>
-        			<td>Path of view folder</td>
-        			<td><code class="doc-file">{user-project}/application/views</code></td>
-        		</tr>
-        		<tr>
-        			<td>Properties Path</td>
-        			<td>__corePropertiesPath</td>
-        			<td>Path of core property folder</td>
-        			<td><code class="doc-file">{user-project}/core-properties</code><br>This folder contains <code class="doc-file">context-dispatcher.json</code>, <code class="doc-file">initializer.json</code>.</td>
-        		</tr>
-
-        		<tr>
-        			<td>Properties</td>
-        			<td>__staticFolders</td>
-        			<td>Array of static folder pathes </td>
-        			<td><code class="doc-file">initializer.json</code> shows this array.</td>
-        		</tr>
-        		<tr>
-        			<td>Properties</td>
-        			<td>__defaultPort</td>
-        			<td>Current Port number</td>
-        			<td><code class="doc-file">initializer.json</code> shows this value.</td>
-        		</tr>
-
-        		<tr>
-        			<td>Properties Path</td>
-        			<td>__toolsPropertiesPath</td>
-        			<td>Path of tools property folder</td>
-        			<td><code class="doc-file">{user-project}/tools-properties</code></td>
-        		</tr>
-        		<tr>
-        			<td>Properties Path</td>
-        			<td>__toolsSubmodulesPath</td>
-        			<td>Path of tools submodule folder</td>
-        			<td><code class="doc-file">{user-project}/tools-submodule</code></td>
-        		</tr>
+				<h4 id="db" class="doc-h4">DB</h4>
+				<p>
+					Mysql is default db of summer-mvc. And summer-mvc manage mysql
+					connections and pools, there are no need to control mysql itself.
+					By default, every summer-mvc instance (your project) create
+					<code class="doc-emphasis">pool</code>
+					and every http request create
+					<code class="doc-emphasis">connection</code>
+					. Every controller can have
+					<code class="doc-emphasis">connection</code>
+					as third parameter. Your task is just write down your code with
+					below APIs.<br> As mysqlHandler adopt
+					<code class="doc-middleware">mysql</code>
+					, all APIs come from these middlewares.
+				</p>
+				<blockquote class="doc-notice p-end">
+					As DB handling in Nodejs is asynchronous event, all APIs were
+					designed using
+					<code class="doc-emphasis">promise</code>
+					pattern.
+				</blockquote>
+				<div class="well doc-well p-end">
+					mysqlHandler.executeQuery( queryId, params, connection )<br>
+					.then( function( resolve, reject ){ <br>
+					&nbsp;&nbsp;&nbsp;&nbsp;resolve( ... ) <br> } ) <br>
+					.catch( function( err ){ <br> &nbsp;&nbsp;&nbsp;&nbsp;reject(
+					err ) <br> } ); <br>
+				</div>
 
 
-        		<tr>
-        			<td>Properties</td>
-        			<td>__initInfo</td>
-        			<td>Object contains initializer values</td>
-     				<td>ex: <code>__initInfo.options</code></td>
-        		</tr>
-        		<tr>
-        			<td>Properties</td>
-        			<td>__contextDispatchingInfo</td>
-        			<td>Object contains contextDispatcher</td>
-        			<td>ex: <code>require( __contextDispatchingInfo )</code></td>
-        		</tr>
-        	</tbody>
-        </table>
+
+				<p>
+				<h4 class="doc-api">executeQuery( queryId[, params], connection )</h4>
+				<p>Execute query via queryId</p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">queryId</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">string value that is
+								wanted to execute as query. It is possible to pass both id and queryString itself.</td>
+						</tr>
+						<tr>
+							<td>params</td>
+							<td>&#60;array&#62;</td>
+							<td>Optional</td>
+							<td>Perpared statement's parameter array</td>
+						</tr>
+						<tr>
+							<td>connection</td>
+							<td>&#60;object&#62;</td>
+							<td>Mandatory</td>
+							<td>mysql connection object. By default, summer-mvc create and use it.</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Return (Promise's Resolve Object)</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">queryResults</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Object of queryResults. <code>queryResults.results</code> is general pattern.</td>
+						</tr>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				
+				<p>
+				<h4 class="doc-api">executeTransaction( queryId, params, connection )</h4>
+				<p>Same function with <code>executeQuery()</code>. <code>executeQuery()</code> calls this function internally.<br>
+				   There are no needs to use this function. Just use <code>executeQuery()</code></p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">queryId</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">string value that is
+								wanted to execute as query. It is possible to pass both id and queryString itself.</td>
+						</tr>
+						<tr>
+							<td>params</td>
+							<td>&#60;array&#62;</td>
+							<td>Mandatory</td>
+							<td>Perpared statement's parameter array</td>
+						</tr>
+						<tr>
+							<td>connection</td>
+							<td>&#60;object&#62;</td>
+							<td>Mandatory</td>
+							<td>mysql connection object. By default, summer-mvc create and use it.</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Return (Promise's Resolve Object)</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">queryResults</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Object of queryResults. <code>queryResults.results</code> is general pattern.</td>
+						</tr>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">error</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">error object if error
+								occurs</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				
+				<p>
+				<h4 class="doc-api">getQueryString( queryId )</h4>
+				<p>Prepared Statements can be stored in file and called when it is needed. This function return whole queryString via queryId.</p>
+				<table class="table table-responsive table-hover">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">queryId</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">string value that is wanted to find as query</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Return</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">queryString</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Whole query string</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				
+				<p>
+				<h4 class="doc-api">getPool()</h4>
+				<p>Generate Mysql Pool Object. There are no needs to use as summer-mvc create pool automatically in every instance.</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Return (Promise's Resolve Object)</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">pool</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Generated mysql pool object</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				<p>
+				<h4 class="doc-api">getConnection()</h4>
+				<p>Generate Mysql Connection Object. There are no needs to use as summer-mvc create pool automatically in every http request.</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Return (Promise's Resolve Object)</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">connection</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Generated mysql connection object</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				<p>
+				<h4 class="doc-api">releaseConnection( connection )</h4>
+				<p>Release exist connection</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">connection</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">connection object that are want to release</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				<p>
+				<h4 class="doc-api">releasePool( pool )</h4>
+				<p>Release exist pool</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">pool</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">pool object that are want to release</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				
+				
+				<h4 id="file" class="doc-h4">File</h4>
+				<p class="p-end">
+					Saving / Downloading file can be controlled fileHandler. <code>busboy</code> is used to upload file.
+					As file handling is asynchronous in Nodejs environment, all file handler APis were wrapped in <code>promise</code> pattern.
+				</p>
+				<div class="well doc-well">
+					uploadFile( req, "savedFileFolder", "savedFileFolderSub" ) <br>
+					.then( function(){ <br>
+					&nbsp;&nbsp;&nbsp;&nbsp;resolve( "SUCCEED" ); <br>
+					) <br>
+					.catch( function( err ){ <br>
+					&nbsp;&nbsp;&nbsp;&nbsp;reject( err ); <br>
+					} ); <br>
+				</div>
+				<p>
+				<h4 class="doc-api">uploadFile( req[, destination... ]  )</h4>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">req</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">request object contains uploading file stream information.</td>
+						</tr>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">destination</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">File location that want to use as file location under project root</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				<p>
+				<h4 class="doc-api">downloadFile( res, savedPath, savedFileName, originalFileName  )</h4>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">res</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">response object contains downloading file stream information.</td>
+						</tr>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">savedPath</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Saved File location under project root</td>
+						</tr>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">savedFileName</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Saved File name</td>
+						</tr>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">originalFileName</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;string&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Original File Name</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
 
 
-        <h3 id="dependency" class="doc-h3">Dependency</h3>
-        <hr class="doc-divider">
-        <p class="p-end">
-        	The summer-mvc adopted some special gifts name NPM Middlewares such as <code class="doc-middleware">Express</code> and <code class="doc-middleware">ejs</code>.
-			If these middlewares are hidden, the summer-mvc couldn't be presented the world.
-			Thanks to below middleware developers.
-			And We promise that we will go to a way to follow.
-        </p>
-        <table class="table table-responsive table-hover section-end">
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Name</th>
-              <th>Version</th>
-              <th>License</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% for( var i=0; i<dependency.length; i++ ){ %>
-              <tr>
-                <td><%- dependency[i].type %></td>
-                <td><a href="<%- dependency[i].url %>"><%- dependency[i].name %></a></td>
-                <td><%- dependency[i].version %></td>
-                <td><%- dependency[i].license %></td>
-              </tr>
-            <% } %>
-          </tbody>
-        </table>
+				<h4 id="log" class="doc-h4">Log</h4>
+				<p class="p-end">
+					Default logger has very simular execution with default <code>console.log()</code> function.
+					That can receive unlimited parameters seperated with <code class="doc-emphasis">","</code>.
+					But, summer-mvc's logger has its own logging level such as <code class="doc-emphasis">info, debug and error</code> 
+				</p>
+				<div class="well doc-well">
+					logger.info( "Controller Executed" ); <br>
+					logger.debug( queryResults.results ); <br>
+					logger.error( err );
+				</div>
+				
+				<p>
+				<h4 class="doc-api">logger.info( [...] )</h4>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">...</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Object that are want to inform</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				<p>
+				<h4 class="doc-api">logger.debug( [...] )</h4>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">...</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Object that are want to debug</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				<p>
+				<h4 class="doc-api">logger.error( [...] )</h4>
+				<table class="table table-responsive table-hover small-section-end">
+					<caption>Parameters</caption>
+					<tbody>
+						<tr>
+							<td class="col-lg-2 col-md-2 col-sm-2">...</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">&#60;object&#62;</td>
+							<td class="col-lg-1 col-md-1 col-sm-1">Mandatory</td>
+							<td class="col-lg-8 col-md-8 col-sm-8">Error object that are want to inform</td>
+						</tr>
+					</tbody>
+				</table>
+				</p>
+				
+				<p class="section-end"></p>
 
-        <h3 id="history" class="doc-h3">History</h3>
-        <hr class="doc-divider">
-        <p class="p-end">
-        	2 Major versions were released. And the summer-mvc will be upgraded during our users want to use continuously.
-        </p>
-        <table class="table table-responsive table-hover">
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Version</th>
-              <th>Changes</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% for( var i=0; i<history.length; i++ ){ %>
-              <tr>
-                <td><%- history[i].type %></td>
-                <td><%- history[i].version %></td>
-                <td><%- history[i].changes %></td>
-                <td><%- history[i].commitedDate %></td>
-              </tr>
-            <% } %>
-          </tbody>
-        </table>
-        <p class="section-end"></p>
+				<h3 id="pre_defined" class="doc-h3">Pre-defined</h3>
+				<hr class="doc-divider">
+				<p class="p-end">
+					You can use some predefined values for improving development
+					efficiency.
+					<code class="doc-file">{user-project}/node_modules/summer-mvc/tools/common/defined.js</code>
+					shows all predefined values. During initialzing time, this file
+					will be imported your Node environment. So that you can use these
+					values just type into your code.
+				</p>
+				<b>Example</b>
+				<div class="well doc-well p-end">
+					logger.debug( __runningPath ); <br> var path = require(
+					__contextDispatchingInfo );
+				</div>
+				<table class="table table-responsive table-hover small-section-end">
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Values</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Application Path</td>
+							<td>__runningPath</td>
+							<td>Path of project root folder</td>
+							<td><code class="doc-file">{user-project}</code></td>
+						</tr>
 
-        <% include partials/footer.ejs %>
-      </div>
-    </div>
-  </div>
+						<tr>
+							<td>Application Path</td>
+							<td>__controllerPath</td>
+							<td>Path of controller folder</td>
+							<td><code class="doc-file">{user-project}/application/controllers</code></td>
+						</tr>
+						<tr>
+							<td>Application Path</td>
+							<td>__viewsPath</td>
+							<td>Path of view folder</td>
+							<td><code class="doc-file">{user-project}/application/views</code></td>
+						</tr>
+						<tr>
+							<td>Properties Path</td>
+							<td>__corePropertiesPath</td>
+							<td>Path of core property folder</td>
+							<td><code class="doc-file">{user-project}/core-properties</code><br>This
+								folder contains <code class="doc-file">context-dispatcher.json</code>,
+								<code class="doc-file">initializer.json</code>.</td>
+						</tr>
 
-  <div class="after"></div>
+						<tr>
+							<td>Properties</td>
+							<td>__staticFolders</td>
+							<td>Array of static folder pathes</td>
+							<td><code class="doc-file">initializer.json</code> shows
+								this array.</td>
+						</tr>
+						<tr>
+							<td>Properties</td>
+							<td>__defaultPort</td>
+							<td>Current Port number</td>
+							<td><code class="doc-file">initializer.json</code> shows
+								this value.</td>
+						</tr>
+
+						<tr>
+							<td>Properties Path</td>
+							<td>__toolsPropertiesPath</td>
+							<td>Path of tools property folder</td>
+							<td><code class="doc-file">{user-project}/tools-properties</code></td>
+						</tr>
+						<tr>
+							<td>Properties Path</td>
+							<td>__toolsSubmodulesPath</td>
+							<td>Path of tools submodule folder</td>
+							<td><code class="doc-file">{user-project}/tools-submodule</code></td>
+						</tr>
+
+
+						<tr>
+							<td>Properties</td>
+							<td>__initInfo</td>
+							<td>Object contains initializer values</td>
+							<td>ex: <code>__initInfo.options</code></td>
+						</tr>
+						<tr>
+							<td>Properties</td>
+							<td>__contextDispatchingInfo</td>
+							<td>Object contains contextDispatcher</td>
+							<td>ex: <code>require( __contextDispatchingInfo )</code></td>
+						</tr>
+					</tbody>
+				</table>
+
+
+				<h3 id="dependency" class="doc-h3">Dependency</h3>
+				<hr class="doc-divider">
+				<p class="p-end">
+					The summer-mvc adopted some special gifts name NPM Middlewares such
+					as
+					<code class="doc-middleware">Express</code>
+					and
+					<code class="doc-middleware">ejs</code>
+					. If these middlewares are hidden, the summer-mvc couldn't be
+					presented the world. Thanks to below middleware developers. And We
+					promise that we will go to a way to follow.
+				</p>
+				<table class="table table-responsive table-hover small-section-end">
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Name</th>
+							<th>Version</th>
+							<th>License</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for( var i=0; i<dependency.length; i++ ){ %>
+						<tr>
+							<td><%- dependency[i].type %></td>
+							<td><a href="<%- dependency[i].url %>"><%-
+									dependency[i].name %></a></td>
+							<td><%- dependency[i].version %></td>
+							<td><%- dependency[i].license %></td>
+						</tr>
+						<% } %> 
+					</tbody>
+				</table>
+
+				<h3 id="history" class="doc-h3">History</h3>
+				<hr class="doc-divider">
+				<p class="p-end">2 Major versions were released. And the
+					summer-mvc will be upgraded during our users want to use
+					continuously.</p>
+				<table class="table table-responsive table-hover">
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Version</th>
+							<th>Changes</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for( var i=0; i
+						<history.length; i++ ){ %>
+						<tr>
+							<td><%- history[i].type %></td>
+							<td><%- history[i].version %></td>
+							<td><%- history[i].changes %></td>
+							<td><%- history[i].commitedDate %></td>
+						</tr>
+						<% } %> 
+					</tbody>
+				</table>
+				<p class="section-end"></p>
+
+				<% include partials/footer.ejs %>
+			</div>
+		</div>
+	</div>
+
+	<div class="after"></div>
 </body>
 
 </html>

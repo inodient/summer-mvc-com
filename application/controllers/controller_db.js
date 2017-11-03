@@ -23,7 +23,7 @@ exports.control = function( req, res, connection ){
 
 		mysqlHandler.executeQuery( queryId, params, connection )
 		.then( function( queryResults ){
-			logger.debug( queryResults.results );
+			logger.debug( queryResults);
 			resolve( setModel( req, res, JSON.stringify(queryResults.results, null, 4), null ) );
 		} )
 		.catch( function(err){
