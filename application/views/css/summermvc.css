@@ -430,6 +430,15 @@ body {
 	.doc-content .doc-well {
 		background-color: #fafbfd;
 		margin-bottom: 30px;
+		line-height: 1.7em;
+	}
+
+	.doc-content .doc-well-inverse {
+		color: #ddd;
+		background-image:url(/jumbotron_bg.png);
+		background-size: 100% auto;
+		font-weight:200;
+		line-height: 1.8em;
 	}
 
 	.doc-content .p-end {

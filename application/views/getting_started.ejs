@@ -193,7 +193,7 @@
             </ul>
           </li>
           <li>
-            <a href="#write_codes" id="dnl_write_codes">Write Codes</a>
+            <a href="#create_application" id="dnl_create_application">Create Application</a>
             <ul class="doc-nav-sub-list">
               <li><a href="#context_dispatcher_json" id="dnl_context_dispatcher_json">context-ispatcher.json</a></li>
               <li><a href="#controller" id="dnl_controller">Controller</a></li>
@@ -205,7 +205,7 @@
       </div>
       <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
 
-      <div class="well doc-well p-end" style="color: #ddd; background-image:url(/jumbotron_bg.png); background-size: 100% auto; font-weight:200; line-height: 1.8em;">
+      <div class="well doc-well-inverse p-end">
         Installing, Initializing and Development are very easy with summer-mvc. <br>
         summer-mvc can be installed both NPM and binaries. <br>
         And when first executing time, your project will be shaped as typical web application hirerchy. <br>
@@ -541,7 +541,7 @@
       </div>
 
 
-      <h3 id="write_codes" class="doc-h3">Write Codes</h3>
+      <h3 id="create_application" class="doc-h3">Create Application</h3>
       <hr style="border-top: 1px solid #ccc;">
       <p>
       	  Now, preparation completed.
@@ -550,13 +550,18 @@
 	      Basically all executions are wraped with Promise pattern.
 	      But db accessing, file accessing will be executing asynchronous.
 	  </p>
-	  <p class="p-end">
+	  <p>
 	      The summer-mvc follows MVC concepts and has a adapter for doing that.
 	      <code class="doc-file">context-dispatcher.json</code> contains dispatching information of project.
 	      All http request and response have their own controller logic.
 	      After controller logic executing, summer-mvc assign result models to ejs view files.
 	      For correcting <code class="doc-file">context-dispatcher.json</code>, you can control your own project navigator like spring framework's <code class="doc-file">web.xml</code>.
 	  </p>
+    <p>
+      More information can be found in <b>Design Logic Section</b><br>
+      <button class="btn_important p-end" onclick="location.href='http://localhost:3000/deep-drive#design_logic'">Go To Design Logic</button>
+    </p>
+
 
       <h4 id="context_dispatcher_json" class="doc-h4">context-dispatcher.json</h4>
       <p>
@@ -565,7 +570,39 @@
       	It is same as http methods.
       	Every internal objects have id, path, controllerJS, controlFunction, viewPath and view.
       </p>
-      <table class="table table-responsive table-hover">
+      <div class="well doc-well p-end">
+        {
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;"GET" : [
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "index",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path": "/",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"controllerJS": "controller_basic.js",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"controlFunction": "control",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewPath": "",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"view": "index.ejs"
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "setCookie",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path": "/setCookie",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"controllerJS": "controller_cookie_session.js",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"controlFunction": "control",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewPath": "",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"view": "index.ejs"
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;],
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;"POST" : [
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "indexPost",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path": "/",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"controllerJS": "controller_post.js",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"controlFunction": "control",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewPath": "",
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"view": "index.ejs"
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;]
+        <br>}
+      </div>
+      <table class="table table-responsive table-hover p-end">
       	<thead>
       		<tr>
       			<th>Property Name</th>
@@ -629,10 +666,14 @@
       			<td>res</td>
       			<td>http response object</td>
       		</tr>
+          <tr>
+      			<td>connection</td>
+      			<td>Mysql connection</td>
+      		</tr>
       	</tbody>
       </table>
       <table class="table table-responsive table-hover">
-      	<caption>return</caption>
+      	<caption>Return</caption>
       	<tbody>
       		<tr>
       			<td>Promise Object</td>
@@ -650,15 +691,29 @@
       <blockquote class="doc-notice">
       	All controllers must be located under /application/controllers folder.
       </blockquote>
-      <button class="btn_important p-end" onclick="openControllerExample()">Example</button>
-      <script>
-      	function openControllerExample(){
-      		alert( "controllerExample()" );
-      	}
-      </script>
-
+      <p>
+        More information can be found in <b>write code section</b>.<br>
+        <button class="btn_important p-end" onclick="location.href='/deep-drive#write_code'">Go To Write Code Section</button>
+      </p>
 
       <h4 id="view" class="doc-h4">View</h4>
+      <h5>In controller.js</h5>
+      <div class="well doc-well">
+        exports.control = function( req, res, callback ){
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;return new Promise( function(resolve, reject){
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var model = {};
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;model.<b>result</b> = "This is sample page";
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>resolve( model );</b>
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;} );
+        <br>}
+      </div>
+      <h5>In view.ejs</h5>
+      <div class="well doc-well p-end">
+          &#60;tr&#62;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&#60;td&#62;>Result Message&#60;/td&#62;
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&#60;td&#62;>&#60;&#37;- <b>result</b>&#37;&#62;&#60;/td&#62;
+          <br>&#60;/tr&#62;
+      </div>
       <p>
       	Now (v2.0.0), summer-mvc's default view engine is <a href="https://www.npmjs.com/packages/ejs">ejs</a>.
       	All model that generated by controller can be assign as <code>&#60;&#37; &#37;&#62;</code> pattern and default model object type is JSON.
@@ -668,26 +723,45 @@
       <blockquote class="doc-notice">
       	All controllers must be located under /application/views folder.
       </blockquote>
-      <button class="btn_important p-end" onclick="openViewExample()">Example</button>
-      <script>
-      	function openViewExample(){
-      		alert( "viewExample()" );
-      	}
-      </script>
+      <p>
+        More information can be found in <b>write code section</b>.<br>
+        <button class="btn_important p-end" onclick="location.href='/deep-drive#write_code'">Go To Write Code Section</button>
+      </p>
 
       <h4 id="model" class="doc-h4">Model</h4>
+      <div class="well doc-well">
+        function <b>setModel</b>( req, res, results, fields ){
+        <br>
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;var queries = require( __mysqlQueries );
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;var model = {};
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;try{
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	model.method = req.method;
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	model.path = req._parsedUrl.pathname;
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	model.queryString = JSON.stringify( req.query, null, 4 );
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	model.params = JSON.stringify( req.params, null, 4 );
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	model.message = results;
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	model.queries = queries;
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	<b>return model</b>;
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;} catch( err ){
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;throw err;
+        	<br>&nbsp;&nbsp;&nbsp;&nbsp;}
+      <br> }
+      </div>
+
       <p>
-      	Repeatedly said, summer-mvc's components communcate using JSON object.
+      	Repeatedly said, summer-mvc's components communcate using <b>JSON object</b>.
       	Even if request and response will be translated to JSON object,
-      	it is common way to send object shaped as JSON for preventing unexpected event.
-      	Such as object nesting, numeric exceptions.
+      	it is common way to send object shaped as JSON for preventing unexpected events,
+      	such as object nesting, numeric exceptions. It is common way to implement <code>setModel</code> function that returns <code class="doc-emphasis">model</code> object.
+        Please specify your view page's dynamic values and implement <code>setModel</code> function.
       </p>
-	  <button class="btn_important doc-end" onclick="openModelExample()">Example</button>
-	  <script>
-      	function openModelExample(){
-      		alert( "modelExample()" );
-      	}
-      </script>
+      <p class="section-end">
+        More information can be found in <b>write code section</b>.<br>
+        <button class="btn_important p-end" onclick="location.href='/deep-drive#write_code'">Go To Write Code Section</button>
+      </p>
 
 
 	  <% include partials/footer.ejs %>

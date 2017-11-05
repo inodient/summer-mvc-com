@@ -183,7 +183,7 @@ table caption {
 					class="<%- topLeftMenus[i].active %>"><a
 					href="<%- topLeftMenus[i].redirectpath %>"><%-
 						topLeftMenus[i].displayname %></a></li>
-				<% } %> 
+				<% } %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right top-nav">
 				<% for( var i=0; i
@@ -223,7 +223,7 @@ table caption {
 					topLeftMenus[i].active == "active" ){ %>
 					<h4><%- topLeftMenus[i].displayname %></h4>
 					<p><%- topLeftMenus[i].description %></p>
-					<% } %> <% } %> 
+					<% } %> <% } %>
 				</blockquote>
 				<ul class="doc-nav-list">
 					<li><a href="#apis" id="dnl_apis">APIs</a>
@@ -240,6 +240,13 @@ table caption {
 				</ul>
 			</div>
 			<div class="col-lg-9 col-md-9 col-sm-9 doc-content">
+
+				<div class="well doc-well-inverse p-end">
+					API, Pre-defined properties can be found in here.
+					Developers need to check/use specifications of frameworks.
+					And for following usage of license terms, it is necessary to introduce about summer-mvc envrironment.
+					Dependency with other middlewares and histroy of summer-mvc can help you too.
+	      </div>
 
 				<h3 id="apis" class="doc-h3">APIs</h3>
 				<hr class="doc-divider">
@@ -688,8 +695,8 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
-				
+
+
 				<p>
 				<h4 class="doc-api">executeTransaction( queryId, params, connection )</h4>
 				<p>Same function with <code>executeQuery()</code>. <code>executeQuery()</code> calls this function internally.<br>
@@ -737,8 +744,8 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
-				
+
+
 				<p>
 				<h4 class="doc-api">getQueryString( queryId )</h4>
 				<p>Prepared Statements can be stored in file and called when it is needed. This function return whole queryString via queryId.</p>
@@ -765,8 +772,8 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
-				
+
+
 				<p>
 				<h4 class="doc-api">getPool()</h4>
 				<p>Generate Mysql Pool Object. There are no needs to use as summer-mvc create pool automatically in every instance.</p>
@@ -782,7 +789,7 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
+
 				<p>
 				<h4 class="doc-api">getConnection()</h4>
 				<p>Generate Mysql Connection Object. There are no needs to use as summer-mvc create pool automatically in every http request.</p>
@@ -798,7 +805,7 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
+
 				<p>
 				<h4 class="doc-api">releaseConnection( connection )</h4>
 				<p>Release exist connection</p>
@@ -814,7 +821,7 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
+
 				<p>
 				<h4 class="doc-api">releasePool( pool )</h4>
 				<p>Release exist pool</p>
@@ -830,9 +837,9 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
-				
-				
+
+
+
 				<h4 id="file" class="doc-h4">File</h4>
 				<p class="p-end">
 					Saving / Downloading file can be controlled fileHandler. <code>busboy</code> is used to upload file.
@@ -867,7 +874,7 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
+
 				<p>
 				<h4 class="doc-api">downloadFile( res, savedPath, savedFileName, originalFileName  )</h4>
 				<table class="table table-responsive table-hover small-section-end">
@@ -906,14 +913,14 @@ table caption {
 				<p class="p-end">
 					Default logger has very simular execution with default <code>console.log()</code> function.
 					That can receive unlimited parameters seperated with <code class="doc-emphasis">","</code>.
-					But, summer-mvc's logger has its own logging level such as <code class="doc-emphasis">info, debug and error</code> 
+					But, summer-mvc's logger has its own logging level such as <code class="doc-emphasis">info, debug and error</code>
 				</p>
 				<div class="well doc-well">
 					logger.info( "Controller Executed" ); <br>
 					logger.debug( queryResults.results ); <br>
 					logger.error( err );
 				</div>
-				
+
 				<p>
 				<h4 class="doc-api">logger.info( [...] )</h4>
 				<table class="table table-responsive table-hover small-section-end">
@@ -928,7 +935,7 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
+
 				<p>
 				<h4 class="doc-api">logger.debug( [...] )</h4>
 				<table class="table table-responsive table-hover small-section-end">
@@ -943,7 +950,7 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
+
 				<p>
 				<h4 class="doc-api">logger.error( [...] )</h4>
 				<table class="table table-responsive table-hover small-section-end">
@@ -958,7 +965,7 @@ table caption {
 					</tbody>
 				</table>
 				</p>
-				
+
 				<p class="section-end"></p>
 
 				<h3 id="pre_defined" class="doc-h3">Pre-defined</h3>
@@ -1089,7 +1096,7 @@ table caption {
 							<td><%- dependency[i].version %></td>
 							<td><%- dependency[i].license %></td>
 						</tr>
-						<% } %> 
+						<% } %>
 					</tbody>
 				</table>
 
@@ -1116,7 +1123,7 @@ table caption {
 							<td><%- history[i].changes %></td>
 							<td><%- history[i].commitedDate %></td>
 						</tr>
-						<% } %> 
+						<% } %>
 					</tbody>
 				</table>
 				<p class="section-end"></p>

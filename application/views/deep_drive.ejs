@@ -118,6 +118,13 @@
       } );
     } );
   </script>
+
+  <style>
+    .doc-api {
+      font-style: italic;
+      font-size: 16.5px;
+    }
+  </style>
 </head>
 
 <body class="base">
@@ -176,7 +183,7 @@
           <li>
             <a href="#design_logic" id="dnl_design_logic">Design Logic</a>
             <ul class="doc-nav-sub-list">
-              <li><a href="#process" id="dnl_process">Process</a></li>
+              <li><a href="#methodology" id="dnl_methodology">Methodology</a></li>
               <li><a href="#write_code" id="dnl_write_code">Write Code</a></li>
               <li><a href="#exceptions" id="dnl_exceptions">Exceptions</a></li>
               <li><a href="#cautions" id="dnl_cautions">Cautions</a></li>
@@ -240,25 +247,265 @@
       </div>
       <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
 
+        <div class="well doc-well-inverse p-end">
+          During initializing time, your project have been shaped with static web developement hierarchy.
+          Now there are needs to develop specific conditions and business requirements.
+          Typical development methodologies are here. Please analyze it and exercise.
+          There are some tools help you to control http request/response and external interfaces such as DB and file.
+        </div>
+
         <h3 id="execution_process" class="doc-h3">Execution Process</h3>
         <hr class="doc-divider">
-        
+        <p class="p-end">
+          summer-mvc has 2 phases of executing.
+          One is automatical, one is event-driven.
+          <code class="doc-emphasis">Initializing Phase</code> is automatical phase,
+          <code class="doc-emphasis">Execution Phase</code> is event-driven phase.
+          As image shown, users can control their web app using <code class="doc-file">initilizer.json</code>, <code class="doc-file">dispatcher.json</code>, <code class="doc-emphasis">controller and business logic</code> etc. And use views to render results.
+          <img src="architecture_sequence.png" style="width:100%"/>
+        </p>
+        <p class="section-end">
+          <kbd style="background-color:#a94442">1</kbd> <kbd style="background-color:#a94442">2</kbd> When administrator starts app,
+          <kbd style="background-color:#a94442">3</kbd> <kbd style="background-color:#a94442">4</kbd> <kbd style="background-color:#a94442">5</kbd> summer-mvc-core calls initializer and
+          build web application architecture, automatically. [dispatcher, properties, controller,
+          views, queries]. Developers can control this process using and correcting
+          initializer.json file.
+          <br><br>
+          <kbd>1</kbd> <kbd>2</kbd> When clients send http request, <kbd>3</kbd> <kbd>4</kbd> summer-mvc-core calls dispatcher and
+          send request to controller. Controllers are implemented as simple Nodejs codes and
+          can use business logics.
+          <kbd>5</kbd> <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> After execution controllers return model object.
+          <kbd>9</kbd> <kbd>10</kbd> <kbd>11</kbd> <kbd>12</kbd> Finally summer-mvc returns model-and-view (mav) to express and ejs
+          modules.
+          <kbd>13</kbd> <kbd>14</kbd> Then clients are able to receive http response. Developers can control
+          this process using and correcting dispatcher.json file.
+        </p>
+
           <h4 id="initializing" class="doc-h4">Initializing</h4>
+          <p class="p-end">
+            When first start your summer-mvc project, it will build your project hierarchy automatically.
+            We can call this phase as <code class="doc-emphasis">Initialiazing Phase</code>.
+            This is automatical and you can control this phase in <code class="doc-file">initializer.json</code>.
+            <code class="doc-file">initializer.json</code>'s <code class="doc-emphasis">options</code> object contains some options.
+            When <code class="doc-emphasis">auto_structure_creation</code> setted true, summer-mvc build hierarchy automatically.
+            And <code class="doc-emphasis">remove_and_rebuild</code> setted true, your project hierarchy deleted and re-generated when instance created.
+          </p>
+          <table class="table table-responsive table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>auto_structure_creation</td>
+                <td>whether summer-mvc create project hierarchy or not</td>
+                <td>true</td>
+              </tr>
+              <tr>
+                <td>remove_and_rebuild</td>
+                <td>whether delete current project hierarchy and recreate summer-mvc one</td>
+                <td>false</td>
+              </tr>
+            </tbody>
+          </table>
+          <blockquote class="doc-notice">
+            remove_and_rebuild option can cause dangerous actions.<br>
+            Your own controllers and views will be deleted when this option setted true.<br>
+            Be sure that you want to create empty project or not.
+          </blockquote>
+          <button class="btn_important small-section-end" onclick="location.href='/getting-started#initializing'">Go To Initializing Info</button>
           <h4 id="execution" class="doc-h4">Execution</h4>
-          <p class="section-end"></p>
+          <p>
+            When your app receive <code class="doc-emphasis">http request</code> from their clients, the summer-mvc send requests
+            to dispatcher-engine automatically. And then, dispatcher-engine find a controller
+            to resolve request using <code class="doc-file">context_dispatcher.json</code>. You can design your own
+            dispatcher for correcting <code class="doc-file">context_dispatcher.json</code>. Controller and Business logic is just
+            a part of web app, so these files can contain any logic. But the only rule of controller is
+            that must make <code class="doc-emphasis">model object</code> and return this as parameter of promise resolve function.
+          </p>
+          <blockquote class="doc-notice p-end">
+            Be careful when control external interfaces.
+            As Nodejs is basically asynchronous environment, if you do not use <code class="doc-emphasis">promise pattern</code> or <code class="doc-emphasis">await</code>, your application will return unexpected results.
+          </blockquote>
+          <table class="table table-responsive table-hover section-end">
+            <thead>
+              <tr>
+                <th>Sequence</th>
+                <th>Excutions</th>
+                <th>Results</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Receive http request</td>
+                <td>request object</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Extract URI of request</td>
+                <td>path ( ex: /index )</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Search matched path in <code class="doc-file">context-dispatcher.json</code></td>
+                <td>controller / view info</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Call and Execute controller</td>
+                <td>model object</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Render ejs with model object</td>
+                <td>ejs</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Send http response</td>
+                <td>http response</td>
+              </tr>
+            </tbody>
+          </table>
 
         <h3 id="design_logic" class="doc-h3">Design Logic</h3>
         <hr class="doc-divider">
-        
-          <h4 id="process" class="doc-h4">Process</h4>
+        <p class="p-end">
+          As other JAVA frameworks have its own methodologies to implement,
+          the summer-mvc also have our own methodologies.
+          There are some specific points when implement your code.
+          <code class="doc-emphasis">Asynchronous</code>, <code class="doc-emphasis">Return object of controllers</code> and <code class="doc-emphasis">Ejs rendering</code> are that.
+          If you obtain these check points, you can add any business logics you want to serve.
+        </p>
+
+          <h4 id="methodology" class="doc-h4">Methodology</h4>
+          <p>
+            <h4 class="doc-api">Step 01 : Insert dispatching info in <code class="doc-file">context-dispatcher.json</code></h4>
+          </p>
+          <div class="well doc-well p-end">
+            &nbsp;&nbsp;&nbsp;&nbsp;{
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "index",
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path": "/",
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"controllerJS": "controller_basic.js",
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"controlFunction": "control",
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewPath": "",
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"view": "index.ejs"
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+          </div>
+          <p>
+            <h4 class="doc-api">Step 02 : Create controller and view file</h4>
+          </p>
+          <p class="p-end">
+            Create controller js file under <code class="doc-file">{user-propject}/application/controllers</code>
+            A controller's expansion is <code class="doc-file">js</code>.
+            <br>
+            Create view ejs file under <code class="doc-file">{user-propject}/application/views</code>
+            A view's expansion is <code class="doc-file">ejs</code>.
+          </p>
+          <p>
+            <h4 class="doc-api">Step 03 : Write controller</h4>
+          </p>
+          <p>
+            <ol style="line-height: 1.8em">
+              <li>As summer-mvc core module require your controller as submodule, <br><code>exports.{controller_functionName} = function()</code> is necessary.</li>
+              <li>controller function has 3 parameters ( req, res, connection )<br>
+              more inforamtaion can be founded <a href="/getting-started#controller">here</a></li>
+              <li>controller must return <b>javascript model object</b>.<br>
+              summer-mvc core module assign <b>model</b> object to <code class="doc-emphasis">ejs</code> middleware.</li>
+              <li>As Nodejs is asynchronous environment, wrap your code with <code class="doc-emphasis">promise pattern</code>.</li>
+            </ol>
+          </p>
+          <b>In controller.js</b>
+          <div class="well doc-well p-end">
+            exports.control = function( req, res, callback ){
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;return new Promise( function(resolve, reject){
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var model = {};
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;model.<b>result</b> = "This is sample page";
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>resolve( model );</b>
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;} );
+            <br>}
+          </div>
+          <p>
+            <h4 class="doc-api">Step 04 : Write view page</h4>
+          </p>
+          <p>
+            summer-mvc's default view engine is ejs. And summer-mvc has views folder.
+            Create <code class="doc-file">*.ejs</code> files in that folder.
+            As controller return(resolve) model object, *.ejs file must use model object to render results.
+          </p>
+          <b>In view.ejs</b>
+          <div class="well doc-well p-end">
+              &#60;tr&#62;
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&#60;td&#62;>Result Message&#60;/td&#62;
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&#60;td&#62;>&#60;&#37;- <b>result</b>&#37;&#62;&#60;/td&#62;
+              <br>&#60;/tr&#62;
+          </div>
+          <p>
+            <h4 class="doc-api">Step 05 : Test correct execution</h4>
+          </p>
+          <p>
+            After Step 01 to 05, you must check your application has correct set or not.
+            Execute your app, and check your app is correct.
+            Open your terminal and type below commands.
+            <div class="well doc-well">
+              $ node {user-app-js-file}.js
+            </div>
+          </p>
+
+          <p>
+            After executing your application, open your browser and call below URI.
+            <div class="well doc-well p-end">
+              http://localhost:3000/{path}
+            </div>
+          </p>
+
+          <p>
+            <h4 class="doc-api">Step 06 : Design business logic follow MVC</h4>
+          </p>
+          <p class="section-end">
+            Write your own codes and implement business requirements.
+            There are correct answer for that. It's own your time.
+          </p>
           <h4 id="write_code" class="doc-h4">Write Code</h4>
+          <p>
+            Writing code is specific jobs for developer. summer-mvc can offer an environment to implement, but implementing controller and view are developer's job.
+            If you understand basic javascript concepts and Nodejs usage, that's enough to implement your logic.
+            Only we can present to you is that basic implementation patterns.
+            For preventing unexpected event comes from asynchronous environment, some <code class="doc-emphasis">promise patterns</code> are recommended.
+          </p>
+
+          <h5>Single Promise Usage</h5>
+          <div class="well doc-well p-end">
+            <b>exports.control = function( req, res, connection ){</b>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <b>new Promise( function(resolve, reject)</b>{
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mysqlHandler.executeQuery( queryId, params, connection )
+            		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then( function( queryResults ){
+            			<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logger.debug( queryResults.results );
+            			<b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolve( { result : queryResults.results } );</b>
+            		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} )
+            		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.catch( function(err){
+            			<b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reject( err );</b>
+            		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} );
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} );
+            <br>}
+          </div>
+
+          <h5>Promise Array Usage</h5>
+          <div class="well doc-well">
+            
+          </div>
+
           <h4 id="exceptions" class="doc-h4">Exceptions</h4>
           <h4 id="cautions" class="doc-h4">Cautions</h4>
           <p class="section-end"></p>
 
         <h3 id="connection" class="doc-h3">Connection</h3>
         <hr class="doc-divider">
-        
+
           <h4 id="connection_handling" class="doc-h4">Connection Handling</h4>
           <h4 id="connection_properties" class="doc-h4">Properties</h4>
           <h4 id="connection_api" class="doc-h4">API</h4>
@@ -267,52 +514,52 @@
 
         <h3 id="db" class="doc-h3">DB</h3>
         <hr class="doc-divider">
-        
+
           <h4 id="mysql_handling" class="doc-h4">Mysql Handling</h4>
           <h4 id="mysql_properties" class="doc-h4">Properties</h4>
           <h4 id="mysql_api" class="doc-h4">API</h4>
           <h4 id="mysql_example" class="doc-h4">Example</h4>
           <p class="section-end"></p>
-          
+
         <h3 id="error" class="doc-h3">Error</h3>
         <hr class="doc-divider">
-        
+
           <h4 id="error_handling" class="doc-h4">Error Handling</h4>
           <h4 id="error_properties" class="doc-h4">Properties</h4>
           <h4 id="error_api" class="doc-h4">API</h4>
           <h4 id="error_example" class="doc-h4">Example</h4>
           <p class="section-end"></p>
-          
+
         <h3 id="exit" class="doc-h3">Exit</h3>
         <hr class="doc-divider">
-        
+
           <h4 id="exit_handling" class="doc-h4">Exit Handling</h4>
           <h4 id="exit_properties" class="doc-h4">Properties</h4>
           <h4 id="exit_api" class="doc-h4">API</h4>
           <h4 id="exit_example" class="doc-h4">Example</h4>
           <p class="section-end"></p>
-          
+
         <h3 id="file" class="doc-h3">File</h3>
         <hr class="doc-divider">
-        
+
           <h4 id="file_handling" class="doc-h4">File Handling</h4>
           <h4 id="file_properties" class="doc-h4">Properties</h4>
           <h4 id="file_api" class="doc-h4">API</h4>
           <h4 id="file_example" class="doc-h4">Example</h4>
           <p class="section-end"></p>
-          
+
         <h3 id="log" class="doc-h3">Log</h3>
         <hr class="doc-divider">
-        
+
           <h4 id="log_handling" class="doc-h4">Log Handling</h4>
           <h4 id="log_properties" class="doc-h4">Properties</h4>
           <h4 id="log_api" class="doc-h4">API</h4>
           <h4 id="log_example" class="doc-h4">Example</h4>
           <p class="section-end"></p>
-          
+
 
   	  <% include partials/footer.ejs %>
-          
+
       </div>
     </div>
   </div>
