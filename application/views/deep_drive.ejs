@@ -167,7 +167,7 @@
 					class="<%- topLeftMenus[i].active %>"><a
 					href="<%- topLeftMenus[i].redirectpath %>"><%-
 						topLeftMenus[i].displayname %></a></li>
-				<% } %> 
+				<% } %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right top-nav">
 				<% for( var i=0; i
@@ -207,7 +207,7 @@
 					topLeftMenus[i].active == "active" ){ %>
 					<h4><%- topLeftMenus[i].displayname %></h4>
 					<p><%- topLeftMenus[i].description %></p>
-					<% } %> <% } %> 
+					<% } %> <% } %>
 				</blockquote>
 				<ul class="doc-nav-list">
 					<li><a href="#execution_process" id="dnl_execution_process">Execution
@@ -240,25 +240,25 @@
 							<li><a href="#mysql_handling" id="dnl_mysql_handling">Mysql
 									Handling</a></li>
 							<li><a href="#mysql_properties" id="dnl_mysql_properties">Properties</a></li>
+							<li><a href="#mysql_submodule" id="dnl_mysql_submodule">Submodule</a></li>
 							<li><a href="#mysql_api" id="dnl_mysql_api">API</a></li>
 							<li><a href="#mysql_example" id="dnl_mysql_example">Example</a></li>
 						</ul></li>
 
 					<li><a href="#file" id="dnl_file">File</a>
 						<ul class="doc-nav-sub-list">
-							<li><a href="#file_handling" id="dnl_file_handler">File
+							<li><a href="#file_handling" id="dnl_file_handling">File
 									Handling</a></li>
 							<li><a href="#file_properties" id="dnl_file_properties">Properties</a></li>
-							<li><a href="#file_api" id="dnl_view">API</a></li>
-							<li><a href="#file_example" id="dnl_model">Example</a></li>
+							<li><a href="#file_submodule" id="dnl_file_submodule">Submodule</a></li>
+							<li><a href="#file_api" id="dnl_file_api">API</a></li>
+							<li><a href="#file_example" id="dnl_file_example">Example</a></li>
 						</ul></li>
 					<li><a href="#log" id="dnl_log">Log</a>
 						<ul class="doc-nav-sub-list">
-							<li><a href="#log_handling" id="dnl_log_handler">Log
+							<li><a href="#log_handling" id="dnl_log_handling">Log
 									Handling</a></li>
-							<li><a href="#log_properties" id="dnl_controller">Properties</a></li>
-							<li><a href="#log_api" id="dnl_view">API</a></li>
-							<li><a href="#log_example" id="dnl_model">Example</a></li>
+							<li><a href="#log_properties" id="dnl_log_properties">Properties</a></li>
 						</ul></li>
 
 					<li><a href="#error" id="dnl_error">Error</a>
@@ -271,11 +271,9 @@
 						</ul></li>
 					<li><a href="#exit" id="dnl_exit">Exit</a>
 						<ul class="doc-nav-sub-list">
-							<li><a href="#exit_handling" id="dnl_exit_handler">Exit
+							<li><a href="#exit_handling" id="dnl_exit_handling">Exit
 									Handling</a></li>
-							<li><a href="#exit_properties" id="dnl_controller">Properties</a></li>
-							<li><a href="#exit_api" id="dnl_view">API</a></li>
-							<li><a href="#exit_example" id="dnl_model">Example</a></li>
+							<li><a href="#exit_submodule" id="dnl_exit_submodule">Submodule</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -575,7 +573,7 @@
 				<h4 id="write_code" class="doc-h4">Write Code</h4>
 				<p>
 					Tools submodules<br><br>
-				
+
 					Writing code is specific jobs for developer. summer-mvc can offer
 					an environment to implement, but implementing controller and view
 					are developer's job. If you understand basic javascript concepts
@@ -827,17 +825,17 @@
 						</tr>
 					</tbody>
 				</table>
-				
+
 				<h4 id="connection_submodule" class="doc-h4">Submodule</h4>
 				<p>
 					As <code class="doc-middleware">express-session</code> allows to have name and id of each session,
 					Check <code class="doc-file">{user-project}/tools-submodules/connectionHandlerSubmodules.js</code>.
 				</p>
-				<p class="p-end">
+				<div class="well doc-well p-end">
 					<code>genUuid()</code> returns random id. <br>
 					<code>genName()</code> returns random name.
-				</p>
-				
+				</div>
+
 				<h4 id="connection_api" class="doc-h4">API</h4>
 				<p>
 					More information can be found in <b>API section</b>.<br>
@@ -883,7 +881,7 @@
 					Connection Handler example can be found in <a href='/default'>default
 						summer-mvc example</a>. Please check <b>cookie / session section</b>.
 				</p>
-				<table class="table table-responsive table-hover">
+				<table class="table table-responsive table-hover section-end">
 					<tbody>
 						<tr>
 							<td>controller</td>
@@ -895,9 +893,6 @@
 						</tr>
 					</tbody>
 				</table>
-
-
-				<p class="section-end"></p>
 
 				<h3 id="db" class="doc-h3">DB</h3>
 				<hr class="doc-divider">
@@ -998,6 +993,13 @@
 					</tbody>
 				</table>
 
+				<h4 id="mysql_submodule" class="doc-h4">Submodule</h4>
+				<p>
+					Like spring framework's <b>ibatis / mybatis</b>, there are <code class="doc-emphasis">prepared statement</code> that is used for reserving query.
+					And summer-mvc has specific folder for saving queries.
+					You can find default <code class="doc-file">query.json</code> under <code class="doc-file">{user=project}/tools-submodules/db/queries</code>.
+					Default query type is <code>JSON</code>.
+				</p>
 
 				<h4 id="mysql_api" class="doc-h4">API</h4>
 				<p>
@@ -1087,10 +1089,9 @@
 					<code class="doc-file">{user-project}/tools-properties/file.json</code>
 				</blockquote>
 				<div class="well doc-well">
-					{ <br>&nbsp;&nbsp;&nbsp;&nbsp; "connectionLimit" : 100, <br>&nbsp;&nbsp;&nbsp;&nbsp;
-					"host" : "127.0.0.1", <br>&nbsp;&nbsp;&nbsp;&nbsp; "user" :
-					"root", <br>&nbsp;&nbsp;&nbsp;&nbsp; "password" : "********",
-					<br>&nbsp;&nbsp;&nbsp;&nbsp; "database" : "summer-mvc-com" <br>}
+					{
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;	"default-path" : "/upload/template"
+					<br>}
 				</div>
 				<table class="table table-responsive table-hover p-end">
 					<thead>
@@ -1104,43 +1105,46 @@
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td>connectionLimit</td>
-							<td>number of connections allowed</td>
-							<td>100</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>host</td>
-							<td>DBMS host name or ip</td>
-							<td>-</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>user</td>
-							<td>user name</td>
-							<td>-</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>password</td>
-							<td>password</td>
-							<td>-</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>database</td>
-							<td>default database</td>
-							<td>-</td>
+							<td>default-path</td>
+							<td>default path for uploading files</td>
+							<td>/upload/template</td>
 						</tr>
 					</tbody>
 				</table>
-				
-				
-				
-				
+
+				<h4 id="file_submodule" class="doc-h4">Submodule</h4>
+				<p>
+					Some files can be duplicated when they have same name whether their contents are same or not.
+					For preventing confliction, file handler has its own machanism adding postfix to original filename.
+					Check <code class="doc-file">{user-project}/tools-submodules/fileSubmodules.js</code>.
+				</p>
+				<div class="well doc-well p-end">
+					<code>getSavedFileName()</code> returns random file postfix. <br>
+				</div>
+
 				<h4 id="file_api" class="doc-h4">API</h4>
+				<p>
+					More information can be found in <b>API section</b>.<br>
+					<button class="btn_important"
+						onclick="location.href='/reference#file'">Go To File API</button>
+				</p>
 				<h4 id="file_example" class="doc-h4">Example</h4>
-				<p class="section-end"></p>
+				<p>
+					File Handler example can be found in <a href='/default'>default
+						summer-mvc example</a>. Please check <b>file section</b>.
+				</p>
+				<table class="table table-responsive table-hover section-end">
+					<tbody>
+						<tr>
+							<td>controller</td>
+							<td><code class="doc-file">{user-project}/application/controllers/controller_file.js</code></td>
+						</tr>
+						<tr>
+							<td>view</td>
+							<td><code class="doc-file">{user-project}/application/views/index.ejs</code></td>
+						</tr>
+					</tbody>
+				</table>
 
 				<h3 id="log" class="doc-h3">Log</h3>
 				<hr class="doc-divider">
@@ -1161,14 +1165,115 @@
 
 
 				<h4 id="log_properties" class="doc-h4">Properties</h4>
-				<h4 id="log_api" class="doc-h4">API</h4>
-				<h4 id="log_example" class="doc-h4">Example</h4>
-				<p class="section-end"></p>
+				<p>
+					Logger is default module of summer-mvc. So, there are no needs to import / require logger.
+					But, if you don't want to use default logger, please set <code class="doc-emphasis">enable</code> properties as <b>false</b> under <code class="doc-file">{user-project}/core-properties/initializer.json</code> 's <code>../tools/logger</code>.
+					<br>
+					<br>
+					There are 3 levels for logging in summer-mvc. <code>INFO</code>, <code>DEBUG</code> and <code>ERROR</code>.
+					Each level can be enable or disable using properties. And log file location can be managed by properties too.
+				</p>
+				<blockquote class="doc-notice">
+					property file can be found under<br>
+					<code class="doc-file">{user-project}/tools-properties/logger.json</code>
+				</blockquote>
+				<div class="well doc-well">
+					{
+					<br> &nbsp;&nbsp;&nbsp;&nbsp; "console" : {
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "INFO" : true,
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "DEBUG" : true,
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "ERROR" : true
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;  },
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;  "writeFile" : {
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "INFO" : true,
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "DEBUG" : true,
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "ERROR" : true
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;  },
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;  "file" : {
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "path" : "__defaultLogFilePath",
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "fileNamePrefix" : "summer-mvc-test"
+					<br>&nbsp;&nbsp;&nbsp;&nbsp; }
+					<br>}
+				</div>
 
-
-
-
-
+				<table class="table table-responsive table-hover section-end">
+					<thead>
+						<tr>
+							<th>Level</th>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Default Value</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>console</td>
+							<td>logging properties affected to write console</td>
+							<td>[ Object ]</td>
+						</tr>
+						<tr>
+							<td>1-1</td>
+							<td>INFO</td>
+							<td>whether write message in console or not when logging level <code class="doc-emphasis">INFO</code></td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>1-2</td>
+							<td>DEBUG</td>
+							<td>whether write message in console or not when logging level <code class="doc-emphasis">DEBUG</code></td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>1-3</td>
+							<td>ERROR</td>
+							<td>whether write message in console or not when logging level <code class="doc-emphasis">ERROR</code></td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>writeFile</td>
+							<td>logging properties affected to write log file</td>
+							<td>[ Object ]</td>
+						</tr>
+						<tr>
+							<td>2-1</td>
+							<td>INFO</td>
+							<td>whether write message in file or not when logging level <code class="doc-emphasis">INFO</code></td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>2-2</td>
+							<td>DEBUG</td>
+							<td>whether write message in file or not when logging level <code class="doc-emphasis">DEBUG</code></td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>2-3</td>
+							<td>ERROR</td>
+							<td>whether write message in file or not when logging level <code class="doc-emphasis">ERROR</code></td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>file</td>
+							<td>log file properties when created or updated</td>
+							<td>[ Object ]</td>
+						</tr>
+						<tr>
+							<td>3-1</td>
+							<td>path</td>
+							<td>log file path. when <code class="doc-emphasis">__defaultLogFilePath</code>, log file will be created under <code class="doc-file">{user-project}/__Logs</code> </td>
+							<td>__defaultLogFilePath</td>
+						</tr>
+						<tr>
+							<td>3-2</td>
+							<td>fileNamePrefix</td>
+							<td>log file name can have prefix</td>
+							<td>summer-mvc</td>
+						</tr>
+					</tbody>
+				</table>
 
 
 				<h3 id="error" class="doc-h3">Error</h3>
@@ -1255,7 +1360,7 @@
 					<code>enable</code>
 					property in name "errorHandler".
 				</p>
-				
+
 				<h4 id="error_submodule" class="doc-h4">Submodule</h4>
 				<p>
 					As user can implement their own error handler, summer-mvc offer interface to do that.
@@ -1291,10 +1396,22 @@
 				<hr class="doc-divider">
 
 				<h4 id="exit_handling" class="doc-h4">Exit Handling</h4>
-				<h4 id="exit_properties" class="doc-h4">Properties</h4>
-				<h4 id="exit_api" class="doc-h4">API</h4>
-				<h4 id="exit_example" class="doc-h4">Example</h4>
-				<p class="section-end"></p>
+				<p class="p-end">
+					Even if your application use summer-mvc, your application couldn't escape Node rules.
+					It means that if your application have emergency call to exit, it will be terminated automatically.
+					Also you want to delete your application, that time there are necessary to release resources during terminating time.
+					So, summer-mvc's exit handler is default handler so you are not able to turn on / off.
+					And there are no properties to control exit handler.
+				</p>
+
+				<h4 id="exit_submodule" class="doc-h4">Submodule</h4>
+				<p>
+					There are some needs to handle terminating time such as emergency call, etc.
+					You can add some logics by implementing <code>clientExitHandler.js</code> under <code class="doc-file">{user-project}/toosl-submodules</code>.
+				</p>
+				<div class="well doc-well section-end">
+					<code>clientExitHandler()</code><br>
+				</div>
 
 				<% include partials/footer.ejs %>
 
