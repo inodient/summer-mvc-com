@@ -199,6 +199,7 @@
               <li><a href="#controller" id="dnl_controller">Controller</a></li>
               <li><a href="#view" id="dnl_view">View</a></li>
               <li><a href="#model" id="dnl_model">Model</a></li>
+              <li><a href="#example" id="dnl_example">Example</a></li>
             </ul>
           </li>
         </ul>
@@ -758,10 +759,21 @@
       	such as object nesting, numeric exceptions. It is common way to implement <code>setModel</code> function that returns <code class="doc-emphasis">model</code> object.
         Please specify your view page's dynamic values and implement <code>setModel</code> function.
       </p>
-      <p class="section-end">
+      <p>
         More information can be found in <b>write code section</b>.<br>
         <button class="btn_important p-end" onclick="location.href='/deep-drive#write_code'">Go To Write Code Section</button>
       </p>
+      
+      <h4 id="example" class="doc-h4">Example</h4>
+		<p>
+			Example can be found in default summer-mvc architecture.
+			Controller will be found under <code class="doc-file">{user-project}/application/controllers</code> and
+			View will be found under <code class="doc-file">{user-project}/application/views</code>.
+			<br>And default url for testing is <a href="http://localhost:3000/default">http://localhost:3000/default</a>			 
+		</p>
+		<blockquote class="doc-notice section-end">
+			http://{user-server-name or ip}:{default-port}/default
+		</blockquote>
 
 
 	  <% include partials/footer.ejs %>

@@ -1,8 +1,8 @@
 {
     "GET": [
         {
-            "id": "index",
-            "path": "/index",
+            "id": "default",
+            "path": "/default",
             "controllerJS": "controller_basic.js",
             "controlFunction": "control",
             "viewPath": "",
