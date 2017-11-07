@@ -55,45 +55,45 @@ function getNPMCount(){
 
     var promises = [];
 
-    // 4 weeks ago
-    // promises.push( new Promise( function(resolve, reject){
-    //   request( request_prefix + weekAgo4 + ":" + weekAgo3 + request_postfix, function(err, response, body){
-    //     if( err ) reject( err );
-    //     resolve( ( JSON.parse(body) ).downloads );
-    //   } );
-    // } ) );
-    //
-    // // 3 weeks ago
-    // promises.push( new Promise( function(resolve, reject){
-    //   request( request_prefix + weekAgo3 + ":" + weekAgo2 + request_postfix, function(err, response, body){
-    //     if( err ) reject( err );
-    //     resolve( ( JSON.parse(body) ).downloads );
-    //   } );
-    // } ) );
-    //
-    // // 2 weeks ago
-    // promises.push( new Promise( function(resolve, reject){
-    //   request( request_prefix + weekAgo2 + ":" + weekAgo1 + request_postfix, function(err, response, body){
-    //     if( err ) reject( err );
-    //     resolve( ( JSON.parse(body) ).downloads );
-    //   } );
-    // } ) );
-    //
-    // // last week
-    // promises.push( new Promise( function(resolve, reject){
-    //   request( request_prefix + "last-week" + request_postfix, function(err, response, body){
-    //     if( err ) reject( err );
-    //     resolve( ( JSON.parse(body) ).downloads );
-    //   } );
-    // } ) );
-    //
-    // // total
-    // promises.push( new Promise( function(resolve, reject){
-    //   request( request_prefix + "1900-01-01:" + today + request_postfix, function(err, response, body){
-    //     if( err ) reject( err );
-    //     resolve( ( JSON.parse(body) ).downloads );
-    //   } );
-    // } ) );
+     // 4 weeks ago
+     promises.push( new Promise( function(resolve, reject){
+       request( request_prefix + weekAgo4 + ":" + weekAgo3 + request_postfix, function(err, response, body){
+         if( err ) reject( err );
+         resolve( ( JSON.parse(body) ).downloads );
+       } );
+     } ) );
+    
+     // 3 weeks ago
+     promises.push( new Promise( function(resolve, reject){
+       request( request_prefix + weekAgo3 + ":" + weekAgo2 + request_postfix, function(err, response, body){
+         if( err ) reject( err );
+         resolve( ( JSON.parse(body) ).downloads );
+       } );
+     } ) );
+    
+     // 2 weeks ago
+     promises.push( new Promise( function(resolve, reject){
+       request( request_prefix + weekAgo2 + ":" + weekAgo1 + request_postfix, function(err, response, body){
+         if( err ) reject( err );
+         resolve( ( JSON.parse(body) ).downloads );
+       } );
+     } ) );
+    
+     // last week
+     promises.push( new Promise( function(resolve, reject){
+       request( request_prefix + "last-week" + request_postfix, function(err, response, body){
+         if( err ) reject( err );
+         resolve( ( JSON.parse(body) ).downloads );
+       } );
+     } ) );
+    
+     // total
+     promises.push( new Promise( function(resolve, reject){
+       request( request_prefix + "1900-01-01:" + today + request_postfix, function(err, response, body){
+         if( err ) reject( err );
+         resolve( ( JSON.parse(body) ).downloads );
+       } );
+     } ) );
 
     Promise.all( promises )
     .then( function(){
@@ -101,17 +101,17 @@ function getNPMCount(){
 
       var results = {};
 
-      // results.weeks_ago_4 = argv[0];
-      // results.weeks_ago_3 = argv[1];
-      // results.weeks_ago_2 = argv[2];
-      // results.last_week = argv[3];
-      // results.total = argv[4];
+       results.weeks_ago_4 = argv[0];
+       results.weeks_ago_3 = argv[1];
+       results.weeks_ago_2 = argv[2];
+       results.last_week = argv[3];
+       results.total = argv[4];
 
-      results.weeks_ago_4 = 7801;
-      results.weeks_ago_3 = 32000;
-      results.weeks_ago_2 = 9870;
-      results.last_week = 12290;
-      results.total = 32002425;
+//      results.weeks_ago_4 = 7801;
+//      results.weeks_ago_3 = 32000;
+//      results.weeks_ago_2 = 9870;
+//      results.last_week = 12290;
+//      results.total = 32002425;
 
       _resolve( results );
     } )
