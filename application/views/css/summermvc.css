@@ -89,6 +89,12 @@
     .mobile-hidden {
     	display: none;
     }
+
+		.doc-content {
+			width: 100%;
+			padding-left: 25px !important;
+			padding-right: 25px !important;
+		}
 }
 
 @media (min-width: 1001px) {

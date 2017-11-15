@@ -156,7 +156,7 @@
 
   <div class="container-fluid doc">
     <div class="row">
-      <div class="col-lg-3 col-md-3 col-sm-3 doc-nav">
+      <div class="col-lg-3 col-md-3 col-sm-3 mobile-hidden doc-nav">
         <blockquote class="doc-description" onclick="location.href=''">
         	<% for( var i=0; i<topLeftMenus.length; i++ ){ %>
 	          <% if( topLeftMenus[i].active == "active" ){ %>
@@ -763,13 +763,13 @@
         More information can be found in <b>write code section</b>.<br>
         <button class="btn_important p-end" onclick="location.href='/deep-drive#write_code'">Go To Write Code Section</button>
       </p>
-      
+
       <h4 id="example" class="doc-h4">Example</h4>
 		<p>
 			Example can be found in default summer-mvc architecture.
 			Controller will be found under <code class="doc-file">{user-project}/application/controllers</code> and
 			View will be found under <code class="doc-file">{user-project}/application/views</code>.
-			<br>And default url for testing is <a href="http://localhost:3000/default">http://localhost:3000/default</a>			 
+			<br>And default url for testing is <a href="http://localhost:3000/default">http://localhost:3000/default</a>
 		</p>
 		<blockquote class="doc-notice section-end">
 			http://{user-server-name or ip}:{default-port}/default
