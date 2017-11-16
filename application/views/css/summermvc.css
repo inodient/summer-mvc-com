@@ -90,11 +90,38 @@
     	display: none;
     }
 
-		.doc-content {
-			width: 100%;
-			padding-left: 25px !important;
-			padding-right: 25px !important;
-		}
+	
+	.base {
+		background-image: none !important;
+  		background-color: #ffffff !important;
+	}	
+		
+	.doc-content {
+		width: 100%;
+		padding-left: 25px !important;
+		padding-right: 25px !important;
+	}
+	
+	.btn_important {
+		width: 100%;
+	}
+	
+	.mobile_btn_group .btn_important {
+		margin-top: 0px !important;
+		margin-bottom: 10px !important;
+	}
+	
+	/* Responsive Table contents width 100% - start */
+	.table {
+	    table-layout:fixed;
+	}
+
+	.table td {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	}
+	/* Responsive Table contents width 100% - end */
 }
 
 @media (min-width: 1001px) {

@@ -69,7 +69,7 @@
     </div>
   </header>
 
-  <div class="jumbotron vertical-center" style="height:40vh; min-height:400px; background-image: url(/jumbotron_bg.png); background-size: 100% auto; border-bottom: 1px solid #333">
+  <div class="jumbotron" style="background-image: url(/jumbotron_bg.png); background-size: 100% auto; border-bottom: 1px solid #333">
     <div class="container">
       <!-- <img src="summer_mvc_logo.png" style="width: 250px"/>
       <img src="/main_logo.png" /> -->
@@ -77,8 +77,10 @@
       <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-7">
           <h1 style="color: #ddd;">summer-mvc</h1>
-          <p style="color: #ddd">Very Light Web Application <b>Framework & SDK</b> for Nodejs</p>
-          <button class="btn_important" onclick="javascript:download();">DOWNLOAD</button>
+          <p style="color: #ddd">Very Light<br class="mobile-show"> Web Application <b>Framework & SDK</b><br class="mobile-show"> for Nodejs</p>
+          <div class="mobile_btn_group">
+          	<button class="btn_important" onclick="javascript:download();">DOWNLOAD</button>
+          </div>
           <form id="file_download_form" action="/download" method="get"></form>
 
           <script>
@@ -87,7 +89,7 @@
               }
           </script>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="col-lg-5 col-md-5 col-sm-5" style="padding-top: 35px;">
           <img src="execution.png" style="margin: auto; width: 100%;"/>
         </div>
       </div>
