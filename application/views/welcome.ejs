@@ -89,10 +89,28 @@
               }
           </script>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-5" style="padding-top: 35px;">
+        <!-- <div class="col-lg-5 col-md-5 col-sm-5" style="padding-top: 35px;">
           <img src="execution.png" style="margin: auto; width: 100%;"/>
-        </div>
+        </div> -->
+        <!-- <embed class="col-lg-5 col-md-5 col-sm-5" src="https://www.youtube.com/embed/ov88bXeVjIY"> -->
+
+        <!-- <video class="col-lg-5 col-md-5 col-sm-5" src='https://www.youtube.com/embed/ov88bXeVjIY' controls>
+          Your browser does not support the <code>video</code> element.
+        </video> -->
+
+        <!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/ov88bXeVjIY"></iframe> -->
+        <iframe class="manual_video col-lg-5 col-md-5 col-sm-5" src="//www.youtube.com/embed/ov88bXeVjIY" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+        <script>
+          $(document).ready( function(){
+            var width = $(".manual_video").css( "width" );
+            var height = parseInt(width) * 0.5625;
+            $(".manual_video").css( "height", height );
+          } );
+        </script>
+
       </div>
+
     </div>
   </div>
   <div class="container-fluid">
@@ -100,7 +118,7 @@
       <div class="col-lg-3 col-md-3 col-sm-3">
         <center>
           <i class="fa fa-cogs" style="font-size:7.5em; padding-bottom: 30px;"></i>
-          <h4 style="color:#303030; padding-bottom:12px;">Google Fonts   Easy to Install</h4>
+          <h4 style="color:#303030; padding-bottom:12px;">Easy to Install</h4>
           <p>
             Nodejs Package Moduler (NPM) and Github. Both you can use to install <b>summer-mvc</b>.
             And some easy commands help you to settup.

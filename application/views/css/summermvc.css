@@ -90,27 +90,27 @@
     	display: none;
     }
 
-	
+
 	.base {
 		background-image: none !important;
   		background-color: #ffffff !important;
-	}	
-		
+	}
+
 	.doc-content {
 		width: 100%;
 		padding-left: 25px !important;
 		padding-right: 25px !important;
 	}
-	
+
 	.btn_important {
 		width: 100%;
 	}
-	
+
 	.mobile_btn_group .btn_important {
 		margin-top: 0px !important;
 		margin-bottom: 10px !important;
 	}
-	
+
 	/* Responsive Table contents width 100% - start */
 	.table {
 	    table-layout:fixed;

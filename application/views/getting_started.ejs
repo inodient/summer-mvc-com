@@ -35,6 +35,10 @@
         $(".doc-nav-list").removeClass( "affix" );
       }
 
+      var video_width = $(".manual_video").css( "width" );
+      var video_height = parseInt(video_width) * 0.5625;
+      $(".manual_video").css( "height", video_height );
+
       $(window).scroll( function( event ){
 
         // 1. Right Half Page css
@@ -116,6 +120,11 @@
         $(this).parent().addClass( "active" );
         $(this).parent().parent().parent().addClass( "active" );
       } );
+
+      // Youtube Video responsive
+      video_width = $(".manual_video").css( "width" );
+      video_height = parseInt(video_width) * 0.5625;
+      $(".manual_video").css( "height", video_height );
     } );
   </script>
 </head>
@@ -227,7 +236,8 @@
         $ npm install summer-mvc
       </div>
       <p>
-        <img src="install.png" style="width:100%" />
+        <!-- <img src="install.png" style="width:100%" /> -->
+        <iframe class="manual_video" style="width:100%" src="//www.youtube.com/embed/nbqMR-WhsBQ" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
       </p>
       <blockquote class="doc-notice">
         Notice! Be sure that command location is your Nodejs project folder.
@@ -277,10 +287,13 @@
         <code class="doc-file">context-dispatcher.json</code>, <code class="doc-file">initializer.json</code>, some <code class="doc-file">tools-properties</code>, etc will be located specific folders.
         You can control this process in <code class="doc-file">initializer.json</code>.
       </p>
-      <img class="section-end" src="/execution.png" style="width:100%" />
+      <!-- <img class="section-end" src="/execution.png" style="width:100%" /> -->
+      <iframe class="section-end manual_video" style="width:100%" src="//www.youtube.com/embed/RJFem_aWxIY" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
       <h3 id="initializing" class="doc-h3">Initializing</h3>
       <hr style="border-top: 1px solid #ccc;">
+
+      <iframe class="p-end manual_video" style="width:100%" src="//www.youtube.com/embed/WRuBzKUgipg" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
       <h4 id="initializer_json" class="doc-h4">initializer.json</h4>
       <p class="p-end">
@@ -544,6 +557,9 @@
 
       <h3 id="create_application" class="doc-h3">Create Application</h3>
       <hr style="border-top: 1px solid #ccc;">
+
+      <iframe class="p-end manual_video" style="width:100%" src="//www.youtube.com/embed/xZz1hEwbBus" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
       <p>
       	  Now, preparation completed.
 	      Remaining job is to implement your business codes.
