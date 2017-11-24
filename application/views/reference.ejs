@@ -58,6 +58,21 @@
         $(".doc-nav-list").removeClass( "affix" );
       }
 
+			// Top Nav Active - Start
+			$(window).on('hashchange', function(e){
+				var url = $(location).attr("href");
+				var arrUrl = url.split( "#" );
+
+				url = arrUrl[0];
+				arrUrl = url.split( "/" );
+
+				var activeName = arrUrl[ arrUrl.length-1 ];
+				activeName = activeName.replace( "-", "" );
+
+				$( 'li[name=' + activeName +']' ).addClass( "active" );
+			});
+			// Top Nav Active - End
+
       $(window).scroll( function( event ){
 
         // 1. Right Half Page css
