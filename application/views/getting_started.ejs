@@ -27,6 +27,7 @@
     $(document).ready( function(){
       $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
 
+
       if( $(window).scrollTop() > $("blockquote").outerHeight() + parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) ){
         $(".doc-nav-list").css({top: parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) - parseInt( $(".doc-description").css("padding-top").replace( "px", "" ) ), position:'fixed', width: $(".doc-description").css("width")});
         $(".doc-nav-list").addClass( "affix" );
@@ -38,6 +39,8 @@
       var video_width = $(".manual_video").css( "width" );
       var video_height = parseInt(video_width) * 0.5625;
       $(".manual_video").css( "height", video_height );
+
+
 
       // Top Nav Active - Start
       $(window).on('hashchange', function(e){
@@ -53,6 +56,79 @@
         $( 'li[name=' + activeName +']' ).addClass( "active" );
       });
       // Top Nav Active - End
+
+
+      // Doc Nav Active When URL Link Redirect - start
+      // 1. Right Half Page css
+      $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
+
+      // 2. doc-nav-list affix
+      if( $(window).scrollTop() > $("blockquote").outerHeight() + parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) ){
+        $(".doc-nav-list").css({top: parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) - parseInt( $(".doc-description").css("padding-top").replace( "px", "" ) ), position:'fixed', width: $(".doc-description").css("width")});
+        $(".doc-nav-list").addClass( "affix" );
+      } else{
+        $(".doc-nav-list").css({top:0, position:'relative'});
+        $(".doc-nav-list").removeClass( "affix" );
+      }
+
+      // 3. content-enables -> doc-nav-list active
+      var offset = 80;
+      var activeElement = "";
+      var specifics = $(".doc-h3, .doc-h4");
+
+      if( specifics == null ){
+        specifics = document.getElementsByClassName( "" );
+      }
+
+      for( var i=0; i<specifics.length; i++ ){
+        var startOffset = 0;
+        var endOffset = 0;
+
+        startOffset = $( "#" + specifics[i].id ).offset().top - offset;
+        if( startOffset > $(window).scrollTop() ){
+          activeElement = "";
+          break;
+        }
+
+        if( i != specifics.length - 1 ){
+          endOffset = $( "#" + specifics[i+1].id ).offset().top - offset;
+        } else{
+          // endOffset = $( "#" + specifics[i].id ).offset().top + $( ".content_specific" ).outerHeight() - offset;
+          endOffset = $( "#" + specifics[i].id ).offset().top + $( "#" + specifics[i].id ).parent().outerHeight( true ) - offset;
+        }
+
+        if( $(window).scrollTop() > startOffset && $(window).scrollTop() < endOffset ){
+          activeElement = specifics[i].id;
+          break;
+        }
+
+        if( $(window).scrollTop() + $(window).height() == $(document).height() ){
+          activeElement = specifics[specifics.length - 1].id;
+          break;
+        }
+
+        if( i == specifics.length ){
+          activeElement = "";
+        }
+      }
+
+      if( activeElement != "" ){
+        $("*").removeClass( "scrolled" );
+        $( "#dnl_" + activeElement ).addClass( "scrolled" );
+        $( "#dnl_" + activeElement ).parent().addClass( "scrolled" );
+
+        if( ( $( "#" + activeElement ).attr( "class" ) ).indexOf( "doc-h4" ) >= 0 ){
+          $( "#dnl_" + activeElement ).parent().parent().parent().addClass( "scrolled" );
+          $( "#dnl_" + activeElement ).parent().parent().siblings("a").addClass( "scrolled" );
+        }
+      } else{
+        $("*").removeClass( "scrolled" );
+        $(".doc-nav-list *, .doc-nav-sub-list *").removeClass( "active" );
+      }
+      // Doc Nav Active When URL Link Redirect - endOffset
+
+       
+
 
       $(window).scroll( function( event ){
 
