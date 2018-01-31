@@ -27,7 +27,7 @@
       "files" : [ "favicon.ico" ]
     },
     {
-      "folder" : "/__Logs",
+      "folder" : "/__logs",
       "files" : []
     }
   ],
@@ -44,7 +44,7 @@
 	  			"files" : [ "logger.json" ]
   			},
         {
-	  			"folder" : "/__Logs",
+	  			"folder" : "/__logs",
 	  			"files" : []
   			}
   		]
