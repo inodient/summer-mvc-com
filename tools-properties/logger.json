@@ -10,7 +10,7 @@
     "ERROR" : true
   },
   "file" : {
-    "path" : "__defaultLogFilePath",
-    "fileNamePrefix" : "summer-mvc-test"
+    "path" : "/root/.pm2/logs",
+    "fileNamePrefix" : "summer-mvc-com"
   }
 }

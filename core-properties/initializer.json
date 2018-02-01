@@ -37,7 +37,7 @@
   "tools" : [
   	{
   		"name" : "logger",
-  		"enable" : false,
+  		"enable" : true,
   		"toolFiles" : [
   			{
 	  			"folder" : "/tools-properties",
