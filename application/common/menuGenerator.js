@@ -1,6 +1,7 @@
 module.exports = getTopMenus;
 
 function getTopMenus( path, connection ){
+  // Get Menu List
   return new Promise( function(resolve, reject){
     var promises = [];
 
@@ -56,7 +57,6 @@ function getForkCount(){
          'User-Agent': 'node.js'
        }
      };
-
 
     // Git Hub Fork Count
      request( options, function(error, response, body){
