@@ -47,16 +47,18 @@ function getTopMenus( path, connection ){
 function getForkCount(){
   return new Promise( function(resolve, reject){
      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-    
+
      var request = require( "request" );
-    
+
      var options = {
        url: "https://api.github.com/repos/inodient/summer-mvc-com",
        headers: {
          'User-Agent': 'node.js'
        }
      };
-    
+
+
+    // Git Hub Fork Count
      request( options, function(error, response, body){
        if( error ) reject( error );
        resolve( JSON.parse(body).forks_count );
