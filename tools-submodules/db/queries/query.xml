@@ -18,4 +18,9 @@
   <query id='deleteAccessLog'>
     delete from connectionInfo where param like ?
   </query>
+
+
+
+
+  
 </queries>
