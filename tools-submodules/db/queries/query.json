@@ -35,9 +35,4 @@
     "id" : "getHistory",
     "queryString" : "select id, type, version, changes, DATE_FORMAT(date, '%M %d %Y') as commitedDate, committer from TB_HISTORY order by id;"
   }
-
-
-
-
-  
 ]
