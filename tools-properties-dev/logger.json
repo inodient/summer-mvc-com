@@ -1,0 +1,16 @@
+{
+  "console" : {
+    "INFO" : true,
+    "DEBUG" : true,
+    "ERROR" : true
+  },
+  "writeFile" : {
+    "INFO" : true,
+    "DEBUG" : true,
+    "ERROR" : true
+  },
+  "file" : {
+    "path" : "/var/__log/www.summermvc.com-production",
+    "fileNamePrefix" : "www.summermvc.com-production"
+  }
+}

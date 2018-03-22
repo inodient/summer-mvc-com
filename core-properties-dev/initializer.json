@@ -2,7 +2,7 @@
     "port": 3000,
     "context_architecture": [
         {
-            "folder": "/core-properties",
+            "folder": "/core-properties-dev",
             "files": [
                 "context_dispatcher.json",
                 "initializer.json"
@@ -42,7 +42,7 @@
             "files": []
         },
         {
-            "folder": "/core-properties/https",
+            "folder": "/core-properties-dev/https",
             "files": []
         }
     ],
@@ -55,7 +55,7 @@
             "enable": true,
             "toolFiles": [
                 {
-                    "folder": "/tools-properties",
+                    "folder": "/tools-properties-dev",
                     "files": [
                         "logger.json"
                     ]
@@ -71,7 +71,7 @@
             "enable": true,
             "toolFiles": [
                 {
-                    "folder": "/tools-submodules",
+                    "folder": "/tools-submodules-dev",
                     "files": [
                         "clientErrorHandler.js"
                     ]
@@ -83,13 +83,13 @@
             "enable": true,
             "toolFiles": [
                 {
-                    "folder": "/tools-properties",
+                    "folder": "/tools-properties-dev",
                     "files": [
                         "connection.json"
                     ]
                 },
                 {
-                    "folder": "/tools-submodules",
+                    "folder": "/tools-submodules-dev",
                     "files": [
                         "connectionHandlerSubmodules.js"
                     ]
@@ -101,13 +101,13 @@
             "enable": true,
             "toolFiles": [
                 {
-                    "folder": "/tools-properties",
+                    "folder": "/tools-properties-dev",
                     "files": [
                         "file.json"
                     ]
                 },
                 {
-                    "folder": "/tools-submodules",
+                    "folder": "/tools-submodules-dev",
                     "files": [
                         "fileSubmodules.js"
                     ]
@@ -119,19 +119,19 @@
             "enable": true,
             "toolFiles": [
                 {
-                    "folder": "/tools-properties",
+                    "folder": "/tools-properties-dev",
                     "files": [
                         "mysql.json"
                     ]
                 },
                 {
-                    "folder": "/tools-submodules/db/queries",
+                    "folder": "/tools-submodules-dev/db/queries",
                     "files": [
-                        "query.json"
+                        "query.xml"
                     ]
                 },
                 {
-                    "folder": "/tools-submodules/db/queries",
+                    "folder": "/tools-submodules-dev/db/queries",
                     "files": [
                         "query.xml"
                     ]
@@ -143,7 +143,7 @@
             "enable": true,
             "toolFiles": [
                 {
-                    "folder": "/tools-submodules",
+                    "folder": "/tools-submodules-dev",
                     "files": [
                         "clientExitHandler.js"
                     ]
@@ -167,11 +167,11 @@
     ],
     "protocol": {
         "http": {
-            "port": 3001
+            "port": 3000
         },
         "https": {
             "port": 8445,
-            "certification_path": "/core-properties/https",
+            "certification_path": "/core-properties-dev/https",
             "keyFileName": "key.pem",
             "certFileName": "cert.pem"
         }
