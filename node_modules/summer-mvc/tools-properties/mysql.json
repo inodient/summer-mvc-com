@@ -1,0 +1,7 @@
+{
+  "connectionLimit" : 100,
+  "host" : "localhost",
+  "user" : "root",
+  "password" : "123qwer@",
+  "database" : "summer-mvc"
+}
