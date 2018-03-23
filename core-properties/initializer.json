@@ -9,29 +9,6 @@
             ]
         },
         {
-            "folder": "/application/controllers",
-            "files": [
-                "controller_basic.js",
-                "controller_post.js",
-                "controller_ajax.js",
-                "controller_cookie_session.js",
-                "controller_db.js",
-                "controller_file.js"
-            ]
-        },
-        {
-            "folder": "/application/views",
-            "files": [
-                "index.ejs",
-                "upload.ejs",
-                "error.html"
-            ]
-        },
-        {
-            "folder": "/static/upload",
-            "files": []
-        },
-        {
             "folder": "/static",
             "files": [
                 "favicon.ico"
