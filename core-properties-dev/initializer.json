@@ -145,7 +145,7 @@
             "port": 3001
         },
         "https": {
-            "port": 8446,
+            "port": 8444,
             "certification_path": "/core-properties-dev/https",
             "keyFileName": "key.pem",
             "certFileName": "cert.pem"
