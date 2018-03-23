@@ -1,0 +1,16 @@
+{
+  "console" : {
+    "INFO" : true,
+    "DEBUG" : true,
+    "ERROR" : true
+  },
+  "writeFile" : {
+    "INFO" : true,
+    "DEBUG" : true,
+    "ERROR" : true
+  },
+  "file" : {
+    "path" : "/root/.pm2/logs",
+    "fileNamePrefix" : "summer-mvc-com"
+  }
+}
