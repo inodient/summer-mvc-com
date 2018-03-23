@@ -9,29 +9,6 @@
             ]
         },
         {
-            "folder": "/application/controllers",
-            "files": [
-                "controller_basic.js",
-                "controller_post.js",
-                "controller_ajax.js",
-                "controller_cookie_session.js",
-                "controller_db.js",
-                "controller_file.js"
-            ]
-        },
-        {
-            "folder": "/application/views",
-            "files": [
-                "index.ejs",
-                "upload.ejs",
-                "error.html"
-            ]
-        },
-        {
-            "folder": "/static/upload",
-            "files": []
-        },
-        {
             "folder": "/static",
             "files": [
                 "favicon.ico"
@@ -127,12 +104,6 @@
                 {
                     "folder": "/tools-submodules/db/queries",
                     "files": [
-                        "query.json"
-                    ]
-                },
-                {
-                    "folder": "/tools-submodules/db/queries",
-                    "files": [
                         "query.xml"
                     ]
                 }
@@ -163,11 +134,15 @@
         "/static/img",
         "/application/views/css",
         "/application/views/js",
-        "/application/views/fonts"
+        "/application/views/fonts",
+        {
+            "url": "/image",
+            "path": "/Users/changhokang/Downloads/upload/template/image"
+        }
     ],
     "protocol": {
         "http": {
-            "port": 3001
+            "port": 3000
         },
         "https": {
             "port": 8445,
