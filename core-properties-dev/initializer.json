@@ -165,10 +165,10 @@
     ],
     "protocol": {
         "http": {
-            "port": 3000
+            "port": 3001
         },
         "https": {
-            "port": 8443,
+            "port": 8446,
             "certification_path": "/core-properties-dev/https",
             "keyFileName": "key.pem",
             "certFileName": "cert.pem"

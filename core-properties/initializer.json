@@ -168,7 +168,7 @@
             "port": 3000
         },
         "https": {
-            "port": 8443,
+            "port": 8445,
             "certification_path": "/core-properties/https",
             "keyFileName": "key.pem",
             "certFileName": "cert.pem"
