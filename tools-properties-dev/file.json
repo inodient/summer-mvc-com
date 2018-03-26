@@ -1,3 +1,4 @@
 {
-	"default-path" : "/upload/template"
+	"default-pre-path" : "/var/__upload",
+	"default-path" : "/www.summermvc.com-development"
 }
