@@ -136,8 +136,8 @@
         "/application/views/js",
         "/application/views/fonts",
         {
-            "url": "/image",
-            "path": "/Users/changhokang/Downloads/upload/template/image"
+            "url": "/",
+            "path": "/var/__upload/www.summermvc.com-development"
         }
     ],
     "protocol": {
