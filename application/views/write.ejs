@@ -30,7 +30,30 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:bold" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:bolditalic" rel="stylesheet">
 
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+
+
+<script>
+  $(document).ready( function(){
+    
+    console.log( "<%- docMenus.length %>" );
+
+    <% for( var i=0; i<docMenus.length; i++ ){ %> 
+      $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
+        callbacks : {
+        }
+      } );          
+    <% } %>
+
+  } );
+</script>
+
+
+
   <link rel="stylesheet" type="text/css" href="/summermvc.css">
+
+  
 
   <script>
     $(document).ready( function(){
@@ -203,12 +226,20 @@
       </div>
       <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
 
-
         <% for( var i=0; i<docMenus.length; i++ ){ %> 
             
               <% if( docMenus[i].level === 1 ){ %>
                   <h3 id="<%- docMenus[i].name %>" class="doc-h3"><%- docMenus[i].displayname %></h3>
                     <div id="<%- 'editor_' + docMenus[i].id %>"></div>
+
+                    <style>
+                      $(document).ready( function(){
+                        $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
+                          callbacks : {
+                          }
+                        } );
+                      } );
+                    </style>
 
                     <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
                       <% i++; %>
@@ -216,69 +247,27 @@
                         <h4 id="<%- docMenus[i].name %>" class="doc-h4"><%- docMenus[i].displayname %></h4>
                           <div id="<%- 'editor_' + docMenus[i].id %>"></div>
 
+                          <style>
+                            $(document).ready( function(){
+                              $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
+                                callbacks : {
+                                  onImageUpload: function( files, editor, welEditable ){
+                                    editorImageUpload( files, editor, welEditable, "editor-content-ko" );
+                                  }
+                                }
+                              } );
+                            } );
+                          </style>
                     <% } %>
               <% } %>
           <% } %>
 
 
 
-        <h3 id="httphttps" class="doc-h3">Http Https</h3>
-          <h4 id="httphttps_usage" class="doc-h4">Usage</h4>
-            <p>Installing Octave on Windows
-                Installing Octave on Windows
-                Use this link to install Octave for windows: http://wiki.octave.org/Octave_for_Microsoft_Windows
+          <h3 id="8" class="doc-h3"></h3>
+          <div id="editor_123"></div>
 
-                Octave on Windows can be used to submit programming assignments in this course but will likely need a patch provided in the discussion forum. Refer to https://www.coursera.org/learn/machine-learning/discussions/vgCyrQoMEeWv5yIAC00Eog? for more information about the patch for your version.
 
-                "Warning: Do not install Octave 4.0.0"; checkout the "Resources" menu's section of "Installation Issues".
-          </p>
-          <h4 id="httphttps_mechanism" class="doc-h4">Mechanism</h4>
-          <p>Installing Octave on Windows
-                Installing Octave on Windows
-                Use this link to install Octave for windows: http://wiki.octave.org/Octave_for_Microsoft_Windows
-
-                Octave on Windows can be used to submit programming assignments in this course but will likely need a patch provided in the discussion forum. Refer to https://www.coursera.org/learn/machine-learning/discussions/vgCyrQoMEeWv5yIAC00Eog? for more information about the patch for your version.
-
-                "Warning: Do not install Octave 4.0.0"; checkout the "Resources" menu's section of "Installation Issues".
-          </p>
-          <h4 id="httphttps_exercise" class="doc-h4">Exercise</h4>
-          <p>Installing Octave on Windows
-                Installing Octave on Windows
-                Use this link to install Octave for windows: http://wiki.octave.org/Octave_for_Microsoft_Windows
-
-                Octave on Windows can be used to submit programming assignments in this course but will likely need a patch provided in the discussion forum. Refer to https://www.coursera.org/learn/machine-learning/discussions/vgCyrQoMEeWv5yIAC00Eog? for more information about the patch for your version.
-
-                "Warning: Do not install Octave 4.0.0"; checkout the "Resources" menu's section of "Installation Issues".
-          </p>
-
-        <h3 id="modecontrol" class="doc-h3">Mode Control</h3>
-          <h4 id="modecontrol_usage" class="doc-h4">Usage</h4>
-            <p>Installing Octave on Windows
-                Installing Octave on Windows
-                Use this link to install Octave for windows: http://wiki.octave.org/Octave_for_Microsoft_Windows
-
-                Octave on Windows can be used to submit programming assignments in this course but will likely need a patch provided in the discussion forum. Refer to https://www.coursera.org/learn/machine-learning/discussions/vgCyrQoMEeWv5yIAC00Eog? for more information about the patch for your version.
-
-                "Warning: Do not install Octave 4.0.0"; checkout the "Resources" menu's section of "Installation Issues".
-          </p>
-          <h4 id="modecontrol_mechanism" class="doc-h4">Mechanism</h4>
-          <p>Installing Octave on Windows
-                Installing Octave on Windows
-                Use this link to install Octave for windows: http://wiki.octave.org/Octave_for_Microsoft_Windows
-
-                Octave on Windows can be used to submit programming assignments in this course but will likely need a patch provided in the discussion forum. Refer to https://www.coursera.org/learn/machine-learning/discussions/vgCyrQoMEeWv5yIAC00Eog? for more information about the patch for your version.
-
-                "Warning: Do not install Octave 4.0.0"; checkout the "Resources" menu's section of "Installation Issues".
-          </p>
-          <h4 id="modecontrol_exercise" class="doc-h4">Exercise</h4>
-          <p>Installing Octave on Windows
-                Installing Octave on Windows
-                Use this link to install Octave for windows: http://wiki.octave.org/Octave_for_Microsoft_Windows
-
-                Octave on Windows can be used to submit programming assignments in this course but will likely need a patch provided in the discussion forum. Refer to https://www.coursera.org/learn/machine-learning/discussions/vgCyrQoMEeWv5yIAC00Eog? for more information about the patch for your version.
-
-                "Warning: Do not install Octave 4.0.0"; checkout the "Resources" menu's section of "Installation Issues".
-          </p>
 
         <% include partials/footer.ejs %>
       </div>
