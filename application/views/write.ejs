@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:italic' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:bold' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:bolditalic' rel='stylesheet'>
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2:italic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2:bold" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2:bolditalic" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Hind+Guntur" rel="stylesheet">	
+  <link href="https://fonts.googleapis.com/css?family=Hind+Guntur:italic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Hind+Guntur:bold" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Hind+Guntur:bolditalic" rel="stylesheet"> -->
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:italic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:bold" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:bolditalic" rel="stylesheet">
+
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+
+
+<script>
+  $(document).ready( function(){
+    
+    console.log( "<%- docMenus.length %>" );
+
+    <% for( var i=0; i<docMenus.length; i++ ){ %> 
+      $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
+        callbacks : {
+        }
+      } );          
+    <% } %>
+
+  } );
+</script>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/summermvc.css">
+
+  
+
+  <script>
+    $(document).ready( function(){
+      $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
+
+      if( $(window).scrollTop() > $("blockquote").outerHeight() + parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) ){
+        $(".doc-nav-list").css({top: parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) - parseInt( $(".doc-description").css("padding-top").replace( "px", "" ) ), position:'fixed', width: $(".doc-description").css("width")});
+        $(".doc-nav-list").addClass( "affix" );
+      } else{
+        $(".doc-nav-list").css({top:0, position:'relative'});
+        $(".doc-nav-list").removeClass( "affix" );
+      }
+
+      $(window).scroll( function( event ){
+
+        // 1. Right Half Page css
+        $(".after").css( "height", $(".base").outerHeight() + $(".navbar").outerHeight() );
+
+        // 2. doc-nav-list affix
+        if( $(window).scrollTop() > $("blockquote").outerHeight() + parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) ){
+          $(".doc-nav-list").css({top: parseInt( $(".doc-nav").css( "padding-top" ).replace( "px", "" ) ) - parseInt( $(".doc-description").css("padding-top").replace( "px", "" ) ), position:'fixed', width: $(".doc-description").css("width")});
+          $(".doc-nav-list").addClass( "affix" );
+        } else{
+          $(".doc-nav-list").css({top:0, position:'relative'});
+          $(".doc-nav-list").removeClass( "affix" );
+        }
+
+        // 3. content-enables -> doc-nav-list active
+        var offset = 80;
+        var activeElement = "";
+        var specifics = $(".doc-h3, .doc-h4");
+
+        if( specifics == null ){
+          specifics = document.getElementsByClassName( "" );
+        }
+
+        for( var i=0; i<specifics.length; i++ ){
+          var startOffset = 0;
+          var endOffset = 0;
+
+          startOffset = $( "#" + specifics[i].id ).offset().top - offset;
+          if( startOffset > $(window).scrollTop() ){
+            activeElement = "";
+            break;
+          }
+
+          if( i != specifics.length - 1 ){
+            endOffset = $( "#" + specifics[i+1].id ).offset().top - offset;
+          } else{
+            // endOffset = $( "#" + specifics[i].id ).offset().top + $( ".content_specific" ).outerHeight() - offset;
+            endOffset = $( "#" + specifics[i].id ).offset().top + $( "#" + specifics[i].id ).parent().outerHeight( true ) - offset;
+          }
+
+          if( $(window).scrollTop() > startOffset && $(window).scrollTop() < endOffset ){
+            activeElement = specifics[i].id;
+            break;
+          }
+
+          if( $(window).scrollTop() + $(window).height() == $(document).height() ){
+            activeElement = specifics[specifics.length - 1].id;
+            break;
+          }
+
+          if( i == specifics.length ){
+            activeElement = "";
+          }
+        }
+
+        if( activeElement != "" ){
+          $("*").removeClass( "scrolled" );
+          $( "#dnl_" + activeElement ).addClass( "scrolled" );
+          $( "#dnl_" + activeElement ).parent().addClass( "scrolled" );
+
+          if( ( $( "#" + activeElement ).attr( "class" ) ).indexOf( "doc-h4" ) >= 0 ){
+            $( "#dnl_" + activeElement ).parent().parent().parent().addClass( "scrolled" );
+            $( "#dnl_" + activeElement ).parent().parent().siblings("a").addClass( "scrolled" );
+          }
+        } else{
+          $("*").removeClass( "scrolled" );
+          $(".doc-nav-list *, .doc-nav-sub-list *").removeClass( "active" );
+        }
+      } );
+
+      // when doc-nav-list clicked -> active
+      $(".doc-nav-list > li > a").on( "click", function(){
+        $("*").removeClass("active");
+        $(this).parent().addClass( "active" );
+      } );
+
+      $(".doc-nav-sub-list > li > a").on( "click", function(){
+        $("*").removeClass("active");
+        $(this).parent().addClass( "active" );
+        $(this).parent().parent().parent().addClass( "active" );
+      } );
+    } );
+  </script>
+
+</head>
+
+<body class="base">
+  <header class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-container">
+      <div class="navbar-header">
+        <button type="button" style="margin-left: 10px" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#top_menu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- <a id="<%- topLeftMenus[0].id %>" name="<%- topLeftMenus[0].name %>" class="navbar-brand" href="<%- topLeftMenus[0].redirectpath %>"><img src="summer-mvc-logo.ico" style="display:inline-block; max-width: 35px" /></a> -->
+        <a href="/" class="navbar-brand mobile-navbar-brand mobile-show">summer-mvc</a>
+        <!-- <img id="download" src="/download_icon.gif" class="mobile-show"/> -->
+        <a id="download" class="mobile-show" href="/"><i class="fa fa-facebook fa-lg logo"></i></a>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse navbar-content" id="top_menu">
+      <ul class="nav navbar-nav top-nav">
+        <% for( var i=0; i<topLeftMenus.length; i++ ){ %>
+          <li id="<%- topLeftMenus[i].id %>" name="<%- topLeftMenus[i].name %>" class="<%- topLeftMenus[i].active %>"><a href="<%- topLeftMenus[i].redirectpath %>" ><%- topLeftMenus[i].displayname %></a></li>
+        <% } %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right top-nav">
+        <% for( var i=0; i<topRightMenus.length-1; i++ ){ %>
+          <% if( topRightMenus[i].type === "href" ){ %>
+            <li id="<%- topRightMenus[i].id %>" name="<%- topRightMenus[i].name %>" class="<%- topRightMenus[i].active %>"><a href="<%- topRightMenus[i].redirectpath %>" ><i class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[i].displayname %></a></li>
+          <% } else if( topRightMenus[i].type === "onclick" ){ %>
+            <li id="<%- topRightMenus[i].id %>" name="<%- topRightMenus[i].name %>" class="<%- topRightMenus[i].active %>"><a href="#" onclick="<%- topRightMenus[i].redirectpath %>" ><i class="<%- topRightMenus[i].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[i].displayname %></a></li>
+          <% } %>
+        <% } %>
+        <li style="padding-right: 15px" id="<%- topRightMenus[topRightMenus.length-1].id %>" name="<%- topRightMenus[topRightMenus.length-1].name %>" class="<%- topRightMenus[topRightMenus.length-1].active %>"><a href="<%- topRightMenus[topRightMenus.length-1].redirectpath %>" ><i class="<%- topRightMenus[topRightMenus.length-1].icon %>"></i>&nbsp;&nbsp;<%- topRightMenus[topRightMenus.length-1].displayname %></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container-fluid doc">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3 doc-nav">
+        <blockquote class="doc-description" onclick="location.href=''">
+          <% for( var i=0; i
+          <topLeftMenus.length; i++ ){ %> <% if(
+          topLeftMenus[i].active == "active" ){ %>
+          <h4><%- topLeftMenus[i].displayname %></h4>
+          <p><%- topLeftMenus[i].description %></p>
+          <% } %> <% } %>
+        </blockquote>
+        <ul class="doc-nav-list" >
+
+          <% for( var i=0; i<docMenus.length; i++ ){ %> 
+            <li>
+              <% if( docMenus[i].level === 1 ){ %>
+                  <a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a>
+
+                  <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
+                    <% i++; %>
+
+                    
+                      <% if( i > 0 && docMenus[i-1].level === 1 ){ %> 
+                        <ul class="doc-nav-sub-list">
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                      <% } else if( i < docMenus.length - 1 && docMenus[i+1].level === 1 )  { %>
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                        </ul>
+                      <% } else { %>
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                      <% } %>
+                  <% } %>
+              <% } %>
+            </li>  
+          <% } %>
+        </ul>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
+
+        <% for( var i=0; i<docMenus.length; i++ ){ %> 
+            
+              <% if( docMenus[i].level === 1 ){ %>
+                  <h3 id="<%- docMenus[i].name %>" class="doc-h3"><%- docMenus[i].displayname %></h3>
+                    <div id="<%- 'editor_' + docMenus[i].id %>"></div>
+
+                    <style>
+                      $(document).ready( function(){
+                        $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
+                          callbacks : {
+                          }
+                        } );
+                      } );
+                    </style>
+
+                    <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
+                      <% i++; %>
+
+                        <h4 id="<%- docMenus[i].name %>" class="doc-h4"><%- docMenus[i].displayname %></h4>
+                          <div id="<%- 'editor_' + docMenus[i].id %>"></div>
+
+                          <style>
+                            $(document).ready( function(){
+                              $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
+                                callbacks : {
+                                  onImageUpload: function( files, editor, welEditable ){
+                                    editorImageUpload( files, editor, welEditable, "editor-content-ko" );
+                                  }
+                                }
+                              } );
+                            } );
+                          </style>
+                    <% } %>
+              <% } %>
+          <% } %>
+
+
+
+          <h3 id="8" class="doc-h3"></h3>
+          <div id="editor_123"></div>
+
+
+
+        <% include partials/footer.ejs %>
+      </div>
+    </div>
+  </div>
+
+  <div class="after"></div>
+</body>
+
+</html>
