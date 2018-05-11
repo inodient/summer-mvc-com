@@ -15,8 +15,6 @@
     <query id="deleteAccessLog">
         <![CDATA[delete from connectionInfo where param like ? ]]>
     </query>
-    
-
     <query id="getTopLeftMenus">
         <![CDATA[select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,
         '' as active from TB_MENU where level=0 and enabled='Y' order by sequence;]]>
@@ -26,17 +24,6 @@
         '' as active from TB_MENU where level=- 1 and enabled='Y' order by
         sequence;]]>
     </query>
-
-    <query id="getDocMenus">
-        <![CDATA[
-            select id,level,gid,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,'' as active
-              from TB_MENU 
-             where enabled = 'Y' and gid = ( select gid from TB_MENU where redirectpath = #PATH# ) and level > 0
-            order by gid, sequence
-        ]]>
-    </query>
-
-
     <query id="getDependency">
         <![CDATA[select id, execution, type, name, version, url, license, description
         from TB_DEPENDENCY order by id;]]>

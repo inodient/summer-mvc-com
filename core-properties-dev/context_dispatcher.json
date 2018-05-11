@@ -57,14 +57,6 @@
             "view": "template.ejs"
         },
         {
-            "id": "write",
-            "path": "/write",
-            "controllerJS": "controller_template.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "write.ejs"
-        },
-        {
             "id": "first",
             "path": "/",
             "controllerJS": "controller_welcome.js",
@@ -135,14 +127,6 @@
             "controlFunction": "control",
             "viewPath": "",
             "view": "proposal.ejs"
-        },
-        {
-            "id": "guide",
-            "path": "/guide",
-            "controllerJS": "controller_proposal.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "guide.ejs"
         }
     ],
     "POST": [
