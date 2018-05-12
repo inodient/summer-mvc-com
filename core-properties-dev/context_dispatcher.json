@@ -170,6 +170,14 @@
             "controlFunction": "control",
             "viewPath": "",
             "view": "index.ejs"
+        },
+        {
+            "id": "savecontent",
+            "path": "/savecontent",
+            "controllerJS": "controller_write.js",
+            "controlFunction": "control_save_content",
+            "viewPath": "",
+            "view": "template.ejs"  
         }
     ]
 }

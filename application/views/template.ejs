@@ -180,7 +180,7 @@
           <% for( var i=0; i<docMenus.length; i++ ){ %> 
             <li>
               <% if( docMenus[i].level === 1 ){ %>
-                  <a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a>
+                  <a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></a>
 
                   <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
                     <% i++; %>
@@ -188,12 +188,12 @@
                     
                       <% if( i > 0 && docMenus[i-1].level === 1 ){ %> 
                         <ul class="doc-nav-sub-list">
-                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></a></li>
                       <% } else if( i < docMenus.length - 1 && docMenus[i+1].level === 1 )  { %>
-                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></a></li>
                         </ul>
                       <% } else { %>
-                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></a></li>
                       <% } %>
                   <% } %>
               <% } %>
@@ -207,14 +207,14 @@
         <% for( var i=0; i<docMenus.length; i++ ){ %> 
             
               <% if( docMenus[i].level === 1 ){ %>
-                  <h3 id="<%- docMenus[i].name %>" class="doc-h3"><%- docMenus[i].displayname %></h3>
-                    <div id="<%- 'editor_' + docMenus[i].id %>"></div>
+                  <h3 id="<%- docMenus[i].name %>" class="doc-h3" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></h3>
+                    <%- docMenus[i].content %>
 
                     <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
                       <% i++; %>
 
-                        <h4 id="<%- docMenus[i].name %>" class="doc-h4"><%- docMenus[i].displayname %></h4>
-                          <div id="<%- 'editor_' + docMenus[i].id %>"></div>
+                        <h4 id="<%- docMenus[i].name %>" class="doc-h4" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></h4>
+                          <%- docMenus[i].content %>
 
                     <% } %>
               <% } %>

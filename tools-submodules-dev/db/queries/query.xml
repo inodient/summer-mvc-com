@@ -28,13 +28,33 @@
     </query>
     <query id="getDocMenus">
         <![CDATA[
-            select id,level,gid,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,'' as active
-              from TB_MENU 
+            select id,level,gid,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,'' as active, ( select content_ko from TB_CONTENT where category = A.id ) as content
+              from TB_MENU A
              where enabled = 'Y' and gid = ( select gid from TB_MENU where redirectpath = #PATH# ) and level > 0
             order by gid, sequence
         ]]>
     </query>
 
+    <query id="insertContent">
+        <![CDATA[
+            INSERT INTO TB_CONTENT (category, create_date, title_ko, title_en, content_ko, content_en, modified_date)
+            VALUES
+                (#CATEGORY#, 
+                #DATE#, 
+                #TITLE_KO#,
+                #TITLE_EN#, 
+                #CONTENT_KO#, 
+                #CONTENT_EN#,
+                #DATE#)
+        ]]>
+    </query>
+
+    <query id="deleteContent">
+        <![CDATA[
+            DELETE FROM TB_CONTENT
+            WHERE category = #CATEGORY#;
+        ]]>
+    </query>
 
 
     <query id="getDependency">

@@ -37,14 +37,43 @@
 <script>
   $(document).ready( function(){
     
-    console.log( "<%- docMenus.length %>" );
-
     <% for( var i=0; i<docMenus.length; i++ ){ %> 
-      $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
+      $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "200px",
         callbacks : {
         }
       } );          
     <% } %>
+
+    $("#btn_submit").on( "click", function(){
+
+      var contents = [];
+
+      $(".editor_text").each( function(){
+        var eachContent = {};
+        eachContent.category = $(this).data( "id" ) + "";
+        eachContent.name = $(this).data( "name" );
+        eachContent.content = $(this).summernote( "code" );
+
+        contents.push( eachContent );
+      } );
+
+      console.log( contents );
+
+      $.ajax({
+       type: "POST",
+       url: "/savecontent",
+       data: { "contents" : JSON.stringify(contents)},
+       // contentType: "application/json; charset=utf-8",
+       // dataType: "json",
+       success: function(msg) {
+          alert( 'Succeed....^^' );
+          alert( msg );
+       }
+      });
+
+
+    } );
+
 
   } );
 </script>
@@ -203,7 +232,7 @@
           <% for( var i=0; i<docMenus.length; i++ ){ %> 
             <li>
               <% if( docMenus[i].level === 1 ){ %>
-                  <a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a>
+                  <a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></a>
 
                   <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
                     <% i++; %>
@@ -211,12 +240,12 @@
                     
                       <% if( i > 0 && docMenus[i-1].level === 1 ){ %> 
                         <ul class="doc-nav-sub-list">
-                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></a></li>
                       <% } else if( i < docMenus.length - 1 && docMenus[i+1].level === 1 )  { %>
-                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></a></li>
                         </ul>
                       <% } else { %>
-                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>"><%- docMenus[i].displayname %></a></li>
+                          <li><a href="<%- '#' + docMenus[i].name %>" id="<%- 'dnl_' + docMenus[i].name %>" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></a></li>
                       <% } %>
                   <% } %>
               <% } %>
@@ -226,47 +255,26 @@
       </div>
       <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
 
-        <% for( var i=0; i<docMenus.length; i++ ){ %> 
-            
-              <% if( docMenus[i].level === 1 ){ %>
-                  <h3 id="<%- docMenus[i].name %>" class="doc-h3"><%- docMenus[i].displayname %></h3>
-                    <div id="<%- 'editor_' + docMenus[i].id %>"></div>
+        <form id="contents" name="contents" action="/savecontent" method="post">
+          <% for( var i=0; i<docMenus.length; i++ ){ %> 
+              
+                <% if( docMenus[i].level === 1 ){ %>
+                    <h3 id="<%- docMenus[i].name %>" class="doc-h3"><%- docMenus[i].displayname %></h3>
+                      <div class="editor_text" id="<%- 'editor_' + docMenus[i].id %>" data-id="<%- docMenus[i].id %>" data-name="<%- docMenus[i].name %>"></div>
 
-                    <style>
-                      $(document).ready( function(){
-                        $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
-                          callbacks : {
-                          }
-                        } );
-                      } );
-                    </style>
+                      <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
+                        <% i++; %>
 
-                    <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
-                      <% i++; %>
+                          <h4 id="<%- docMenus[i].name %>" class="doc-h4" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></h4>
+                            <div class="editor_text" id="<%- 'editor_' + docMenus[i].id %>" data-id="<%- docMenus[i].id %>" data-name="<%- docMenus[i].name %>"></div>
 
-                        <h4 id="<%- docMenus[i].name %>" class="doc-h4"><%- docMenus[i].displayname %></h4>
-                          <div id="<%- 'editor_' + docMenus[i].id %>"></div>
+                            
+                      <% } %>
+                <% } %>
+            <% } %>
 
-                          <style>
-                            $(document).ready( function(){
-                              $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "450px",
-                                callbacks : {
-                                  onImageUpload: function( files, editor, welEditable ){
-                                    editorImageUpload( files, editor, welEditable, "editor-content-ko" );
-                                  }
-                                }
-                              } );
-                            } );
-                          </style>
-                    <% } %>
-              <% } %>
-          <% } %>
-
-
-
-          <h3 id="8" class="doc-h3"></h3>
-          <div id="editor_123"></div>
-
+            <button class="btn_important" type="button" id="btn_submit">SUBMIT</button>
+          </form>
 
 
         <% include partials/footer.ejs %>
