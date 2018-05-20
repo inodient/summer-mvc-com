@@ -8,7 +8,9 @@ exports.getMenus = function( req, res, connection ){
 
 		var promises = [];
 
-		var path = req.path;
+		var path = req.originalUrl;
+		// path = path.replace( "/doc", "" );
+		path = path.replace( "/write", "/doc" );
 
 	    promises.push( menuDbExecutor.getTopLeftMenus(connection) );
 	    promises.push( menuDbExecutor.getTopRightMenus(connection) );

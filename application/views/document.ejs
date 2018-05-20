@@ -30,69 +30,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:bold" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:bolditalic" rel="stylesheet">
 
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
-
-
-<script>
-  $(document).ready( function(){
-    
-    <% for( var i=0; i<docMenus.length; i++ ){ %> 
-      $('<%- '#editor_' + docMenus[i].id %>').summernote( {height: "200px",
-        callbacks : {
-        }
-      } );          
-    <% } %>
-
-    $("#btn_submit").on( "click", function(){
-
-      var contents = [];
-
-      // eachContent.category = $(this).data( "id" ) + "";
-      // eachContent.name = $(this).data( "name" );
-      // eachContent.content = $(this).summernote( "code" );
-     
-      contents.push( {
-        "category" : -1,
-        "name" : "doc-header",
-        "content" : $("#doc-header").val()
-      } );
-
-      $(".editor_text").each( function(){
-        var eachContent = {};
-        eachContent.category = $(this).data( "id" ) + "";
-        eachContent.name = $(this).data( "name" );
-        eachContent.content = $(this).summernote( "code" );
-
-        contents.push( eachContent );
-      } );
-
-      console.log( contents );
-
-      $.ajax({
-       type: "POST",
-       url: "/savecontent",
-       data: { "contents" : JSON.stringify(contents)},
-       // contentType: "application/json; charset=utf-8",
-       // dataType: "json",
-       success: function(msg) {
-          alert( 'Succeed....^^' );
-          alert( msg );
-       }
-      });
-
-
-    } );
-
-
-  } );
-</script>
-
-
-
   <link rel="stylesheet" type="text/css" href="/summermvc.css">
-
-  
 
   <script>
     $(document).ready( function(){
@@ -237,8 +175,6 @@
           <p><%- topLeftMenus[i].description %></p>
           <% } %> <% } %>
         </blockquote>
-        
-
         <ul class="doc-nav-list" >
 
           <% for( var i=0; i<docMenus.length; i++ ){ %> 
@@ -267,38 +203,31 @@
       </div>
       <div class="col-lg-9 col-md-9 col-sm-9 doc-content">
 
-        <form id="contents" name="contents" action="/savecontent" method="post">
+        <% for( var i=0; i
+          <topLeftMenus.length; i++ ){ %> <% if( topLeftMenus[i].active == "active" && topLeftMenus[i].header != null ){ %>
+          
+            <div class="well doc-well-inverse p-end">
+              <%- topLeftMenus[i].header %>
+            </div>
 
-          <% for( var i=0; i
-            <topLeftMenus.length; i++ ){ %> <% if( topLeftMenus[i].active == "active" && topLeftMenus[i].header != null ){ %>
+          <% } %> 
+        <% } %>
+
+        <% for( var i=0; i<docMenus.length; i++ ){ %> 
             
-              <div class="well doc-well-inverse p-end">
-                <%- topLeftMenus[i].header %>
-              </div>
+              <% if( docMenus[i].level === 1 ){ %>
+                  <h3 id="<%- docMenus[i].name %>" class="doc-h3" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></h3>
+                    <%- docMenus[i].content %>
 
-            <% } %> 
+                    <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
+                      <% i++; %>
+
+                        <h4 id="<%- docMenus[i].name %>" class="doc-h4" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></h4>
+                          <%- docMenus[i].content %>
+
+                    <% } %>
+              <% } %>
           <% } %>
-
-          <% for( var i=0; i<docMenus.length; i++ ){ %> 
-              
-                <% if( docMenus[i].level === 1 ){ %>
-                    <h3 id="<%- docMenus[i].name %>" class="doc-h3"><%- docMenus[i].displayname %></h3>
-                      <div class="editor_text" id="<%- 'editor_' + docMenus[i].id %>" data-id="<%- docMenus[i].id %>" data-name="<%- docMenus[i].name %>"><%- docMenus[i].content %></div>
-
-                      <% while( i < docMenus.length - 1 && docMenus[i+1].level === 2 ){ %>
-                        <% i++; %>
-
-                          <h4 id="<%- docMenus[i].name %>" class="doc-h4" data-id="<%- docMenus[i].id %>"><%- docMenus[i].displayname %></h4>
-                            <div class="editor_text" id="<%- 'editor_' + docMenus[i].id %>" data-id="<%- docMenus[i].id %>" data-name="<%- docMenus[i].name %>"><%- docMenus[i].content %></div>
-
-                            
-                      <% } %>
-                <% } %>
-            <% } %>
-
-            <button class="btn_important" type="button" id="btn_submit">SUBMIT</button>
-          </form>
-
 
         <% include partials/footer.ejs %>
       </div>

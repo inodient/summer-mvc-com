@@ -178,6 +178,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
 }
 
+#doc-header {
+  margin-bottom: 80px;
+}
+
+
+
 .doc-content p {
   margin-bottom: 30px;
   line-height: 1.8em;

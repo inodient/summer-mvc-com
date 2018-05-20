@@ -19,7 +19,7 @@
 
     <query id="getTopLeftMenus">
         <![CDATA[select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,
-        '' as active from TB_MENU where level=0 and enabled='Y' order by sequence;]]>
+        '' as active, header from TB_MENU where level=0 and enabled='Y' order by sequence;]]>
     </query>
     <query id="getTopRightMenus">
         <![CDATA[select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,
