@@ -1,54 +1,6 @@
 {
     "GET": [
         {
-            "id": "default",
-            "path": "/default",
-            "controllerJS": "controller_basic.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "index.ejs"
-        },
-        {
-            "id": "ajaxRequest",
-            "path": "/ajaxRequest",
-            "controllerJS": "controller_ajax.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "index.ejs"
-        },
-        {
-            "id": "setCookie",
-            "path": "/setCookie",
-            "controllerJS": "controller_cookie_session.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "index.ejs"
-        },
-        {
-            "id": "setSession",
-            "path": "/setSession",
-            "controllerJS": "controller_cookie_session.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "index.ejs"
-        },
-        {
-            "id": "getData",
-            "path": "/getData",
-            "controllerJS": "controller_db.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "index.ejs"
-        },
-        {
-            "id": "download",
-            "path": "/download",
-            "controllerJS": "controller_file.js",
-            "controlFunction": "control_download",
-            "viewPath": "",
-            "view": "welcome.ejs"
-        },
-        {
             "id": "template",
             "path": "/template",
             "controllerJS": "controller_template.js",
@@ -57,7 +9,16 @@
             "view": "template.ejs"
         },
         {
-            "id": "first",
+            "id": "write_",
+            "path": "/write_",
+            "controllerJS": "controller_template.js",
+            "controlFunction": "control",
+            "viewPath": "",
+            "view": "write.ejs"
+        },
+
+        {
+            "id": "index",
             "path": "/",
             "controllerJS": "controller_welcome.js",
             "controlFunction": "control",
@@ -65,94 +26,30 @@
             "view": "welcome.ejs"
         },
         {
-            "id": "welcome",
-            "path": "/welcome",
-            "controllerJS": "controller_welcome.js",
+            "id": "doc",
+            "path": "/doc/:name",
+            "controllerJS": "controller_doc.js",
             "controlFunction": "control",
             "viewPath": "",
-            "view": "welcome.ejs"
+            "view": "document.ejs"
         },
         {
-            "id": "getting-started",
-            "path": "/getting-started",
-            "controllerJS": "controller_getting_started.js",
+            "id": "write",
+            "path": "/write/:name",
+            "controllerJS": "controller_doc.js",
             "controlFunction": "control",
             "viewPath": "",
-            "view": "getting_started.ejs"
-        },
-        {
-            "id": "deep-drive",
-            "path": "/deep-drive",
-            "controllerJS": "controller_deep_drive.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "deep_drive.ejs"
-        },
-        {
-            "id": "example",
-            "path": "/example",
-            "controllerJS": "controller_example.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "example.ejs"
-        },
-        {
-            "id": "reference",
-            "path": "/reference",
-            "controllerJS": "controller_reference.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "reference.ejs"
-        },
-        {
-            "id": "community",
-            "path": "/community",
-            "controllerJS": "controller_community.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "community.ejs"
-        },
-        {
-            "id": "facebook",
-            "path": "/facebook",
-            "controllerJS": "controller_facebook.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "facebook.ejs"
-        },
-        {
-            "id": "proposal",
-            "path": "/proposal",
-            "controllerJS": "controller_proposal.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "proposal.ejs"
+            "view": "write.ejs"
         }
     ],
     "POST": [
         {
-            "id": "indexPost",
-            "path": "/",
-            "controllerJS": "controller_post.js",
-            "controlFunction": "control",
+            "id": "savecontent",
+            "path": "/savecontent",
+            "controllerJS": "controller_write.js",
+            "controlFunction": "control_save_content",
             "viewPath": "",
-            "view": "index.ejs"
-        },
-        {
-            "id": "upload",
-            "path": "/upload",
-            "controllerJS": "controller_file.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "index.ejs"
-        },
-        {
-            "id": "ajaxRequest",
-            "path": "/ajaxRequest2",
-            "controllerJS": "controller_ajax.js",
-            "controlFunction": "control",
-            "viewPath": "",
-            "view": "index.ejs"
+            "view": "template.ejs"  
         }
     ]
 }

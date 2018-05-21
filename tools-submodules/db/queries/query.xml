@@ -29,8 +29,7 @@
     <query id="getDocMenus">
         <![CDATA[
             select id,level,gid,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,'' as active, ( select content_ko from TB_CONTENT where category = A.id ) as content
-              from TB_MENU A
-             where enabled = 'Y' and gid = ( select gid from TB_MENU where redirectpath = #PATH# ) and level > 0
+              from TB_MENU A where enabled = 'Y' and gid = ( select gid from TB_MENU where redirectpath = #PATH# ) and level > 0
             order by gid, sequence
         ]]>
     </query>
