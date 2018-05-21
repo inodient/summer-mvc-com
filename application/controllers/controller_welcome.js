@@ -20,12 +20,6 @@ exports.control = function( req, res, connection ){
     .catch( function(err){
       reject( err );
     } );
-
-
-    // getTopMenus( req.path, connection )
-    // .then( function(){
-    //   resolve( arguments[0] );
-    // } );
   } );
 }
 

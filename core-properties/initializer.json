@@ -1,154 +1,161 @@
 {
-    "port": 3000,
-    "context_architecture": [
-        {
-            "folder": "/core-properties",
-            "files": [
-                "context_dispatcher.json",
-                "initializer.json"
-            ]
-        },
-        {
-            "folder": "/static",
-            "files": [
-                "favicon.ico"
-            ]
-        },
-        {
-            "folder": "/__logs",
-            "files": []
-        },
-        {
-            "folder": "/core-properties/https",
-            "files": []
-        }
-    ],
-    "views": {
-        "engine": "ejs"
+  "options" : {
+    "use_https" : "true",
+    "use_annotation" : "false",
+    "remove_and_rebuild" : "false",
+    "auto_structure_creation" : "true"
+  },
+
+  "protocol" : {
+    "http" : {
+      "port" : 3000
     },
-    "tools": [
-        {
-            "name": "logger",
-            "enable": true,
-            "toolFiles": [
-                {
-                    "folder": "/tools-properties",
-                    "files": [
-                        "logger.json"
-                    ]
-                },
-                {
-                    "folder": "/__logs",
-                    "files": []
-                }
-            ]
-        },
-        {
-            "name": "errorHandler",
-            "enable": true,
-            "toolFiles": [
-                {
-                    "folder": "/tools-submodules",
-                    "files": [
-                        "clientErrorHandler.js"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "connectionHandler",
-            "enable": true,
-            "toolFiles": [
-                {
-                    "folder": "/tools-properties",
-                    "files": [
-                        "connection.json"
-                    ]
-                },
-                {
-                    "folder": "/tools-submodules",
-                    "files": [
-                        "connectionHandlerSubmodules.js"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "fileHandler",
-            "enable": true,
-            "toolFiles": [
-                {
-                    "folder": "/tools-properties",
-                    "files": [
-                        "file.json"
-                    ]
-                },
-                {
-                    "folder": "/tools-submodules",
-                    "files": [
-                        "fileSubmodules.js"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "mysqlHandler",
-            "enable": true,
-            "toolFiles": [
-                {
-                    "folder": "/tools-properties",
-                    "files": [
-                        "mysql.json"
-                    ]
-                },
-                {
-                    "folder": "/tools-submodules/db/queries",
-                    "files": [
-                        "query.xml"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "exitHandler",
-            "enable": true,
-            "toolFiles": [
-                {
-                    "folder": "/tools-submodules",
-                    "files": [
-                        "clientExitHandler.js"
-                    ]
-                }
-            ]
-        }
-    ],
-    "options": {
-        "use_annotation": "true",
-        "remove_and_rebuild": "false",
-        "auto_structure_creation": "true",
-        "use_https": "true"
-    },
-    "static_folders": [
-        "/static",
-        "/static/upload",
-        "/static/img",
-        "/application/views/css",
-        "/application/views/js",
-        "/application/views/fonts",
-        {
-            "url": "/",
-            "path": "/var/__upload/www.summermvc.com-production"
-        }
-    ],
-    "protocol": {
-        "http": {
-            "port": 3000
-        },
-        "https": {
-            "port": 8445,
-            "certification_path": "/core-properties/https",
-            "keyFileName": "key.pem",
-            "certFileName": "cert.pem"
-        }
+    "https" : {
+      "port" : 8443,
+      "certification_path" : "/core-properties/https",
+      "keyFileName" : "key.pem",
+      "certFileName" : "cert.pem"
     }
+  },
+
+  "port" : 3000,
+  "context_architecture" : [
+    {
+      "folder" : "/core-properties",
+      "files" : [ "context_dispatcher.json", "initializer.json" ]
+    },
+    {
+      "folder" : "/application/controllers",
+      "files" : [ "controller_basic.js",
+                  "controller_post.js",
+                  "controller_ajax.js",
+                  "controller_cookie_session.js",
+                  "controller_mysql.js",
+                  "controller_mssql.js",
+                  "controller_file.js" ]
+    },
+    {
+      "folder" : "/application/views",
+      "files" : [ "index.ejs", "error.html" ]
+    },
+    {
+      "folder" : "/static/upload",
+      "files" : []
+    },
+    {
+      "folder" : "/static",
+      "files" : [ "test_download.txt" ]
+    },
+    {
+      "folder" : "/__logs",
+      "files" : []
+    },
+    {
+      "folder" : "/core-properties/https",
+      "files" : []
+    }
+  ],
+
+  "views" : {
+    "engine" : "ejs"
+  },
+
+  "tools" : [
+  	{
+  		"name" : "logger",
+  		"enable" : true,
+      "toolFiles" : [
+        {
+          "folder" : "/tools-properties",
+          "files" : [ "logger.json" ]
+        },
+        {
+          "folder" : "/__logs",
+          "files" : []
+        }
+      ]  
+  	},
+  	{
+  		"name" : "errorHandler",
+  		"enable" : true,
+      "toolFiles" : [
+          {
+            "folder" : "/tools-submodules",
+            "files" : [ "clientErrorHandler.js" ]
+          }
+        ]
+  	},
+  	{
+  		"name" : "connectionHandler",
+  		"enable" : true,
+  		"toolFiles" : [
+  			{
+	  			"folder" : "/tools-properties",
+	  			"files" : [ "connection.json" ]
+  			},
+        {
+          "folder" : "/tools-submodules",
+          "files" : [ "connectionHandlerSubmodules.js" ]
+        }
+  		]
+  	},
+  	{
+  		"name" : "fileHandler",
+  		"enable" : true,
+  		"toolFiles" : [
+  			{
+	  			"folder" : "/tools-properties",
+	  			"files" : [ "file.json" ]
+  			},
+        {
+          "folder" : "/tools-submodules",
+          "files" : [ "fileSubmodules.js" ]
+        }
+  		]
+  	},
+  	{
+  		"name" : "mysqlHandler",
+  		"enable" : true,
+  		"toolFiles" : [
+  			{
+	  			"folder" : "/tools-properties",
+	  			"files" : [ "mysql.json" ]
+  			},
+  			{
+	  			"folder" : "/tools-submodules/db/queries",
+	  			"files" : [ "mysqlQuery.xml" ]
+  			}
+  		]
+  	},
+    {
+      "name" : "mssqlHandler",
+      "enable" : false,
+      "toolFiles" : [
+        {
+          "folder" : "/tools-properties",
+          "files" : [ "mssql.json" ]
+        },
+        {
+          "folder" : "/tools-submodules/db/queries",
+          "files" : [ "mssqlQuery.xml" ]
+        }
+      ]
+    },
+  	{
+  		"name" : "exitHandler",
+  		"enable" : true,
+  		"toolFiles" : [
+  			{
+	  			"folder" : "/tools-submodules",
+	  			"files" : [ "clientExitHandler.js" ]
+  			}
+  		]
+  	}
+  ],
+  "static_folders" : [ "/application/views/css", "/static", "/static/upload", "/static/img",
+    {
+      "url" : "/image",
+      "path" : "/static/image/urls"
+    }
+  ]
 }

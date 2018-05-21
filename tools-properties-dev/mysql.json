@@ -1,7 +1,10 @@
 {
-  "connectionLimit" : 100,
-  "host" : "www.summermvc.com",
-  "user" : "root",
-  "password" : "123Qwer@",
-  "database" : "summermvc-com-test"
+	"connectionLimit" : 100,
+	"host" : "www.summermvc.com",
+	"user" : "root",
+	"password" : "123Qwer@",
+	"database" : "summermvc-com-test",
+	"queries" : [
+		"/tools-submodules-dev/db/queries/query.xml"
+	]
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<queries>
+    <query id="getMySqlVersion">
+        <![CDATA[select version() ]]>
+    </query>
+    <query id="getAccessLog">
+        <![CDATA[select * from connectionInfo where connectionTime> ? and connectionTime < ? ]]>
+    </query>
+    <query id="insertAccessLog">
+        <![CDATA[insert into connectionInfo values ( ?, ?, ?, ?, ?, ? )]]>
+    </query>
+    <query id="updateAccessLog">
+        <![CDATA[update connectionInfo set userId=? where param=? ]]>
+    </query>
+    <query id="deleteAccessLog">
+        <![CDATA[delete from connectionInfo where param like ? ]]>
+    </query>
+
+
+    <query id="getTopLeftMenus">
+        <![CDATA[select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,
+        '' as active, header from TB_MENU where level=0 and enabled='Y' order by sequence;]]>
+    </query>
+    <query id="getTopRightMenus">
+        <![CDATA[select id,level,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,
+        '' as active from TB_MENU where level=-1 and enabled='Y' order by
+        sequence;]]>
+    </query>
+    <query id="getDocMenus">
+        <![CDATA[
+            select id,level,gid,parent,sequence,name,displayname,icon,redirectpath,description,enabled,type,'' as active, ( select content_ko from TB_CONTENT where category = A.id ) as content
+              from TB_MENU A
+             where enabled = 'Y' and gid = ( select gid from TB_MENU where redirectpath = #PATH# ) and level > 0
+            order by gid, sequence
+        ]]>
+    </query>
+
+    <query id="insertContent">
+        <![CDATA[
+            INSERT INTO TB_CONTENT (category, create_date, title_ko, title_en, content_ko, content_en, modified_date)
+            VALUES
+                (#CATEGORY#, 
+                #DATE#, 
+                #TITLE_KO#,
+                #TITLE_EN#, 
+                #CONTENT_KO#, 
+                #CONTENT_EN#,
+                #DATE#)
+        ]]>
+    </query>
+
+    <query id="deleteContent">
+        <![CDATA[
+            DELETE FROM TB_CONTENT
+            WHERE category = #CATEGORY#;
+        ]]>
+    </query>
+
+
+    <query id="getDependency">
+        <![CDATA[select id, execution, type, name, version, url, license, description
+        from TB_DEPENDENCY order by id;]]>
+    </query>
+    <query id="getHistory">
+        <![CDATA[select id, type, version, changes, DATE_FORMAT(date, '%M %d
+        %Y') as commitedDate, committer from TB_HISTORY order by id;]]>
+    </query>
+</queries>

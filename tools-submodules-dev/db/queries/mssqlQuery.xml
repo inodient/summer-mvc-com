@@ -1,0 +1,35 @@
+<?xml version='1.0'?>
+<queries>
+  <query id='getMSSqlVersion'>
+    Select @@version
+  </query>
+  <query id='getAccessLog'>
+    <![CDATA[
+      select * from connectionInfo 
+      where connectionTime > #STARTDATE# and connectionTime < #ENDDATE#
+    ]]>
+  </query>
+  <query id='insertAccessLog'>
+    <![CDATA[
+      insert into connectionInfo 
+      values ( 
+        #CONNECTIONTIME#,
+        #USERID#,
+        #FULLPATH#,
+        #QUERY#,
+        #PARAM#,
+        #METHOD# 
+      )
+    ]]>
+  </query>
+  <query id='updateAccessLog'>
+    <![CDATA[
+      update connectionInfo set userId = #USERID# where userId = #PARAM#
+    ]]>
+  </query>
+  <query id='deleteAccessLog'>
+    <![CDATA[
+      delete from connectionInfo where fullpath like #FULLPATH#
+    ]]>
+  </query>
+</queries>
